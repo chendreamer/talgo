@@ -1,12 +1,16 @@
 <template>
   <div>
-    <div id="videoContainer">
-      <video id="myVideo" class="video-js" width="640" height="264" data-setup="{}">
-        <track :src="pathEn" srclang="en"    label="English" kind="subtitles" default />
-        <track :src="pathEs" srclang="es"    label="es" kind="subtitles"  />
-        <track :src="pathFr" srclang="fr"    label="fr" kind="subtitles"  />
+    <el-container class="container" id="videoContainer">
+      <el-header>
+        <Header></Header>
+      </el-header>
+      <video id="myVideo" class="video-js" width="1000" height="800" data-setup="{}">
+        <source :src="videoPath" type="video/mp4" />
+        <track id="trackEn" :src="subtitleEnPath" srclang="en"  label="en" kind="subtitles" default />
+        <track id="trackEs" :src="subtitleEsPath" srclang="es"  label="es" kind="subtitles"  />
+        <track id="trackFr" :src="subtitleFrPath" srclang="fr"  label="fr" kind="subtitles" />
       </video>
-    </div>
+    </el-container>
   </div>
 </template>
 
@@ -14,24 +18,89 @@
 // import player from '../components/player'
 import "video.js/dist/video-js.css";
 import videojs from "video.js";
+import axios from "axios";
+import i18n from "@/i18n";
+import Header from "@/components/Header.vue";
 
 export default {
-  data: function() {
+  name: "play",
+  props: ["summaryID"],
+  components: { Header },
+  data: function () {
     return {
-        pathEn:("http://localhost/eng.vtt"),
-        pathEs:("http://localhost/es.vtt"),
-        pathFr:("http://localhost/fr.vtt")
+      videoPath: "",
+      //subtitlePath: "",
+      subtitleEnPath:"",
+      subtitleEsPath:"",
+      subtitleFrPath:""
     };
   },
-  mounted: function() {
-    console.log(videojs);
-    var player = videojs(document.getElementById("myVideo"),
-      {
+  mounted: function () {
+    console.log(this.summaryID);
+    this.getData();
+  },
+  methods: {
+    getData: function () {
+      let that = this;
+
+      axios
+        .get(that.$store.state.media_server + "/video", {
+          params: {
+            id: that.summaryID,
+            lang: i18n.locale,
+          },
+        })
+        .then(function (response) {
+          console.log(response["data"]["data"]);
+          that.videoPath =
+            that.$store.state.media_server +
+            response["data"]["data"][0]["filepath"];
+          console.log(i18n.locale);
+          //if (i18n.locale == "en") {
+            that.subtitleEnPath =
+              that.$store.state.media_server +
+              response["data"]["data"][0]["subtitlepath_en"].replace(
+                ".srt",
+                ".vtt"
+              );
+          //} else if (i18n.locale == "es") {
+            that.subtitleEsPath =
+              that.$store.state.media_server +
+              response["data"]["data"][0]["subtitlepath_es"].replace(
+                ".srt",
+                ".vtt"
+              );
+          //} else {
+            that.subtitleFrPath =
+              that.$store.state.media_server +
+              response["data"]["data"][0]["subtitlepath_fr"].replace(
+                ".srt",
+                ".vtt"
+              );
+          //}
+
+          that.$nextTick(function () {
+            that.playInit();
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+          that.$message({
+            message: error,
+            type: "info",
+            center: true,
+            // iconClass: "",
+            duration: 1800,
+          });
+        });
+    },
+    playInit: function () {
+      var player = videojs(document.getElementById("myVideo"), {
         controls: true, // 是否显示控制条
         preload: "auto",
         autoplay: false,
         fluid: true, // 自适应宽高
-        language: "zh-CN", // 设置语言
+        // language: "zh-CN", // 设置语言
         muted: false, // 是否静音
         inactivityTimeout: false,
         controlBar: {
@@ -43,34 +112,32 @@ export default {
             {
               // 倍数播放
               name: "playbackRateMenuButton",
-              playbackRates: [0.5, 1, 1.5, 2, 2.5]
+              playbackRates: [0.5, 1, 1.5, 2, 2.5],
             },
             {
               name: "volumePanel", // 音量控制
-              inline: false // 不使用水平方式
+              inline: false, // 不使用水平方式
             },
-            { name: "FullscreenToggle" } // 全屏
-          ]
+            { name: "subtitlesButton" }, // 字幕
+            { name: "FullscreenToggle" }, // 全屏
+          ],
         },
-        sources: [
-          // 视频源
-          {
-            src: "http://localhost/china.mp4",
-            type: "video/mp4"
-          }
-        ]
       });
-      player.on('ended', function() {
-    videojs.log('Awww...over so soon?!');
-  });
-  }
+      player.on("ended", function () {
+        console.log("play ended!");
+      });
+    },
+  },
 };
 </script>
 
-<style scoped>
-#videoContainer {
-  width: 800px;
-  height: 500px;
-  background-color: green;
+<style>
+/* #myVideo {
+  width: 1000px;
+  height: 800px;
+} */
+.video-js .vjs-big-play-button {
+  top: 45%;
+    left: 45%;
 }
 </style>
