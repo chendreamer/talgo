@@ -12,8 +12,8 @@
           <page-logo pagename="music"></page-logo>
           <!-- <audio :src="musicURL" id="music" controls ></audio> -->
           <div class="Audio">
-            <audio id="audioTag" :src="musicURL"></audio>
-            <p class="current-music-title ellipsis">{{curentPlayingMusicName}}</p>
+            <!-- <audio id="audioTag" :src="musicURL"></audio> -->
+            <p class="current-music-title ellipsis">{{getCurentPlayingMusicName}}</p>
             <div class="df music-bar">
               <span class="played-time">00:00</span>
               <div class="pgs flex-1" @click="changeProgress">
@@ -32,18 +32,20 @@
                 @click="playLastMusic"
               />
               <img
-                v-if="!playingStatus"
+                v-if="!getPlayingStatus"
                 src="../assets/images/Play-music.png"
-                class="music-control-btn"
+                class="music-control-btn playPause"
                 alt
                 id="playPause"
+                @click="changePlayStatus"
               />
               <img
                 v-else
                 src="../assets/images/media_music_pause.png"
-                class="music-control-btn"
+                class="music-control-btn playPause"
                 alt
                 id="playPause"
+                @click="stopMusic"
               />
               <img
                 src="../assets/images/Next.png"
@@ -72,7 +74,7 @@
             <!-- 歌手列表 -->
             <el-collapse
               class="music-list-collapse flex-1"
-              v-if="navigationName =='Singer'"
+              v-if="getNavigationName =='Singer'"
               v-model="activeName"
               accordion
             >
@@ -92,7 +94,7 @@
                     <img
                       class="list-play-btn"
                       src="../assets/images/media_music_list_pause.png"
-                      v-if="childItem.id == currentPlayingID && playingStatus"
+                      v-if="childItem.id == getCurrentPlayingID && getPlayingStatus"
                       @click="stopMusic(childItem.id)"
                     />
                     <img
@@ -110,7 +112,7 @@
               class="music-list-collapse flex-1"
               v-model="activeName"
               accordion
-              v-else-if="navigationName =='Album'"
+              v-else-if="getNavigationName =='Album'"
             >
               <el-collapse-item
                 :name="index"
@@ -128,7 +130,7 @@
                     <img
                       class="list-play-btn"
                       src="../assets/images/media_music_list_pause.png"
-                      v-if="childItem.id == currentPlayingID && playingStatus"
+                      v-if="childItem.id == getCurrentPlayingID && getPlayingStatus"
                       @click="stopMusic(childItem.id)"
                     />
                     <img
@@ -143,13 +145,13 @@
             </el-collapse>
             <!-- 普通类型音乐列表 -->
             <ol class="music-list flex-1" v-else>
-              <li v-for="(item,index) in musicArray" :key="index">
+              <li v-for="(item,index) in getMusicArray" :key="index">
                 <span class="music-order">{{getOrder(index)}}</span>
                 <span class="music-filename ellipsis">{{item.title}}</span>
                 <img
                   class="list-play-btn"
                   src="../assets/images/media_music_list_pause.png"
-                  v-if="item.id == currentPlayingID && playingStatus"
+                  v-if="item.id == getCurrentPlayingID && getPlayingStatus"
                   @click="stopMusic(item.id)"
                 />
                 <img
@@ -201,6 +203,7 @@ import Header from "@/components/Header.vue";
 import MultimediaLogo from "@/components/MultimediaLogo.vue";
 import PageLogo from "@/components/PageLogo.vue";
 import FilterList from "@/components/FilterList.vue";
+import { mapState } from "vuex";
 
 //思路：创建一个数组，用于存放历史请求的接口与参数，每次getlist判断是否有相同的请求记录，有相同的话则不去请求。
 //      如果有多个请求，页面只显示最后一次请求的内容，其余返回值则不理会。
@@ -209,33 +212,41 @@ import FilterList from "@/components/FilterList.vue";
 //低网速下内容切换有问题
 //当前播放音乐名省略号
 
-let player;
-
 export default {
   components: { Header, MultimediaLogo, PageLogo, FilterList },
   data: function () {
     return {
       path: "",
-      playList: [], //播放列表
-      musicArray: [], //普通音乐列表
-      singerOrAlubmArray: [], //歌手专辑列表
       currentPageNum: 1,
       perPage: 10,
       totalPage: 0,
-      navigationName: "All",
       loadingState: true,
       url: "",
       activeName: "0",
-      currentPlayingID: -1,
       musicURL: "",
-      playingStatus: false, //true:播放中  false:暂停
-      curentPlayingMusicName: "", //当前播放音乐名称
     };
   },
   mounted: function () {
     this.getList("All");
   },
-  computed: {},
+  computed: mapState({
+    getPlayingStatus() {
+      return this.$store.state.music.playingStatus;
+    },
+    getCurrentPlayingID() {
+      return this.$store.state.music.currentPlayingID;
+    },
+    getCurentPlayingMusicName() {
+      return this.$store.state.music.curentPlayingMusicName;
+    },
+    getNavigationName() {
+      return this.$store.state.music.navigationName;
+    },
+    getMusicArray() {
+      return this.$store.state.music.musicArray;
+    },
+    doneCount: 'doneTodosCount'
+  }),
   methods: {
     getOrder: function (i) {
       return (this.currentPageNum - 1) * this.perPage + parseInt(i) + 1;
@@ -243,23 +254,23 @@ export default {
     getList: function (type) {
       let that = this;
       that.loadingState = true;
-      if (type != that.navigationName) {
+      if (type != that.$store.state.music.navigationName) {
         that.currentPageNum = 1;
       }
 
       if (type == "Singer") {
         that.url = that.$store.state.media_server + "/audiosinger";
-        that.singerOrAlubmArray.length = 0;
+        that.$store.state.music.singerOrAlubmArray.length = 0;
         that.activeName = "0";
       } else if (type == "Album") {
         that.url = that.$store.state.media_server + "/audioalbum";
-        that.singerOrAlubmArray.length = 0;
+        that.$store.state.music.singerOrAlubmArray.length = 0;
         that.activeName = "0";
       } else {
         that.url = that.$store.state.media_server + "/audio";
-        that.musicArray.length = 0;
+        that.$store.state.music.musicArray.length = 0;
       }
-      that.navigationName = type;
+      that.$store.state.music.navigationName = type;
 
       axios
         .get(that.url, {
@@ -278,12 +289,12 @@ export default {
           );
           response["data"]["data"].forEach((element) => {
             if (type == "Singer" || type == "Album") {
-              that.singerOrAlubmArray.push(element);
+              that.$store.state.music.singerOrAlubmArray.push(element);
             } else {
               //   if (that.currentPlayingID == -1) {
               //   that.currentPlayingID = element["id"];
               // }
-              that.musicArray.push(element);
+              that.$store.state.music.musicArray.push(element);
             }
           });
           // that.musicURL =
@@ -311,143 +322,102 @@ export default {
       console.log("PlayList changed");
       //此处要深拷贝
       let that = this;
-      if (that.navigationName == "Singer" || that.navigationName == "Album") {
-        that.playList = [...that.singerOrAlubmArray[outIndex]["audio"]];
+      if (
+        that.$store.state.music.navigationName == "Singer" ||
+        that.$store.state.music.navigationName == "Album"
+      ) {
+        console.log([...that.singerOrAlubmArray[outIndex]["audio"]]);
+        that.$store.commit({
+          type: "music/setPlayList",
+          data: [...that.singerOrAlubmArray[outIndex]["audio"]],
+        });
+
+        //  that.$store.state.playList = ;
       } else {
-        that.playList = [...that.musicArray];
+        console.log([...that.$store.state.music.musicArray]);
+        that.$store.commit({
+          type: "music/setPlayList",
+          data: [...that.$store.state.music.musicArray],
+        });
+        //  that.$store.state.playList = [...that.musicArray];
       }
     },
     playMusic: function (index, outIndex) {
-      let that = this;
-      if (that.playingStatus) {
-        console.log("重置了！");
-        player.pause();
-        that.playingStatus = false;
-      }
-      // console.log(index);
-      // console.log(that.currentPlayingID);
-
-      if (typeof index != "undefined") {
-        if (index != that.currentPlayingID) {
-          //如果当前正在播放，先暂停，再重置
-          player = null;
-        } else {
-          player.play();
-          that.playingStatus = true;
-        }
-        that.currentPlayingID = index;
-        that.replacePlayList(index, outIndex);
-      }
-      // var _array;
-      // if (that.navigationName == "Singer" || that.navigationName == "Album") {
-      //         _array = that.singerOrAlubmArray[outIndex]['audio'];
-      //       }else {
-      //         _array = that.musicArray;
-      //       }
-      that.$nextTick(function () {
-        for (let i = 0; i < that.playList.length; i++) {
-          if (that.playList[i]["id"] == that.currentPlayingID) {
-            that.musicURL =
-              that.$store.state.media_server + that.playList[i]["filepath"];
-            that.curentPlayingMusicName = that.playList[i]["title"];
-            break;
-          }
-        }
-        //console.log(that.playList);
-
-        that.$nextTick(function () {
-          //console.log(that.currentPlayingID);
-          //console.log(that.musicURL);
-          that.initPlayer();
-        });
+      this.$store.dispatch({
+        type: "music/playMusic",
+        index: index,
+        outIndex: outIndex,
       });
+    },
+    changePlayStatus: function () {
+      this.$store.dispatch({
+        type: "music/playMusicPrev",
+      });
+    },
+    // playMusic: function (index, outIndex) {
+    //   let that = this;
+    //   if (that.getPlayingStatus) {
+    //     console.log("重置了！");
+    //     that.$store.state.music.player.pause();
+    //     that.$store.state.music.playingStatus = false;
+    //   }
+    //   // console.log(index);
+    //   // console.log(that.currentPlayingID);
+
+    //   if (typeof index != "undefined") {
+    //     if (index != that.getCurrentPlayingID) {
+    //       //如果当前正在播放，先暂停，再重置
+    //       that.$store.state.music.player = null;
+    //     } else {
+    //       //当前有正在播放的歌曲
+    //       that.$store.state.music.player.play();
+    //       that.$store.state.music.playingStatus = true;
+    //       return;
+    //     }
+    //     that.$store.commit({
+    //       type: "music/setCurrentPlayingID",
+    //       data: index,
+    //     });
+    //     that.replacePlayList(index, outIndex);
+    //   }
+    //   // var _array;
+    //   // if (that.navigationName == "Singer" || that.navigationName == "Album") {
+    //   //         _array = that.singerOrAlubmArray[outIndex]['audio'];
+    //   //       }else {
+    //   //         _array = that.musicArray;
+    //   //       }
+    //   that.$nextTick(function () {
+    //     that.$store.dispatch("music/initPlayer");
+    //     //console.log(that.playList);
+
+    //     //that.$nextTick(function () {
+    //       //console.log(that.currentPlayingID);
+    //       //console.log(that.musicURL);
+
+    //     //});
+    //   });
+    // },
+    playLastMusic: function () {
+      let that = this;
+      that.$store.dispatch("music/playLastMusic");
+    },
+    playNextMusic: function () {
+      let that = this;
+      that.$store.dispatch("music/playNextMusic");
     },
     stopMusic: function () {
       let that = this;
-      player.pause();
-      that.playingStatus = false;
+      that.$store.dispatch("music/stopMusic");
+      //that.$store.state.music.player.pause();
+      //that.$store.state.music.playingStatus = false;
+      //that.getPlayingStatus = false;
     },
-    initPlayer: function () {
-      var that = this;
 
-      player = document.getElementById("audioTag");
-      let playPause = document.getElementById("playPause");
-      console.log("init player-----------------------------");
-
-      playPause.onclick = function () {
-        if (player.paused) {
-          player.play();
-          that.playingStatus = true;
-        } else {
-          player.pause();
-          that.playingStatus = false;
-        }
-      };
-      //连续播放的两首歌内容相同，则重新播放，无需执行player.onloadedmetadata
-      if (player.readyState) {
-        player.currentTime = 0;
-        player.play();
-        that.playingStatus = true;
-      }
-      var audioTime = document.getElementById("audioTime");
-      player.onloadedmetadata = function () {
-        audioTime.innerHTML = that.transTime(player.duration);
-        console.log("start play");
-        player.play();
-        that.playingStatus = true;
-      };
-
-      var dot = document.getElementsByClassName("dot");
-      var pgs = document.getElementsByClassName("pgs");
-      var play_time = document.getElementsByClassName("played-time");
-      player.ontimeupdate = function () {
-        // var value = Math.round(
-        //   (Math.floor(player.currentTime) / Math.floor(player.duration)) * 100,
-        //   0
-        // );
-        // var value = Math.round(
-        //   (Math.floor(player.currentTime) / Math.floor(player.duration))* 100,
-        //   0
-        // );
-        var value = (player.currentTime / player.duration).toFixed(3);
-        // console.log('-----------------------');
-        // console.log(player.currentTime);
-        // console.log(Math.floor(player.duration));
-        //console.log(value);
-
-        dot[0].style.left = -4 + Math.round(pgs[0].clientWidth * value) + "px";
-
-        // console.log((x/ pgs[0].clientWidth).toFixed(4));
-        //         document.getElementsByClassName("pgs-play")[0].style.width =
-        //           value + "%";
-        play_time[0].innerHTML = that.transTime(player.currentTime);
-      };
-      player.onended = function () {
-        that.playingStatus = false;
-        that.stopMusic();
-        that.playNextMusic();
-      };
-    },
-    transTime: function (time) {
-      var duration = parseInt(time);
-      var minute = parseInt(duration / 60);
-      var sec = (duration % 60) + "";
-      var isM0 = ":";
-      if (minute == 0) {
-        minute = "00";
-      } else if (minute < 10) {
-        minute = "0" + minute;
-      }
-      if (sec.length == 1) {
-        sec = "0" + sec;
-      }
-      return minute + isM0 + sec;
-    },
     prevPage: function () {
       let that = this;
       if (that.currentPageNum > 1) {
         that.currentPageNum--;
-        that.getList(that.navigationName);
+        that.getList(that.$store.state.music.navigationName);
       } else {
         that.$message({
           message: "This is first page!",
@@ -462,7 +432,7 @@ export default {
       let that = this;
       if (that.currentPageNum < that.totalPage) {
         that.currentPageNum++;
-        that.getList(this.navigationName);
+        that.getList(that.$store.state.music.navigationName);
       } else {
         that.$message({
           message: "This is last page!",
@@ -476,48 +446,16 @@ export default {
     returnRef: function (i) {
       return "listPlayBtnRef" + i;
     },
-    playLastMusic: function () {
-      let that = this;
-      //this.$refs.refName.$el.click();
-      //console.log(this.$refs);
-      //this.$refs.listPlayBtnRef257[0].click();
-      for (var i = 0; i < this.playList.length; i++) {
-        if (that.currentPlayingID == this.playList[i]["id"]) {
-          if (i == 0) {
-            that.currentPlayingID = this.playList[this.playList.length - 1][
-              "id"
-            ];
-          } else {
-            that.currentPlayingID = this.playList[i - 1]["id"];
-          }
-          break;
-        }
-      }
-      that.$nextTick(function () {
-        that.playMusic();
-      });
-    },
-    playNextMusic: function () {
-      let that = this;
-      // console.log(this.$refs);
-      //this.$refs.listPlayBtnRef257[0].click();
-      // console.log("------------------");
-      // console.log(that.playList);
-      // console.log(that.currentPlayingID);
-      for (var i = 0; i < this.playList.length; i++) {
-        if (that.currentPlayingID == this.playList[i]["id"]) {
-          if (i == this.playList.length - 1) {
-            that.currentPlayingID = this.playList[0]["id"];
-          } else {
-            that.currentPlayingID = this.playList[i + 1]["id"];
-          }
-          break;
-        }
-      }
-      that.$nextTick(function () {
-        that.playMusic();
-      });
-    },
+    // changePlayStatus:function(){
+    //   let that = this;
+    //   if (that.$store.state.player.paused) {
+    //     that.$store.state.player.play();
+    //     that.$store.state.playingStatus = true;
+    //   } else {
+    //     that.$store.state.player.pause();
+    //     that.$store.state.playingStatus = false;
+    //   }
+    // },
     changeProgress: function (e) {
       let that = this;
       var e_ = window.event || e; // 兼容IE，FF事件源
@@ -527,9 +465,10 @@ export default {
       var pgs = document.getElementsByClassName("pgs");
       // console.log((x/ pgs[0].clientWidth).toFixed(3));
       // console.log(player);
-
+      //console.log(that.$store.state);
       var value = (x / pgs[0].clientWidth).toFixed(3);
-      player.currentTime = player.duration * value;
+      that.$store.state.music.player.currentTime =
+        that.$store.state.music.player.duration * value;
       // console.log('-----------------------');
       // console.log(player.currentTime);
       // console.log(Math.floor(player.duration));
@@ -545,9 +484,13 @@ export default {
       // console.log((x/ pgs[0].clientWidth).toFixed(4));
       //         document.getElementsByClassName("pgs-play")[0].style.width =
       //           value + "%";
-      document.getElementsByClassName(
-        "played-time"
-      )[0].innerHTML = that.transTime(player.currentTime);
+      //console.log(that);
+      // document.getElementsByClassName(
+      //   "played-time"
+      // )[0].innerHTML = that.$store.getters({
+      //   'type':'music/transTime',
+      //   data:that.$store.state.music.player.currentTime,
+      // });
     },
   },
 };

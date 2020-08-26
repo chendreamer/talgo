@@ -143,7 +143,7 @@ export default {
     $width: 120px;
     min-height: $width * 1.6 * 2;
     .show-list-item {
-      width: 150px;
+      width: 148px;
       height: 206px;
     }
   }
@@ -167,10 +167,10 @@ export default {
 
 @media (min-width:321px) and (max-width:360px){
 .show-list {
-    $width: 150px;
+    $width: 148px;
     min-height: $width * 1.6 * 2;
     .show-list-item {
-      width: 150px;
+      width: 148px;
       height: $width * 1.6;
     }
   }
@@ -194,7 +194,7 @@ export default {
 
 @media (min-width: 361px) and (max-width: 420px) {
   .show-list {
-    $width: 120px;
+    $width: 118px;
     min-height: $width * 1.6 * 2;
     .show-list-item {
       width: $width;
@@ -223,7 +223,7 @@ export default {
 .show-list {
     min-height: 480px;
     .show-list-item {
-      width: 140px;
+      width: 138px;
       height: 240px;
     }
   }
@@ -249,7 +249,7 @@ export default {
   .show-list { 
     min-height: 440px;
     .show-list-item {
-      width: 170px;
+      width: 168px;
       height: 250px;
     }
   }
@@ -274,7 +274,7 @@ export default {
 .show-list {
     min-height: 500px;
     .show-list-item {
-      width: 148px;
+      width: 146px;
       height: 266px;
     }
   }
@@ -300,7 +300,7 @@ export default {
 .show-list {
     min-height: 460px;
     .show-list-item {
-      width: 124px;
+      width: 122px;
       height: 240px;
     }
   }
@@ -326,7 +326,7 @@ export default {
 .show-list {
     min-height: 500px;
     .show-list-item {
-      width: 138px;
+      width: 136px;
       height: 260px;
     }
   }
@@ -350,7 +350,7 @@ export default {
 
 @media (min-width: 1201px) {
   .show-list {
-    $width: 180px;
+    $width: 178px;
     min-height: $width * 1.6 * 2;
     .show-list-item {
       width: $width;

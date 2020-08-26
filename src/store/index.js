@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+//import mutations from './mutations'
+// import actions from './store/actions.js'
+// import getters from './store/getters.js'
 Vue.use(Vuex);
 
 const state = {
@@ -26,6 +29,14 @@ const state = {
   trainNumberGPS: [],
 }
 
+import music from './modules/music'
+//把mqtt接收也放到store中
 export default new Vuex.Store({
-  state
+  state,
+  modules: {
+    music
+  }
+  // getters,
+  // actions,
+  //mutations
 })

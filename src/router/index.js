@@ -70,7 +70,8 @@ const router = new VueRouter({
         component:technical
     }]
 });
-router.push('/languageSetting');
-//router.push('/home');
+
+//router.push('/languageSetting');
+router.push('/home');
 
 export default router;

@@ -131,13 +131,11 @@ export default {
 };
 </script>
 
-<style>
-/* #myVideo {
-  width: 1000px;
-  height: 800px;
-} */
+<style lang="scss">
 .video-js .vjs-big-play-button {
-  top: 45%;
-    left: 45%;
+  width: 90px;
+  height: 50px;
+  left: calc(50% - 45px);
+  top: calc(50% - 25px);
 }
 </style>
