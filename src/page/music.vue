@@ -15,12 +15,12 @@
             <!-- <audio id="audioTag" :src="musicURL"></audio> -->
             <p class="current-music-title ellipsis">{{getCurentPlayingMusicName}}</p>
             <div class="df music-bar">
-              <span class="played-time">00:00</span>
+              <span class="played-time">{{getMusicCurrentTime}}</span>
               <div class="pgs flex-1" @click="changeProgress">
                 <!-- <div class="pgs-play" id="progress"></div> -->
                 <div class="dot"></div>
               </div>
-              <span class="audio-time" id="audioTime">00:00</span>
+              <span class="audio-time" id="audioTime">{{getMusicDuration}}</span>
             </div>
 
             <div class="controls">
@@ -245,6 +245,12 @@ export default {
     getMusicArray() {
       return this.$store.state.music.musicArray;
     },
+    getMusicDuration() {
+      return this.$store.state.music.musicDuration;
+    },
+    getMusicCurrentTime() {
+      return this.$store.state.music.musicCurrentTime;
+    },
     doneCount: 'doneTodosCount'
   }),
   methods: {
@@ -467,8 +473,20 @@ export default {
       // console.log(player);
       //console.log(that.$store.state);
       var value = (x / pgs[0].clientWidth).toFixed(3);
-      that.$store.state.music.player.currentTime =
-        that.$store.state.music.player.duration * value;
+      // console.log(value);
+      // console.log(that.getMusicDuration);
+      var _arr = that.getMusicDuration.split(':')
+      console.log((parseInt(_arr[0])*60+parseInt(_arr[1]))  * value);
+        that.$store.commit({
+          type:"music/setMusicCurrentTime",
+          data:(parseInt(_arr[0])*60+parseInt(_arr[1]))  * value
+        });
+        that.$store.commit({
+          type:"music/resetMusicCurrentTime",
+          data:(parseInt(_arr[0])*60+parseInt(_arr[1]))  * value
+        });
+      // that.$store.state.music.player.currentTime =
+      //   that.$store.state.music.player.duration * value;
       // console.log('-----------------------');
       // console.log(player.currentTime);
       // console.log(Math.floor(player.duration));

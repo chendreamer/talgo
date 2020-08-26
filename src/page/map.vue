@@ -136,48 +136,48 @@ export default {
   },
   computed: {
     trainNumberStatus() {
-      return this.$store.state.train_number == "";
+      return this.$store.state.trainInformation.train_number == "";
     },
     InformationOfDelayStatus() {
-      return parseInt(this.$store.state.informationOfDelay) == 0;
+      return parseInt(this.$store.state.trainInformation.informationOfDelay) == 0;
     },
     getTtravelledDistance() {
-      return this.$store.state.travelledDistance + " Km";
+      return this.$store.state.trainInformation.travelledDistance + " Km";
     },
     getDistanceToGo() {
-      return this.$store.state.distanceToGo + " Km";
+      return this.$store.state.trainInformation.distanceToGo + " Km";
     },
     getSpeed() {
-      return this.$store.state.speed + " Km/h";
+      return this.$store.state.trainInformation.speed + " Km/h";
     },
     getNextStation() {
-      if (this.$store.state.nextStation.length == 0) {
+      if (this.$store.state.trainInformation.nextStation.length == 0) {
         return "null";
       } else {
-        return this.searchStation(this.$store.state.nextStation);
+        return this.searchStation(this.$store.state.trainInformation.nextStation);
       }
     },
     getArrivalTime() {
-      return this.$store.state.arrivalTime;
+      return this.$store.state.trainInformation.arrivalTime;
     },
     getGeographicPosition() {
-      if (this.$store.state.geographicPosition.length == 0) {
+      if (this.$store.state.trainInformation.geographicPosition.length == 0) {
         return "null";
       } else {
-        return this.searchStation(this.$store.state.geographicPosition);
+        return this.searchStation(this.$store.state.trainInformation.geographicPosition);
       }
     },
     getInformationOfDelay() {
-      return this.$store.state.informationOfDelay + " Min";
+      return this.$store.state.trainInformation.informationOfDelay + " Min";
     },
     getLatitude() {
-      return parseFloat(this.$store.state.trainLatitude);
+      return parseFloat(this.$store.state.trainInformation.trainLatitude);
     },
     getLongitude() {
-      return parseFloat(this.$store.state.trainLongitude);
+      return parseFloat(this.$store.state.trainInformation.trainLongitude);
     },
     getTrainNumberGPS() {
-      return this.$store.state.trainNumberGPS;
+      return this.$store.state.trainInformation.trainNumberGPS;
     },
   },
   beforeRouteEnter(to, from, next) {

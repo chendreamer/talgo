@@ -9,6 +9,8 @@ const state = {
   singerOrAlubmArray: [], //歌手专辑列表
   navigationName: "All",
   media_server: 'http://172.19.6.4',//媒体服务器ip
+  musicDuration:'00:00',  //音乐总时长
+  musicCurrentTime:'00:00',  //音乐当前时间
 }
 
 // getters
@@ -34,7 +36,7 @@ const getters = {
     }
     return _curentPlayingMusicName;
   },
-  transTime: function (data) {
+  transTime : function(data) {
     //console.log(state);
     var duration = parseInt(data);
     var minute = parseInt(duration / 60);
@@ -54,12 +56,21 @@ const getters = {
 
 // mutations
 const mutations = {
-  setPlayList: function (state, data) {
+  setPlayList: function (state, data) {   //设置播放列表
     state.playList = data.data;
   },
-  setCurrentPlayingID: function (state, data) {
+  setCurrentPlayingID: function (state, data) {  //设置当前播放音乐
     state.currentPlayingID = data.data;
   },
+  setMusicDuration: function (state, data) {  //设置音乐总时长
+    state.musicDuration =  getters.transTime(data.data);
+  },
+  setMusicCurrentTime: function (state, data) {  //设置音乐当前位置时间
+    state.musicCurrentTime = getters.transTime(data.data);
+  },
+  resetMusicCurrentTime:function(state, data){   //重置音乐当前位置
+    state.player.currentTime = data.data;
+  }
 }
 
 // actions
@@ -74,7 +85,7 @@ const actions = {
     var dot = document.getElementsByClassName("dot");
     var pgs = document.getElementsByClassName("pgs");
     var play_time = document.getElementsByClassName("played-time");
-    var audioTime = document.getElementsByClassName("audio-time");
+    //var audioTime = document.getElementsByClassName("audio-time");
     console.log("init player-----------------------------");
     //console.log(state.player);
     //console.log(playPause);
@@ -102,7 +113,15 @@ const actions = {
       //   type: "transTime",
       //   data: state.player.duration,
       // });
-      audioTime[0].innerHTML = getters.transTime(state.player.duration);
+      // context.commit({
+      //   type: "setCurrentPlayingID",
+      //   data: state.player.duration,
+      // });
+      context.commit({
+        type: "setMusicDuration",
+        data: state.player.duration,
+      });
+      //audioTime[0].innerHTML = getters.transTime(state.player.duration);
       state.curentPlayingMusicName = getters.getCurentPlayingMusicName(state);
       console.log("start play");
       state.player.play();
@@ -137,9 +156,20 @@ const actions = {
       //         document.getElementsByClassName("pgs-play")[0].style.width =
       //           value + "%";
       //当前时间
-      play_time[0].innerHTML = getters.transTime(state.player.currentTime);
+      
+      context.commit({
+        type: "setMusicCurrentTime",
+        data: state.player.currentTime,
+      });
+
+
+      //play_time[0].innerHTML = getters.transTime(state.player.currentTime);
       //总长
-      audioTime[0].innerHTML = getters.transTime(state.player.duration);
+      context.commit({
+        type: "setMusicDuration",
+        data: state.player.duration,
+      });
+      //audioTime[0].innerHTML = getters.transTime(state.player.duration);
 
 
       // context.commit({
@@ -279,7 +309,6 @@ const actions = {
     }
   },
 }
-
 
 export default {
   namespaced: true,

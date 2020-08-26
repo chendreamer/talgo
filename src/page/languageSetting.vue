@@ -38,6 +38,9 @@ export default {
       document.body.style.height = that.caclHeight() + "px";
     };
 
+    //连接mqtt server
+    that.$store.dispatch("connectMqttServer");
+
     // that.$message({
     //         message: 'error',
     //         type: "info",

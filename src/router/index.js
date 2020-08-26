@@ -71,7 +71,7 @@ const router = new VueRouter({
     }]
 });
 
-//router.push('/languageSetting');
-router.push('/home');
+router.push('/languageSetting');
+//router.push('/home');
 
 export default router;
