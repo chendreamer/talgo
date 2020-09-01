@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import 'normalize.css';
-import {container,header,main,rate,collapse,collapseItem,loading,message,row,col} from 'element-ui';
+import {container,header,main,rate,collapse,collapseItem,loading,message,row,col,slider} from 'element-ui';
 import './assets/style/main.scss';
 
 
@@ -24,6 +24,7 @@ Vue.use(rate);
 Vue.use(collapse);
 Vue.use(collapseItem);
 Vue.use(loading);
+Vue.use(slider);
 Vue.prototype.$message = message;
 Vue.config.productionTip = false;
 

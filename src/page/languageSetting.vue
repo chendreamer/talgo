@@ -49,6 +49,16 @@ export default {
     //         duration: 0,
     //       });
   },
+mounted:function(){
+  let that = this;
+  //console.log(that.$store.state.music.player.paused);
+  if (typeof(that.$store.state.music.player.paused) != 'undefined'  && !that.$store.state.music.player.paused) {
+          //  that.$store.dispatch("music/stopMusic");
+          that.$store.dispatch("music/destroyPlayer");
+          //that.$store.state.music.playingStatus = false;
+        }
+},
+
   methods: {
     caclHeight: function () {
       //  var clientHeight = 0;

@@ -6,9 +6,9 @@
       </el-header>
       <video id="myVideo" class="video-js" width="1000" height="800" data-setup="{}">
         <source :src="videoPath" type="video/mp4" />
-        <track id="trackEn" :src="subtitleEnPath" srclang="en"  label="en" kind="subtitles" default />
-        <track id="trackEs" :src="subtitleEsPath" srclang="es"  label="es" kind="subtitles"  />
-        <track id="trackFr" :src="subtitleFrPath" srclang="fr"  label="fr" kind="subtitles" />
+        <track id="trackEn" :src="subtitleEnPath" srclang="en"  label="en" kind="subtitles" :default="setDefault('en')" />
+        <track id="trackEs" :src="subtitleEsPath" srclang="es"  label="es" kind="subtitles" :default="setDefault('es')"/>
+        <track id="trackFr" :src="subtitleFrPath" srclang="fr"  label="fr" kind="subtitles" :default="setDefault('fr')"/>
       </video>
     </el-container>
   </div>
@@ -36,10 +36,21 @@ export default {
     };
   },
   mounted: function () {
+        let that = this;
+  //console.log(that.$store.state.music.player.paused);
+  if (typeof(that.$store.state.music.player.paused) != 'undefined'  && !that.$store.state.music.player.paused) {
+          that.$store.dispatch("music/stopMusic");
+          //that.$store.state.music.playingStatus = false;
+        }
     console.log(this.summaryID);
     this.getData();
   },
+  computed:{
+ }, 
   methods: {
+    setDefault:function(lang){
+      return lang == i18n.locale;
+    },
     getData: function () {
       let that = this;
 
@@ -109,11 +120,11 @@ export default {
             { name: "currentTimeDisplay" }, // 当前已播放时间
             { name: "progressControl" }, // 播放进度条
             { name: "durationDisplay" }, // 总时间
-            {
-              // 倍数播放
-              name: "playbackRateMenuButton",
-              playbackRates: [0.5, 1, 1.5, 2, 2.5],
-            },
+            // {
+            //   // 倍数播放
+            //   name: "playbackRateMenuButton",
+            //   playbackRates: [0.5, 1, 1.5, 2, 2.5],
+            // },
             {
               name: "volumePanel", // 音量控制
               inline: false, // 不使用水平方式

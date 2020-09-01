@@ -56,6 +56,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Header from "@/components/Header.vue";
 import iconImage from "../static/images/marker-icon-2x.png";
+import axios from "axios";
 // import iconShadow from "../static/images/marker-shadow.png";
 
 export default {
@@ -79,6 +80,22 @@ export default {
         that.lang = "france";
         break;
     }
+
+axios
+      .get(that.$store.state.media_server + "/heart")
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+        that.$message({
+          message: error,
+          type: "info",
+          center: true,
+          // iconClass: "",
+          duration: 1800,
+        });
+      });
 
     setTimeout(() => {
       var osmUrl =

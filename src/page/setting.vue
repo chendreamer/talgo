@@ -23,6 +23,7 @@
 
 <script>
 import i18n from "@/i18n";
+import axios from "axios";
 import Header from "@/components/Header.vue";
 import MultimediaLogo from "@/components/MultimediaLogo.vue";
 
@@ -52,7 +53,24 @@ export default {
         break;
     }
   },
-  mounted: function () {},
+  mounted: function () {
+    let that = this;
+    axios
+      .get(that.$store.state.media_server + "/heart")
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+        that.$message({
+          message: error,
+          type: "info",
+          center: true,
+          // iconClass: "",
+          duration: 1800,
+        });
+      });
+  },
   beforeRouteEnter(to, from, next) {
     document
       .querySelector("body")

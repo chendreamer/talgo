@@ -12,7 +12,7 @@ const state = {
   media_server: 'http://172.19.6.4',//媒体服务器ip
   //mqtt_server: 'mqtt://172.19.6.21:21884',//mqtt服务器ip
 
-  //media_server: 'http://172.19.6.20',//现场媒体服务器ip
+  ////media_server: 'http://172.19.6.20',//现场媒体服务器ip
 }
 
 
