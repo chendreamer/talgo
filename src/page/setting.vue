@@ -95,381 +95,181 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media (min-width: 768px) {
+ol {
+  list-style: none;
+  margin: 0 auto;
+  li {
+    align-items: center;
+    justify-content: space-between;
+    > .language-type {
+      color: #820063;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  ol {
+    li {
+      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      > .language-type {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .checked-circle,
+  .checked-circle-fake {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    border: 6px solid;
+    vertical-align: middle;
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .checked-circle,
+  .checked-circle-fake {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 11px;
+    border: 5px solid;
+    vertical-align: middle;
+  }
 }
 
 @media (max-width: 320px) {
   ol {
-    list-style: none;
-    width: 100%;
-    margin: 0 auto;
+    width: 90%;
     margin-top: 30px;
     li {
-      margin-bottom: 1rem;
-      align-items: center;
-      justify-content: space-between;
+      margin-bottom: 0.7rem;
       margin-bottom: 1.5rem;
       > .language-type {
-        font-size: 1.5rem;
-        color: #820063;
+        font-size: 1.1rem;
+      }
+      img {
+        width: 70px;
+      }
+    }
+  }
+}
+
+@media (min-width: 321px) and (max-width: 360px) {
+  ol {
+    width: 85%;
+    margin-top: 30px;
+    li {
+      margin-bottom: 0.7rem;
+      margin-bottom: 1.5rem;
+      > .language-type {
+        font-size: 1.2rem;
+      }
+      img {
+        width: 70px;
+      }
+    }
+  }
+}
+
+@media (min-width: 361px) and (max-width: 420px) {
+  ol {
+    width: 80%;
+    margin-top: 30px;
+    li {
+      margin-bottom: 0.7rem;
+      margin-bottom: 1.5rem;
+      > .language-type {
+        font-size: 1.2rem;
+      }
+      img {
+        width: 70px;
+      }
+    }
+  }
+}
+
+@media (min-width: 421px) and (max-width: 520px) {
+  ol {
+    width: 75%;
+    margin-top: 30px;
+    li {
+      margin-bottom: 0.7rem;
+      margin-bottom: 1.5rem;
+      > .language-type {
+        font-size: 1.3rem;
+      }
+      img {
+        width: 75px;
+      }
+    }
+  }
+}
+
+@media (min-width: 521px) and (max-width: 640px) {
+  ol {
+    width: 70%;
+    margin-top: 40px;
+    li {
+      margin-bottom: 0.8rem;
+      margin-bottom: 1.5rem;
+      > .language-type {
+        font-size: 1.3rem;
       }
       img {
         width: 80px;
       }
     }
   }
-
-  .checked-circle {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #820063;
-    vertical-align: middle;
-    margin-left: 1rem;
-  }
-
-  .checked-circle-fake {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #fff;
-    vertical-align: middle;
-    margin-left: 1rem;
-  }
 }
 
-@media (min-width: 321px) and (max-width: 360px) {
+@media (min-width: 641px) and (max-width: 768px) {
   ol {
-    list-style: none;
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 40px;
+    width: 60%;
+    margin-top: 50px;
     li {
-      margin-bottom: 1rem;
-      align-items: center;
-      justify-content: space-between;
+      margin-bottom: 0.8rem;
       margin-bottom: 1.5rem;
       > .language-type {
-        font-size: 1.6rem;
-        color: #820063;
+        font-size: 1.4rem;
       }
       img {
         width: 90px;
       }
     }
   }
-
-  .checked-circle {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #820063;
-    vertical-align: middle;
-    margin-left: 1.6rem;
-  }
-
-  .checked-circle-fake {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #fff;
-    vertical-align: middle;
-    margin-left: 1.6rem;
-  }
 }
 
-@media (min-width: 361px) and (max-width: 420px) {
+@media (min-width: 769px) and (max-width: 999px) {
   ol {
-    list-style: none;
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 50px;
-    li {
-      margin-bottom: 1rem;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      > .language-type {
-        font-size: 1.6rem;
-        color: #820063;
-      }
-    }
-  }
-
-  .checked-circle {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #820063;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-
-  .checked-circle-fake {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #fff;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-}
-
-@media (min-width: 421px) and (max-width: 520px) {
-  ol {
-    list-style: none;
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 60px;
-    li {
-      margin-bottom: 1rem;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      > .language-type {
-        font-size: 1.6rem;
-        color: #820063;
-      }
-    }
-  }
-
-  .checked-circle {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #820063;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-
-  .checked-circle-fake {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #fff;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-}
-
-@media (min-width: 521px) and (max-width: 640px) {
-  ol {
-    list-style: none;
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 70px;
-    li {
-      margin-bottom: 1rem;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      > .language-type {
-        font-size: 1.6rem;
-        color: #820063;
-      }
-    }
-  }
-
-  .checked-circle {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #820063;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-
-  .checked-circle-fake {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #fff;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 768px) {
-  ol {
-    list-style: none;
-    width: 56%;
-    margin: 0 auto;
-    margin-top: 70px;
-    li {
-      margin-bottom: 1rem;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      > .language-type {
-        font-size: 1.6rem;
-        color: #820063;
-      }
-    }
-  }
-
-  .checked-circle {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #820063;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-
-  .checked-circle-fake {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #fff;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 992px) {
-  ol {
-    list-style: none;
-    width: 50%;
-    margin: 0 auto;
+    width: 54%;
     margin-top: 80px;
-    li {
-      margin-bottom: 1rem;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      > .language-type {
-        font-size: 1.5rem;
-        color: #820063;
-      }
-    }
-  }
-
-  .checked-circle {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #820063;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-
-  .checked-circle-fake {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #fff;
-    vertical-align: middle;
-    margin-left: 2rem;
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   ol {
-    list-style: none;
     width: 44%;
-    margin: 0 auto;
     margin-top: 90px;
-    li {
-      margin-bottom: 1rem;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      > .language-type {
-        font-size: 1.5rem;
-        color: #820063;
-      }
-    }
-  }
-
-  .checked-circle {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #820063;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-
-  .checked-circle-fake {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #fff;
-    vertical-align: middle;
-    margin-left: 2rem;
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   ol {
-    list-style: none;
-    width: 40%;
-    margin: 0 auto;
+    width: 36%;
     margin-top: 100px;
-    li {
-      margin-bottom: 1rem;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      > .language-type {
-        font-size: 1.5rem;
-        color: #820063;
-      }
-    }
   }
+}
 
-  .checked-circle {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #820063;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
-
-  .checked-circle-fake {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 26px;
-    height: 26px;
-    border-radius: 13px;
-    border: 6px solid #fff;
-    vertical-align: middle;
-    margin-left: 2rem;
-  }
+.checked-circle {
+  border-color: #820063;
+}
+.checked-circle-fake {
+  border-color: #fff;
 }
 </style>

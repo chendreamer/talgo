@@ -930,7 +930,7 @@ export default {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   .music-content {
     display: flex;
   }
@@ -991,7 +991,7 @@ export default {
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   .music-content {
     display: flex;
   }
@@ -1052,7 +1052,7 @@ export default {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   .music-content {
     display: flex;
   }

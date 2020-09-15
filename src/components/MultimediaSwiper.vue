@@ -144,49 +144,11 @@ export default {
   .banner {
     padding-top: 10px;
   }
-  .banner h1 {
-    font-size: 36px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .banner h2 {
-    font-size: 18px;
-    color: #535353;
-    text-align: center;
-    font-weight: 400;
-    margin: 20px 0 60px;
-  }
-  .banner .swiper {
-    width: 1300px;
-    margin: 0 auto;
-    position: relative;
-  }
   .current-swiper {
-    width: 250px;
-    height: 100%;
     border-radius: 10px;
     margin: 0 auto;
     position: relative;
     z-index: 99;
-    text-align: center;
-  }
-  #leftSwiper {
-    position: absolute;
-    left: 50px;
-    top: 0;
-    z-index: 1;
-  }
-  #rightSwiper {
-    position: absolute;
-    right: 50px;
-    left: auto;
-    top: 0;
-    z-index: 1;
-  }
-  .nocurrent-swiper {
-    width: 250px;
-    height: 100%;
-    border-radius: 8px;
     text-align: center;
   }
   .nocurrent-swiper:before {
@@ -197,29 +159,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 99;
-  }
-  .title {
-    padding-top: 70px;
-    margin-left: 45px;
-    height: 29px;
-    line-height: 29px;
-    font-size: 18px;
-    color: #666;
-  }
-  .nocurrent-swiper .title {
-    padding-top: 44px;
-    margin-left: 30px;
-    font-size: 16px;
-    height: 25px;
-    line-height: 25px;
-  }
-  .name {
-    height: 80px;
-    position: relative;
-    line-height: 80px;
-    font-size: 66px;
-    margin-top: 20%;
-    color: #eee;
   }
   .nocurrent-swiper .name,
   .nocurrent-swiper img {
@@ -246,16 +185,18 @@ export default {
     height: 1.8rem;
     background: none;
   }
-
-  .swiper.container img {
-    height: 245px;
-    width: 80%;
-    margin-top: 25%;
+  .swiper-button-prev{
+    left:0;
+  }
+  .swiper-button-next{
+    right:0;
   }
   .swiper .name {
+    position: relative;
+    color: #eee;
     height: 50px;
     line-height: 50px;
-    font-size: 2.2rem;
+    font-size: 1.6rem;
     margin-top: 12%;
   }
   .current-swiper,
@@ -265,15 +206,9 @@ export default {
   }
   .current-swiper img,
   .nocurrent-swiper img {
-    height: 150px;
-    width: 64%;
+    height: 140px;
+    width: 65%;
     margin-top: 20%;
-  }
-  #leftSwiper {
-    left: 40px;
-  }
-  #rightSwiper {
-    right: 40px;
   }
   .split-line-left,
   .split-line-right {
@@ -294,49 +229,11 @@ export default {
   .banner {
     padding-top: 10px;
   }
-  .banner h1 {
-    font-size: 36px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .banner h2 {
-    font-size: 18px;
-    color: #535353;
-    text-align: center;
-    font-weight: 400;
-    margin: 20px 0 60px;
-  }
-  .banner .swiper {
-    width: 1300px;
-    margin: 0 auto;
-    position: relative;
-  }
   .current-swiper {
-    width: 250px;
-    height: 100%;
     border-radius: 10px;
     margin: 0 auto;
     position: relative;
     z-index: 99;
-    text-align: center;
-  }
-  #leftSwiper {
-    position: absolute;
-    left: 50px;
-    top: 0;
-    z-index: 1;
-  }
-  #rightSwiper {
-    position: absolute;
-    right: 50px;
-    left: auto;
-    top: 0;
-    z-index: 1;
-  }
-  .nocurrent-swiper {
-    width: 250px;
-    height: 100%;
-    border-radius: 8px;
     text-align: center;
   }
   .nocurrent-swiper:before {
@@ -347,29 +244,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 99;
-  }
-  .title {
-    padding-top: 70px;
-    margin-left: 45px;
-    height: 29px;
-    line-height: 29px;
-    font-size: 18px;
-    color: #666;
-  }
-  .nocurrent-swiper .title {
-    padding-top: 44px;
-    margin-left: 30px;
-    font-size: 16px;
-    height: 25px;
-    line-height: 25px;
-  }
-  .name {
-    height: 80px;
-    position: relative;
-    line-height: 80px;
-    font-size: 66px;
-    margin-top: 20%;
-    color: #eee;
   }
   .nocurrent-swiper .name,
   .nocurrent-swiper img {
@@ -392,38 +266,28 @@ export default {
   }
   .swiper-button-prev,
   .swiper-button-next {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
     background: none;
   }
-
-  .swiper.container img {
-    height: 245px;
-    width: 80%;
-    margin-top: 25%;
-  }
   .swiper .name {
-    height: 52px;
-    line-height: 52px;
-    font-size: 2.3rem;
+    position: relative;
+    color: #eee;
+    height: 54px;
+    line-height: 54px;
+    font-size: 1.8rem;
     margin-top: 12%;
   }
   .current-swiper,
   .nocurrent-swiper {
-    width: 220px;
+    width: 200px;
     height: 100%;
   }
   .current-swiper img,
   .nocurrent-swiper img {
-    height: 160px;
-    width: 66%;
+    height: 150px;
+    width: 70%;
     margin-top: 25%;
-  }
-  #leftSwiper {
-    left: 40px;
-  }
-  #rightSwiper {
-    right: 40px;
   }
   .split-line-left,
   .split-line-right {
@@ -444,23 +308,6 @@ export default {
   .banner {
     padding-top: 10px;
   }
-  .banner h1 {
-    font-size: 36px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .banner h2 {
-    font-size: 18px;
-    color: #535353;
-    text-align: center;
-    font-weight: 400;
-    margin: 20px 0 60px;
-  }
-  .banner .swiper {
-    width: 1300px;
-    margin: 0 auto;
-    position: relative;
-  }
   .current-swiper {
     width: 250px;
     height: 100%;
@@ -468,25 +315,6 @@ export default {
     margin: 0 auto;
     position: relative;
     z-index: 99;
-    text-align: center;
-  }
-  #leftSwiper {
-    position: absolute;
-    left: 50px;
-    top: 0;
-    z-index: 1;
-  }
-  #rightSwiper {
-    position: absolute;
-    right: 50px;
-    left: auto;
-    top: 0;
-    z-index: 1;
-  }
-  .nocurrent-swiper {
-    width: 250px;
-    height: 100%;
-    border-radius: 8px;
     text-align: center;
   }
   .nocurrent-swiper:before {
@@ -497,29 +325,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 99;
-  }
-  .title {
-    padding-top: 70px;
-    margin-left: 45px;
-    height: 29px;
-    line-height: 29px;
-    font-size: 18px;
-    color: #666;
-  }
-  .nocurrent-swiper .title {
-    padding-top: 44px;
-    margin-left: 30px;
-    font-size: 16px;
-    height: 25px;
-    line-height: 25px;
-  }
-  .name {
-    height: 80px;
-    position: relative;
-    line-height: 80px;
-    font-size: 66px;
-    margin-top: 20%;
-    color: #eee;
   }
   .nocurrent-swiper .name,
   .nocurrent-swiper img {
@@ -546,21 +351,17 @@ export default {
     height: 2.2rem;
     background: none;
   }
-
-  .swiper.container img {
-    height: 245px;
-    width: 80%;
-    margin-top: 25%;
-  }
   .swiper .name {
+    position: relative;
+    color: #eee;
     height: 54px;
     line-height: 54px;
-    font-size: 2.4rem;
+    font-size: 2rem;
     margin-top: 12%;
   }
   .current-swiper,
   .nocurrent-swiper {
-    width: 230px;
+    width: 220px;
     height: 100%;
   }
   .current-swiper img,
@@ -568,12 +369,6 @@ export default {
     height: 170px;
     width: 70%;
     margin-top: 30%;
-  }
-  #leftSwiper {
-    left: 40px;
-  }
-  #rightSwiper {
-    right: 40px;
   }
   .split-line-left,
   .split-line-right {
@@ -594,23 +389,6 @@ export default {
   .banner {
     padding-top: 10px;
   }
-  .banner h1 {
-    font-size: 36px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .banner h2 {
-    font-size: 18px;
-    color: #535353;
-    text-align: center;
-    font-weight: 400;
-    margin: 20px 0 60px;
-  }
-  .banner .swiper {
-    width: 1300px;
-    margin: 0 auto;
-    position: relative;
-  }
   .current-swiper {
     width: 250px;
     height: 100%;
@@ -618,25 +396,6 @@ export default {
     margin: 0 auto;
     position: relative;
     z-index: 99;
-    text-align: center;
-  }
-  #leftSwiper {
-    position: absolute;
-    left: 50px;
-    top: 0;
-    z-index: 1;
-  }
-  #rightSwiper {
-    position: absolute;
-    right: 50px;
-    left: auto;
-    top: 0;
-    z-index: 1;
-  }
-  .nocurrent-swiper {
-    width: 250px;
-    height: 100%;
-    border-radius: 8px;
     text-align: center;
   }
   .nocurrent-swiper:before {
@@ -647,29 +406,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 99;
-  }
-  .title {
-    padding-top: 70px;
-    margin-left: 45px;
-    height: 29px;
-    line-height: 29px;
-    font-size: 18px;
-    color: #666;
-  }
-  .nocurrent-swiper .title {
-    padding-top: 44px;
-    margin-left: 30px;
-    font-size: 16px;
-    height: 25px;
-    line-height: 25px;
-  }
-  .name {
-    height: 80px;
-    position: relative;
-    line-height: 80px;
-    font-size: 66px;
-    margin-top: 20%;
-    color: #eee;
   }
   .nocurrent-swiper .name,
   .nocurrent-swiper img {
@@ -696,17 +432,13 @@ export default {
     height: 2.2rem;
     background: none;
   }
-
-  .swiper.container img {
-    height: 245px;
-    width: 80%;
-    margin-top: 25%;
-  }
   .swiper .name {
+    position: relative;
+    color: #eee;
     height: 54px;
     line-height: 54px;
-    font-size: 2.4rem;
-    margin-top: 12%;
+    font-size: 2.3rem;
+    margin-top: 10%;
   }
   .current-swiper,
   .nocurrent-swiper {
@@ -715,15 +447,9 @@ export default {
   }
   .current-swiper img,
   .nocurrent-swiper img {
-    height: 180px;
+    height: 170px;
     width: 60%;
     margin-top: 30%;
-  }
-  #leftSwiper {
-    left: 40px;
-  }
-  #rightSwiper {
-    right: 40px;
   }
   .split-line-left,
   .split-line-right {
@@ -744,23 +470,6 @@ export default {
   .banner {
     padding-top: 10px;
   }
-  .banner h1 {
-    font-size: 36px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .banner h2 {
-    font-size: 18px;
-    color: #535353;
-    text-align: center;
-    font-weight: 400;
-    margin: 20px 0 60px;
-  }
-  .banner .swiper {
-    width: 1300px;
-    margin: 0 auto;
-    position: relative;
-  }
   .current-swiper {
     width: 280px;
     height: 100%;
@@ -768,25 +477,6 @@ export default {
     margin: 0 auto;
     position: relative;
     z-index: 99;
-    text-align: center;
-  }
-  #leftSwiper {
-    position: absolute;
-    left: 50px;
-    top: 0;
-    z-index: 1;
-  }
-  #rightSwiper {
-    position: absolute;
-    right: 50px;
-    left: auto;
-    top: 0;
-    z-index: 1;
-  }
-  .nocurrent-swiper {
-    width: 280px;
-    height: 100%;
-    border-radius: 8px;
     text-align: center;
   }
   .nocurrent-swiper:before {
@@ -797,29 +487,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 99;
-  }
-  .title {
-    padding-top: 70px;
-    margin-left: 45px;
-    height: 29px;
-    line-height: 29px;
-    font-size: 18px;
-    color: #666;
-  }
-  .nocurrent-swiper .title {
-    padding-top: 44px;
-    margin-left: 30px;
-    font-size: 16px;
-    height: 25px;
-    line-height: 25px;
-  }
-  .name {
-    height: 80px;
-    position: relative;
-    line-height: 80px;
-    font-size: 66px;
-    margin-top: 20%;
-    color: #eee;
   }
   .nocurrent-swiper .name,
   .nocurrent-swiper img {
@@ -846,16 +513,12 @@ export default {
     height: 2.4rem;
     background: none;
   }
-
-  .swiper.container img {
-    height: 245px;
-    width: 80%;
-    margin-top: 25%;
-  }
   .swiper .name {
+    position: relative;
+    color: #eee;
     height: 60px;
     line-height: 60px;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     margin-top: 12%;
   }
   .current-swiper,
@@ -865,15 +528,9 @@ export default {
   }
   .current-swiper img,
   .nocurrent-swiper img {
-    height: 200px;
+    height: 180px;
     width: 60%;
-    margin-top: 30%;
-  }
-  #leftSwiper {
-    left: 40px;
-  }
-  #rightSwiper {
-    right: 40px;
+    margin-top: 36%;
   }
   .split-line-left,
   .split-line-right {
@@ -894,23 +551,6 @@ export default {
   .banner {
     padding-top: 10px;
   }
-  .banner h1 {
-    font-size: 36px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .banner h2 {
-    font-size: 18px;
-    color: #535353;
-    text-align: center;
-    font-weight: 400;
-    margin: 20px 0 60px;
-  }
-  .banner .swiper {
-    width: 1300px;
-    margin: 0 auto;
-    position: relative;
-  }
   .current-swiper {
     width: 280px;
     height: 100%;
@@ -919,19 +559,6 @@ export default {
     position: relative;
     z-index: 99;
     text-align: center;
-  }
-  #leftSwiper {
-    position: absolute;
-    left: 50px;
-    top: 0;
-    z-index: 1;
-  }
-  #rightSwiper {
-    position: absolute;
-    right: 50px;
-    left: auto;
-    top: 0;
-    z-index: 1;
   }
   .nocurrent-swiper {
     width: 300px;
@@ -947,29 +574,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 99;
-  }
-  .title {
-    padding-top: 70px;
-    margin-left: 45px;
-    height: 29px;
-    line-height: 29px;
-    font-size: 18px;
-    color: #666;
-  }
-  .nocurrent-swiper .title {
-    padding-top: 44px;
-    margin-left: 30px;
-    font-size: 16px;
-    height: 25px;
-    line-height: 25px;
-  }
-  .name {
-    height: 80px;
-    position: relative;
-    line-height: 80px;
-    font-size: 66px;
-    margin-top: 20%;
-    color: #eee;
   }
   .nocurrent-swiper .name,
   .nocurrent-swiper img {
@@ -997,15 +601,12 @@ export default {
     background: none;
   }
 
-  .swiper.container img {
-    height: 245px;
-    width: 70%;
-    margin-top: 25%;
-  }
   .swiper .name {
+    position: relative;
+    color: #eee;
     height: 60px;
     line-height: 60px;
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     margin-top: 12%;
   }
   .current-swiper,
@@ -1019,69 +620,39 @@ export default {
     width: 60%;
     margin-top: 30%;
   }
-  #leftSwiper {
-    left: 40px;
-  }
-  #rightSwiper {
-    right: 40px;
-  }
   .split-line-left,
   .split-line-right {
     display: none;
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   #swiper {
-    width: 760px;
+    width: 720px;
     height: 440px;
   }
   .banner {
     padding-top: 10px;
   }
-  .banner h1 {
-    font-size: 36px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .banner h2 {
-    font-size: 18px;
-    color: #535353;
-    text-align: center;
-    font-weight: 400;
-    margin: 20px 0 60px;
-  }
-  .banner .swiper {
-    width: 760px;
-    margin: 0 auto;
-    position: relative;
-  }
   .current-swiper {
-    width: 200px;
-    height: 100%;
     border-radius: 10px;
-    margin: 0 auto;
-    position: relative;
     z-index: 99;
     text-align: center;
   }
   #leftSwiper {
     position: absolute;
-    left: 80px;
+    left: 60px;
     top: 0;
     z-index: 1;
   }
   #rightSwiper {
     position: absolute;
-    right: 80px;
+    right: 60px;
     left: auto;
     top: 0;
     z-index: 1;
   }
   .nocurrent-swiper {
-    width: 200px;
-    height: 100%;
-    border-radius: 8px;
     text-align: center;
   }
   .nocurrent-swiper:before {
@@ -1092,29 +663,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 99;
-  }
-  .title {
-    padding-top: 70px;
-    margin-left: 45px;
-    height: 29px;
-    line-height: 29px;
-    font-size: 18px;
-    color: #666;
-  }
-  .nocurrent-swiper .title {
-    padding-top: 44px;
-    margin-left: 30px;
-    font-size: 16px;
-    height: 25px;
-    line-height: 25px;
-  }
-  .name {
-    height: 70px;
-    position: relative;
-    line-height: 70px;
-    font-size: 56px;
-    margin-top: 18%;
-    color: #eee;
   }
   .nocurrent-swiper .name,
   .nocurrent-swiper img {
@@ -1137,21 +685,18 @@ export default {
   }
   .swiper-button-prev,
   .swiper-button-next {
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.2rem;
     background: none;
   }
 
-  .swiper.container img {
-    height: 200px;
-    width: 70%;
-    margin-top: 34%;
-  }
   .swiper .name {
     height: 70px;
     line-height: 70px;
-    font-size: 3rem;
-    margin-top: 18%;
+    font-size: 1.8rem;
+    margin-top: 10%;
+    position: relative;
+    color: #eee;
   }
   .current-swiper,
   .nocurrent-swiper {
@@ -1160,37 +705,27 @@ export default {
   }
   .current-swiper img,
   .nocurrent-swiper img {
-    height: 180px;
-    width: 80%;
-    margin-top: 35%;
+    height: 155px;
+    width: 70%;
+    margin-top: 42%;
   }
-  #leftSwiper {
-    left: 60px;
-  }
-  #rightSwiper {
-    right: 60px;
+  .split-line-left,.split-line-right{
+    position: absolute;
+    width: 4px;
+    height: 330px;
+    top: 45px;
+    background-color: #fff;
+    box-shadow: 0 -13px 2px 0 #820063 inset, 0 13px 2px 0 #820063 inset;
   }
   .split-line-left {
-    position: absolute;
-    width: 3px;
-    height: 330px;
-    left: 267px;
-    top: 45px;
-    background-color: #fff;
-    box-shadow: 0 -13px 2px 0 #820063 inset, 0 13px 2px 0 #820063 inset;
+    left: 258px;
   }
   .split-line-right {
-    position: absolute;
-    width: 3px;
-    height: 330px;
-    right: 267px;
-    top: 45px;
-    background-color: #fff;
-    box-shadow: 0 -13px 2px 0 #820063 inset, 0 13px 2px 0 #820063 inset;
+    right: 258px;
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   #swiper {
     width: 960px;
     height: 500px;
@@ -1198,49 +733,25 @@ export default {
   .banner {
     padding-top: 10px;
   }
-  .banner h1 {
-    font-size: 36px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .banner h2 {
-    font-size: 18px;
-    color: #535353;
-    text-align: center;
-    font-weight: 400;
-    margin: 20px 0 60px;
-  }
-  .banner .swiper {
-    width: 940px;
-    margin: 0 auto;
-    position: relative;
-  }
   .current-swiper {
-    width: 300px;
-    height: 100%;
     border-radius: 10px;
-    margin: 0 auto;
-    position: relative;
     z-index: 99;
     text-align: center;
   }
   #leftSwiper {
     position: absolute;
-    left: 132px;
+    left: 120px;
     top: 0;
     z-index: 1;
   }
   #rightSwiper {
     position: absolute;
-    right: 132px;
+    right: 120px;
     left: auto;
     top: 0;
     z-index: 1;
   }
   .nocurrent-swiper {
-    width: 240px;
-    height: 600px;
-    border-radius: 8px;
     text-align: center;
   }
   .nocurrent-swiper:before {
@@ -1252,28 +763,105 @@ export default {
     height: 100%;
     z-index: 99;
   }
-  .title {
-    padding-top: 70px;
-    margin-left: 45px;
-    height: 29px;
-    line-height: 29px;
-    font-size: 18px;
-    color: #666;
+  .nocurrent-swiper .name,
+  .nocurrent-swiper img {
+    opacity: 0.3;
   }
-  .nocurrent-swiper .title {
-    padding-top: 44px;
-    margin-left: 30px;
-    font-size: 16px;
-    height: 25px;
-    line-height: 25px;
+  .name:before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
   }
-  .name {
+  .nocurrent-swiper .name:before {
+    width: 26px;
+    height: 26px;
+    background-size: 100% 100%;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 2.8rem;
+    height: 2.8rem;
+    background: none;
+  }
+
+  .swiper .name {
     height: 80px;
-    position: relative;
     line-height: 80px;
-    font-size: 66px;
-    margin-top: 20%;
+    font-size: 2.2rem;
+    margin-top: 10%;
+    position: relative;
     color: #eee;
+  }
+  .current-swiper,
+  .nocurrent-swiper {
+    width: 240px;
+    height: 100%;
+  }
+  .current-swiper img,
+  .nocurrent-swiper img {
+    height: 180px;
+    width: 70%;
+    margin-top: 40%;
+  }
+  .split-line-left,.split-line-right{
+    position: absolute;
+    width: 4px;
+    height: 370px;
+    top: 65px;
+    background-color: #fff;
+    box-shadow: 0 -13px 2px 0 #820063 inset, 0 13px 2px 0 #820063 inset;
+  }
+  .split-line-left {
+    left: 358px;
+  }
+  .split-line-right {
+    right: 358px;
+  }
+
+}
+
+@media (min-width: 1240px) {
+  #swiper {
+    width: 1140px;
+    height: 660px;
+  }
+  .banner {
+    padding-top: 10px;
+  }
+  .current-swiper {
+    border-radius: 10px;
+    z-index: 99;
+    text-align: center;
+  }
+  #leftSwiper {
+    position: absolute;
+    left: 120px;
+    top: 0;
+    z-index: 1;
+  }
+  #rightSwiper {
+    position: absolute;
+    right: 120px;
+    left: auto;
+    top: 0;
+    z-index: 1;
+  }
+  .nocurrent-swiper {
+    text-align: center;
+  }
+  .nocurrent-swiper:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
   }
   .nocurrent-swiper .name,
   .nocurrent-swiper img {
@@ -1301,175 +889,13 @@ export default {
     background: none;
   }
 
-  .swiper.container img {
-    height: 245px;
-    width: 70%;
-    margin-top: 58%;
-  }
   .swiper .name {
     height: 80px;
     line-height: 80px;
-    font-size: 3rem;
-    margin-top: 18%;
-  }
-  .current-swiper,
-  .nocurrent-swiper {
-    width: 240px;
-    height: 100%;
-  }
-  .current-swiper img,
-  .nocurrent-swiper img {
-    height: 180px;
-    width: 70%;
-    margin-top: 40%;
-  }
-  #leftSwiper {
-    left: 80px;
-  }
-  #rightSwiper {
-    right: 80px;
-  }
-  .split-line-left {
-    position: absolute;
-    width: 3px;
-    height: 370px;
-    left: 340px;
-    top: 65px;
-    background-color: #fff;
-    box-shadow: 0 -13px 2px 0 #820063 inset, 0 13px 2px 0 #820063 inset;
-  }
-  .split-line-right {
-    position: absolute;
-    width: 3px;
-    height: 370px;
-    right: 340px;
-    top: 65px;
-    background-color: #fff;
-    box-shadow: 0 -13px 2px 0 #820063 inset, 0 13px 2px 0 #820063 inset;
-  }
-}
-
-@media (min-width: 1201px) {
-  #swiper {
-    width: 1140px;
-    height: 660px;
-  }
-  .banner {
-    padding-top: 10px;
-  }
-  .banner h1 {
-    font-size: 36px;
-    text-align: center;
-    font-weight: 400;
-  }
-  .banner h2 {
-    font-size: 18px;
-    color: #535353;
-    text-align: center;
-    font-weight: 400;
-    margin: 20px 0 60px;
-  }
-  .banner .swiper {
-    width: 1300px;
-    margin: 0 auto;
-    position: relative;
-  }
-  .current-swiper {
-    width: 300px;
-    height: 100%;
-    border-radius: 10px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 99;
-    text-align: center;
-  }
-  #leftSwiper {
-    position: absolute;
-    left: 132px;
-    top: 0;
-    z-index: 1;
-  }
-  #rightSwiper {
-    position: absolute;
-    right: 132px;
-    left: auto;
-    top: 0;
-    z-index: 1;
-  }
-  .nocurrent-swiper {
-    width: 300px;
-    height: 100%;
-    border-radius: 8px;
-    text-align: center;
-  }
-  .nocurrent-swiper:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 99;
-  }
-  .title {
-    padding-top: 70px;
-    margin-left: 45px;
-    height: 29px;
-    line-height: 29px;
-    font-size: 18px;
-    color: #666;
-  }
-  .nocurrent-swiper .title {
-    padding-top: 44px;
-    margin-left: 30px;
-    font-size: 16px;
-    height: 25px;
-    line-height: 25px;
-  }
-  .name {
-    height: 80px;
-    position: relative;
-    line-height: 80px;
-    font-size: 66px;
-    margin-top: 20%;
-    color: #eee;
-  }
-  .nocurrent-swiper .name,
-  .nocurrent-swiper img {
-    opacity: 0.3;
-  }
-  .name:before {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    right: 10px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-  }
-  .nocurrent-swiper .name:before {
-    width: 26px;
-    height: 26px;
-    background-size: 100% 100%;
-  }
-  .swiper-button-prev,
-  .swiper-button-next {
-    width: 3.3rem;
-    height: 3.3rem;
-    background: none;
-  }
-
-  .swiper.container img {
-    height: 245px;
-    width: 70%;
-    margin-top: 58%;
-  }
-  .swiper .name {
-    height: 80px;
-    line-height: 80px;
-    font-size: 3rem;
-    margin-top: 18%;
+    font-size: 2.4rem;
+    margin-top: 10%;
+     position: relative;
+     color: #eee;
   }
   .current-swiper,
   .nocurrent-swiper {
@@ -1482,29 +908,19 @@ export default {
     width: 70%;
     margin-top: 64%;
   }
-  #leftSwiper {
-    left: 122px;
-  }
-  #rightSwiper {
-    right: 122px;
+  .split-line-left,.split-line-right{
+    position: absolute;
+    width: 4px;
+    height: 400px;
+    top: 170px;
+    background-color: #fff;
+    box-shadow: 0 -13px 2px 0 #820063 inset, 0 13px 2px 0 #820063 inset;
   }
   .split-line-left {
-    position: absolute;
-    width: 3px;
-    height: 400px;
-    left: 420px;
-    top: 170px;
-    background-color: #fff;
-    box-shadow: 0 -13px 2px 0 #820063 inset, 0 13px 2px 0 #820063 inset;
+    left: 418px;
   }
   .split-line-right {
-    position: absolute;
-    width: 3px;
-    height: 400px;
-    right: 420px;
-    top: 170px;
-    background-color: #fff;
-    box-shadow: 0 -13px 2px 0 #820063 inset, 0 13px 2px 0 #820063 inset;
+    right: 418px;
   }
 }
 
@@ -1513,4 +929,9 @@ export default {
   width: 100%;
   height: 100%;
 }
+
+.banner .swiper ,.current-swiper{
+    margin: 0 auto;
+    position: relative;
+  }
 </style>

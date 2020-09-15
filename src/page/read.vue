@@ -292,6 +292,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#textContainer{
+  box-sizing: border-box;
+}
+
+
 @media (max-width: 320px) {
   #bookTitle {
     color: #f8ab08;
@@ -538,7 +543,7 @@ export default {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   #bookTitle {
     color: #f8ab08;
     font-size: 2.4rem;
@@ -579,7 +584,7 @@ export default {
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   #bookTitle {
     color: #f8ab08;
     font-size: 2.4rem;
@@ -620,7 +625,7 @@ export default {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   #bookTitle {
     color: #f8ab08;
     font-size: 2.4rem;

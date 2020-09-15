@@ -44,7 +44,7 @@ export default {
         console.log(response["data"]["data"][0]['type']);
         console.log(that.$store.state.trainType);
         response["data"]["data"].forEach((element,index) => {
-          if (response["data"]["data"][index]['type'] == that.$store.state.trainType) {
+          if (response["data"]["data"][index]['type'] == that.getTrainType) {
               that.imagePath = that.$store.state.media_server + response["data"]["data"][index]['filepath'];
               return;
           }
@@ -62,6 +62,11 @@ export default {
           });
       });
   },
+  computed: {
+    getTrainType() {
+      return this.$store.state.trainInformation.trainType;
+    },
+  },
   beforeRouteEnter(to, from, next) {
     document
       .querySelector("body")
@@ -73,7 +78,6 @@ export default {
     next();
   },
   methods: {},
-  computed: {}
 };
 </script>
 

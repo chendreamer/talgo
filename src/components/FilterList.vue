@@ -205,7 +205,7 @@ export default {
   }
 }
 
-@media (min-width:769px) and (max-width:992px){
+@media (min-width:769px) and (max-width:999px){
 .filter-list {
     display: flex;
     justify-content: space-around;
@@ -226,7 +226,7 @@ export default {
   }
 }
 
-@media (min-width:993px) and (max-width:1200px){
+@media (min-width:1000px) and (max-width:1239px){
 .filter-list {
     display: flex;
     justify-content: space-around;
@@ -247,7 +247,7 @@ export default {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   .filter-list {
     display: flex;
     justify-content: space-around;

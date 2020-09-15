@@ -96,8 +96,8 @@ export default {
 
 @media (max-width: 320px) {
   span {
-    font-size: 1rem;
-    margin-left: 0.4rem;
+    font-size: .9rem;
+    margin-left: 0.25rem;
   }
   .header-logo {
     width: 1.2rem;
@@ -108,8 +108,8 @@ export default {
 
 @media (min-width: 321px) and (max-width: 360px) {
   span {
-    font-size: 1.1rem;
-    margin-left: 0.5rem;
+    font-size: 1rem;
+    margin-left: 0.3rem;
   }
   .header-logo {
     width: 1.4rem;
@@ -120,8 +120,8 @@ export default {
 
 @media (min-width: 361px) and (max-width: 420px) {
   span {
-    font-size: 1.35rem;
-    margin-left: 0.5rem;
+    font-size: 1.1rem;
+    margin-left: 0.35rem;
   }
   .header-logo {
     width: 1.6rem;
@@ -132,8 +132,8 @@ export default {
 
 @media (min-width: 421px) and (max-width: 520px) {
   span {
-    font-size: 1.6rem;
-    margin-left: 0.6rem;
+    font-size: 1.3rem;
+    margin-left: 0.4rem;
   }
   .header-logo {
     width: 1.7rem;
@@ -144,8 +144,8 @@ export default {
 
 @media (min-width: 521px) and (max-width: 640px) {
   span {
-    font-size: 1.7rem;
-    margin-left: 0.7rem;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
   }
   .header-logo {
     width: 1.9rem;
@@ -156,8 +156,8 @@ export default {
 
 @media (min-width: 641px) and (max-width: 768px) {
   span {
-    font-size: 1.8rem;
-    margin-left: 0.8rem;
+    font-size: 1.7rem;
+    margin-left: 0.6rem;
   }
   .header-logo {
     width: 2rem;
@@ -166,14 +166,24 @@ export default {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
-  .page-title {
-    padding: 0.5rem 0;
+@media (min-width: 769px) and (max-width: 999px) {
+  span {
+    font-size: 1.9rem;
+    margin-left: 0.7rem;
   }
+  .header-logo {
+    width: 2.4rem;
+    height: 2.4rem;
+    vertical-align: middle;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1239px) {
   span {
     font-size: 2rem;
     margin-left: 0.8rem;
   }
+
   .header-logo {
     width: 2.4rem;
     height: 2.4rem;
@@ -181,13 +191,11 @@ export default {
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
-  .page-title {
-    padding: 0.5rem 0;
-  }
+@media (min-width: 1240px) {
+  
   span {
     font-size: 2.1rem;
-    margin-left: 0.9rem;
+    margin-left: .9rem;
   }
 
   .header-logo {
@@ -197,19 +205,15 @@ export default {
   }
 }
 
-@media (min-width: 1201px) {
+@media (max-width: 768px) {
   .page-title {
-    padding: 0.5rem 0;
+    padding: 0.3rem 0;
   }
-  span {
-    font-size: 2.2rem;
-    margin-left: 1rem;
-  }
+}
 
-  .header-logo {
-    width: 2.4rem;
-    height: 2.4rem;
-    vertical-align: middle;
+@media (min-width: 769px){
+.page-title {
+    padding: 0.5rem 0;
   }
 }
 

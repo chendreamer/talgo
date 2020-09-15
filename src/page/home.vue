@@ -96,7 +96,7 @@ export default {
   // }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   .content {
     display: flex;
     > .logo-menu {
@@ -108,7 +108,7 @@ export default {
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   .content {
     padding-top: 2rem;
     > .logo-menu {
@@ -120,7 +120,7 @@ export default {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   .content {
     padding-top: 3rem;
     > .logo-menu {

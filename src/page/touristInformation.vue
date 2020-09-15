@@ -9,8 +9,8 @@
       </div>
       <div class="filter-list clearfix container">
         <div class="hover prev" v-show="currentChecked != 0" @click="trigger(currentChecked -1)">
-          <i class="left"></i>
-          <span  class="ellipsis">{{filterData[currentChecked-1]}}</span>
+          <span class="left"></span>
+          <span class="ellipsis">{{filterData[currentChecked-1]}}</span>
         </div>
         <div
           class="hover next"
@@ -18,7 +18,7 @@
           @click="trigger(currentChecked +1)"
         >
           <span class="ellipsis">{{filterData[currentChecked+1]}}</span>
-          <i class="right"></i>
+          <span class="right"></span>
         </div>
         <!-- <div
           v-for="(item,index) in filterData"
@@ -137,7 +137,7 @@ export default {
     trigger: function (index) {
       let that = this;
       that.currentChecked = index;
-      console.log(index);
+      //console.log(index);
       that.pictureArray.length = 0;
       that.responseData[index]["filepath"].forEach((element) => {
         that.pictureArray.push(that.$store.state.media_server + element);
@@ -306,43 +306,20 @@ export default {
   .filter-list {
     color: #666;
     line-height: 35px;
-    i {
+    .right,
+    .left {
       border: solid #820063;
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 5px;
-      vertical-align: super;
     }
-    >div{
-      >span{
-        display: inline-block;
+    > div {
+      > span {
         max-width: 126px;
-        font-size: .7rem;
-        vertical-align: sub;
+        font-size: 0.7rem;
       }
     }
-    .prev {
-      float: left;
-    }
-    .next {
-      float: right;
-    }
   }
-  // .filter-item {
-  //   height: 20px;
-  //   line-height: 16px;
-  //   font-size: 0.7rem;
-  //   background-color: #fff;
-  //   padding-left: 0.4rem;
-  //   padding-right: 0.4rem;
-  //   color: #820063;
-  //   text-align: center;
-  //   border-radius: 10px;
-  //   border: 2px solid #820063;
-  //   cursor: pointer;
-  //   margin-right: 0.2rem;
-  //   margin-bottom: 0.2rem;
-  // }
   .title {
     font-size: 1.2rem;
   }
@@ -372,43 +349,20 @@ export default {
   .filter-list {
     color: #666;
     line-height: 35px;
-    i {
+    .right,
+    .left {
       border: solid #820063;
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 5px;
-      vertical-align: super;
     }
-    >div{
-      >span{
-        display: inline-block;
-        max-width: 140px;
-        font-size: .7rem;
-        vertical-align: sub;
+    > div {
+      > span {
+        max-width: 130px;
+        font-size: 0.7rem;
       }
     }
-    .prev {
-      float: left;
-    }
-    .next {
-      float: right;
-    }
   }
-  // .filter-item {
-  //   height: 24px;
-  //   line-height: 20px;
-  //   font-size: 0.8rem;
-  //   background-color: #fff;
-  //   padding-left: 0.6rem;
-  //   padding-right: 0.6rem;
-  //   color: #820063;
-  //   text-align: center;
-  //   border-radius: 10px;
-  //   border: 2px solid #820063;
-  //   cursor: pointer;
-  //   margin-right: 0.2rem;
-  //   margin-bottom: 0.2rem;
-  // }
   .title {
     font-size: 1.3rem;
   }
@@ -438,43 +392,20 @@ export default {
   .filter-list {
     color: #666;
     line-height: 35px;
-    i {
+    .right,
+    .left {
       border: solid #820063;
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 5px;
-      vertical-align: super;
     }
-    >div{
-      >span{
-        display: inline-block;
+    > div {
+      > span {
         max-width: 150px;
-        font-size: .7rem;
-        vertical-align: sub;
+        font-size: 0.7rem;
       }
     }
-    .prev {
-      float: left;
-    }
-    .next {
-      float: right;
-    }
   }
-  // .filter-item {
-  //   height: 28px;
-  //   line-height: 24px;
-  //   font-size: 0.8rem;
-  //   background-color: #fff;
-  //   padding-left: 0.65rem;
-  //   padding-right: 0.65rem;
-  //   color: #820063;
-  //   text-align: center;
-  //   border-radius: 14px;
-  //   border: 2px solid #820063;
-  //   cursor: pointer;
-  //   margin-right: 0.2rem;
-  //   margin-bottom: 0.2rem;
-  // }
   .title {
     font-size: 1.4rem;
   }
@@ -504,43 +435,20 @@ export default {
   .filter-list {
     color: #666;
     line-height: 35px;
-    i {
+    .right,
+    .left {
       border: solid #820063;
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 5px;
-      vertical-align: super;
     }
-    >div{
-      >span{
-        display: inline-block;
-        max-width: 180px;
-        font-size: .7rem;
-        vertical-align: sub;
+    > div {
+      > span {
+        max-width: 170px;
+        font-size: 0.7rem;
       }
     }
-    .prev {
-      float: left;
-    }
-    .next {
-      float: right;
-    }
   }
-  // .filter-item {
-  //   height: 30px;
-  //   line-height: 26px;
-  //   font-size: 0.9rem;
-  //   background-color: #fff;
-  //   padding-left: 0.7rem;
-  //   padding-right: 0.7rem;
-  //   color: #820063;
-  //   text-align: center;
-  //   border-radius: 16px;
-  //   border: 2px solid #820063;
-  //   cursor: pointer;
-  //   margin-right: 0.2rem;
-  //   margin-bottom: 0.2rem;
-  // }
   .title {
     font-size: 1.5rem;
   }
@@ -570,43 +478,20 @@ export default {
   .filter-list {
     color: #666;
     line-height: 35px;
-    i {
+    .right,
+    .left {
       border: solid #820063;
       border-width: 0 3px 3px 0;
       display: inline-block;
       padding: 5px;
-      vertical-align: super;
     }
-    >div{
-      >span{
-        display: inline-block;
-        max-width: 230px;
-        font-size: .8rem;
-        vertical-align: sub;
+    > div {
+      > span {
+        max-width: 200px;
+        font-size: 0.8rem;
       }
     }
-    .prev {
-      float: left;
-    }
-    .next {
-      float: right;
-    }
   }
-  // .filter-item {
-  //   height: 30px;
-  //   line-height: 26px;
-  //   font-size: 0.9rem;
-  //   background-color: #fff;
-  //   padding-left: 0.7rem;
-  //   padding-right: 0.7rem;
-  //   color: #820063;
-  //   text-align: center;
-  //   border-radius: 16px;
-  //   border: 2px solid #820063;
-  //   cursor: pointer;
-  //   margin-right: 0.2rem;
-  //   margin-bottom: 0.2rem;
-  // }
   .title {
     font-size: 1.6rem;
   }
@@ -636,48 +521,20 @@ export default {
   .filter-list {
     color: #666;
     line-height: 35px;
-    i {
+    .right,
+    .left {
       border: solid #820063;
       border-width: 0 3px 3px 0;
       display: inline-block;
       padding: 5px;
-      vertical-align: super;
     }
-    >div{
-      >span{
-        display: inline-block;
+    > div {
+      > span {
         max-width: 270px;
-        font-size: .9rem;
-        vertical-align: sub;
+        font-size: 0.9rem;
       }
     }
-    .prev {
-      float: left;
-    }
-    .next {
-      float: right;
-    }
   }
-  // .filter-list {
-  //   display: flex;
-  //   //justify-content: space-around;
-  //   flex-wrap: wrap;
-  // }
-  // .filter-item {
-  //   height: 32px;
-  //   line-height: 28px;
-  //   font-size: 0.9rem;
-  //   background-color: #fff;
-  //   padding-left: 0.7rem;
-  //   padding-right: 0.7rem;
-  //   color: #820063;
-  //   text-align: center;
-  //   border-radius: 16px;
-  //   border: 2px solid #820063;
-  //   cursor: pointer;
-  //   margin-right: 0.2rem;
-  //   margin-bottom: 0.2rem;
-  // }
   .title {
     font-size: 1.8rem;
   }
@@ -690,7 +547,7 @@ export default {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   .swiper {
     width: 45%;
   }
@@ -713,41 +570,19 @@ export default {
   .filter-list {
     color: #666;
     line-height: 35px;
-    i {
+    .right,
+    .left {
       border: solid #820063;
       border-width: 0 3px 3px 0;
       display: inline-block;
       padding: 6px;
-      vertical-align: super;
     }
-    >div{
-      >span{
-        display: inline-block;
+    > div {
+      > span {
         max-width: 300px;
       }
     }
-    .prev {
-      float: left;
-    }
-    .next {
-      float: right;
-    }
   }
-  // .filter-item {
-  //   height: 36px;
-  //   line-height: 32px;
-  //   font-size: 1rem;
-  //   background-color: #fff;
-  //   padding-left: 0.8rem;
-  //   padding-right: 0.8rem;
-  //   color: #820063;
-  //   text-align: center;
-  //   border-radius: 18px;
-  //   border: 2px solid #820063;
-  //   cursor: pointer;
-  //   margin-right: 0.2rem;
-  //   margin-bottom: 0.2rem;
-  // }
   .title {
     font-size: 1.6rem;
   }
@@ -760,7 +595,7 @@ export default {
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   .swiper {
     width: 45%;
   }
@@ -783,41 +618,19 @@ export default {
   .filter-list {
     color: #666;
     line-height: 35px;
-    i {
+    .right,
+    .left {
       border: solid #820063;
       border-width: 0 3px 3px 0;
       display: inline-block;
       padding: 6px;
-      vertical-align: super;
     }
-    >div{
-      >span{
-        display: inline-block;
+    > div {
+      > span {
         max-width: 400px;
       }
     }
-    .prev {
-      float: left;
-    }
-    .next {
-      float: right;
-    }
   }
-  // .filter-item {
-  //   height: 44px;
-  //   line-height: 40px;
-  //   font-size: 1.1rem;
-  //   background-color: #fff;
-  //   padding-left: 0.9rem;
-  //   padding-right: 0.9rem;
-  //   color: #820063;
-  //   text-align: center;
-  //   border-radius: 22px;
-  //   border: 2px solid #820063;
-  //   cursor: pointer;
-  //   margin-right: 0.2rem;
-  //   margin-bottom: 0.2rem;
-  // }
   .title {
     font-size: 1.7rem;
   }
@@ -830,7 +643,7 @@ export default {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   .swiper {
     width: 45%;
   }
@@ -853,42 +666,19 @@ export default {
   .filter-list {
     color: #666;
     line-height: 35px;
-    i {
+    .right,
+    .left {
       border: solid #820063;
       border-width: 0 3px 3px 0;
       display: inline-block;
       padding: 6px;
-      vertical-align: super;
     }
-    >div{
-      >span{
-        display: inline-block;
-        max-width: 500px;
+    > div {
+      > .ellipsis {
+        max-width: 400px;
       }
     }
-    .prev {
-      float: left;
-    }
-    .next {
-      float: right;
-    }
   }
-
-  // .filter-item {
-  //   height: 48px;
-  //   line-height: 44px;
-  //   font-size: 1.2rem;
-  //   background-color: #fff;
-  //   padding-left: 1rem;
-  //   padding-right: 1rem;
-  //   color: #820063;
-  //   text-align: center;
-  //   border-radius: 24px;
-  //   border: 2px solid #820063;
-  //   cursor: pointer;
-  //   margin-right: 0.2rem;
-  //   margin-bottom: 0.2rem;
-  // }
   .title {
     font-size: 1.8rem;
   }
@@ -904,12 +694,12 @@ export default {
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-  margin-right: .1rem;
+  margin-right: 0.1rem;
 }
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
-  margin-left: .1rem;
+  margin-left: 0.1rem;
 }
 .up {
   transform: rotate(-135deg);
@@ -927,7 +717,17 @@ export default {
 .flex-1 {
   flex: 1;
 }
-.swiper-wrapper{
+.swiper-wrapper {
+  align-items: center;
+}
+.prev {
+  float: left;
+  display: flex;
+  align-items: center;
+}
+.next {
+  float: right;
+  display: flex;
   align-items: center;
 }
 </style>

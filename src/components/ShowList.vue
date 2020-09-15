@@ -5,7 +5,7 @@
       <img src="../assets/images/loading.gif" alt />
     </div>-->
     <div>
-      <div class="show-list df" v-loading="loadingState" element-loading-background="transparent">
+      <div class="show-list" v-loading="loadingState" element-loading-background="transparent">
         <list-item
           class="show-list-item"
           v-for="(item,index) in listArray"
@@ -41,7 +41,7 @@ export default {
     return {
       listArray: [],
       currentPageNum: 1,
-      perPage: 10,
+      perPage: 12,
       totalPage: 0,
       navigationName: "All",
       loadingState: true,
@@ -96,14 +96,14 @@ export default {
       if (that.currentPageNum > 1) {
         that.currentPageNum--;
         that.getList();
-      }else{
+      } else {
         that.$message({
-            message: 'This is first page!',
-            type: "info",
-            center: true,
-            // iconClass: "",
-            duration: 1800,
-          });
+          message: "This is first page!",
+          type: "info",
+          center: true,
+          // iconClass: "",
+          duration: 1800,
+        });
       }
     },
     nextPage: function () {
@@ -111,14 +111,14 @@ export default {
       if (that.currentPageNum < that.totalPage) {
         that.currentPageNum++;
         that.getList();
-      }else{
+      } else {
         that.$message({
-            message: 'This is last page!',
-            type: "info",
-            center: true,
-            // iconClass: "",
-            duration: 1800,
-          });
+          message: "This is last page!",
+          type: "info",
+          center: true,
+          // iconClass: "",
+          duration: 1800,
+        });
       }
     },
   },
@@ -127,25 +127,19 @@ export default {
 
 <style lang="scss">
 .el-message .el-icon-info {
-    display: none;
-    margin-right: 0;
+  display: none;
+  margin-right: 0;
 }
 </style>
 
 <style lang="scss" scoped>
+// .show-list {
+//   flex-wrap: wrap;
+// }
 
-.show-list {
-  flex-wrap: wrap;
-}
-
-@media (max-width:320px){
-.show-list {
-    $width: 120px;
-    min-height: $width * 1.6 * 2;
-    .show-list-item {
-      width: 148px;
-      height: 206px;
-    }
+@media (max-width: 320px) {
+  .show-list {
+    min-height: 510px;
   }
 
   .pagination {
@@ -165,14 +159,9 @@ export default {
   }
 }
 
-@media (min-width:321px) and (max-width:360px){
-.show-list {
-    $width: 148px;
-    min-height: $width * 1.6 * 2;
-    .show-list-item {
-      width: 148px;
-      height: $width * 1.6;
-    }
+@media (min-width: 321px) and (max-width: 360px) {
+  .show-list {
+    min-height: 534px;
   }
 
   .pagination {
@@ -194,12 +183,7 @@ export default {
 
 @media (min-width: 361px) and (max-width: 420px) {
   .show-list {
-    $width: 118px;
-    min-height: $width * 1.6 * 2;
-    .show-list-item {
-      width: $width;
-      height: 206px;
-    }
+    min-height: 576px;
   }
 
   .pagination {
@@ -219,13 +203,9 @@ export default {
   }
 }
 
-@media (min-width:421px) and (max-width:520px){
-.show-list {
-    min-height: 480px;
-    .show-list-item {
-      width: 138px;
-      height: 240px;
-    }
+@media (min-width: 421px) and (max-width: 520px) {
+  .show-list {
+    min-height: 636px;
   }
 
   .pagination {
@@ -246,12 +226,8 @@ export default {
 }
 
 @media (min-width: 521px) and (max-width: 640px) {
-  .show-list { 
-    min-height: 440px;
-    .show-list-item {
-      width: 168px;
-      height: 250px;
-    }
+  .show-list {
+    min-height: 576px;
   }
 
   .pagination {
@@ -270,92 +246,9 @@ export default {
     }
   }
 }
-@media (min-width:641px) and (max-width:768px){
-.show-list {
-    min-height: 500px;
-    .show-list-item {
-      width: 146px;
-      height: 266px;
-    }
-  }
-
-  .pagination {
-    margin-top: 1rem;
-    .pagination-container {
-      margin: 0 auto;
-      width: 45%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      font-size: 1.8rem;
-      img {
-        width: 1.8rem;
-        height: 1.8rem;
-      }
-    }
-  }
-}
-
-@media (min-width:769px) and (max-width:992px){
-.show-list {
-    min-height: 460px;
-    .show-list-item {
-      width: 122px;
-      height: 240px;
-    }
-  }
-
-  .pagination {
-    margin-top: 1rem;
-    .pagination-container {
-      margin: 0 auto;
-      width: 45%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      font-size: 1.8rem;
-      img {
-        width: 1.8rem;
-        height: 1.8rem;
-      }
-    }
-  }
-}
-
-@media (min-width:993px) and (max-width:1200px){
-.show-list {
-    min-height: 500px;
-    .show-list-item {
-      width: 136px;
-      height: 260px;
-    }
-  }
-
-  .pagination {
-    margin-top: 1rem;
-    .pagination-container {
-      margin: 0 auto;
-      width: 45%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      font-size: 1.8rem;
-      img {
-        width: 1.8rem;
-        height: 1.8rem;
-      }
-    }
-  }
-}
-
-@media (min-width: 1201px) {
+@media (min-width: 641px) and (max-width: 768px) {
   .show-list {
-    $width: 178px;
-    min-height: $width * 1.6 * 2;
-    .show-list-item {
-      width: $width;
-      height: 300px;
-    }
+    min-height: 546px;
   }
 
   .pagination {
@@ -375,9 +268,73 @@ export default {
   }
 }
 
+@media (min-width: 769px) and (max-width: 999px) {
+  .show-list {
+    min-height: 600px;
+  }
 
+  .pagination {
+    margin-top: 1rem;
+    .pagination-container {
+      margin: 0 auto;
+      width: 45%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 1.8rem;
+      img {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+  }
+}
 
+@media (min-width: 1000px) and (max-width: 1239px) {
+  .show-list {
+    min-height: 636px;
+  }
 
+  .pagination {
+    margin-top: 1rem;
+    .pagination-container {
+      margin: 0 auto;
+      width: 45%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 1.8rem;
+      img {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+  }
+}
 
+@media (min-width: 1240px) {
+  .show-list {
+    min-height: 576px;
+  }
 
+  .pagination {
+    margin-top: 1rem;
+    .pagination-container {
+      margin: 0 auto;
+      width: 45%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 1.8rem;
+      img {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+  }
+}
+
+.show-list-item {
+  display: inline-block;
+}
 </style>

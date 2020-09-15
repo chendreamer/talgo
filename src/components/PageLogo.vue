@@ -123,7 +123,7 @@ export default {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   .menu-logo {
     width: 140px;
     margin-top: 135px;
@@ -135,7 +135,7 @@ export default {
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   .menu-logo {
     width: 150px;
     margin-top: 145px;
@@ -147,7 +147,7 @@ export default {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   .menu-logo {
     width: 160px;
     margin-top: 155px;

@@ -169,19 +169,19 @@ export default {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   h2 {
     font-size: 1.1rem;
   }

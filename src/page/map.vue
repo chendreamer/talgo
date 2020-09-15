@@ -241,12 +241,12 @@ axios
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 146px;
+          width: 136px;
           margin: 0 0.1rem;
           .title {
             height: 26px;
             line-height: 26px;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #fff;
             background-color: #820063;
             border-radius: 4px;
@@ -257,7 +257,7 @@ axios
             border-bottom: 2px solid #820063;
             height: 26px;
             line-height: 26px;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #820063;
           }
         }
@@ -284,12 +284,12 @@ axios
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 154px;
+          width: 144px;
           margin: 0 0.15rem;
           .title {
             height: 28px;
             line-height: 28px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #fff;
             background-color: #820063;
             border-radius: 4px;
@@ -300,7 +300,7 @@ axios
             border-bottom: 2px solid #820063;
             height: 28px;
             line-height: 28px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #820063;
           }
         }
@@ -327,12 +327,12 @@ axios
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 172px;
+          width: 162px;
           margin: 0 0.2rem;
           .title {
             height: 32px;
             line-height: 32px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #fff;
             background-color: #820063;
             border-radius: 4px;
@@ -343,7 +343,7 @@ axios
             border-bottom: 2px solid #820063;
             height: 32px;
             line-height: 32px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #820063;
           }
         }
@@ -370,12 +370,12 @@ axios
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 194px;
+          width: 174px;
           margin: 0 0.4rem;
           .title {
             height: 36px;
             line-height: 36px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #fff;
             background-color: #820063;
             border-radius: 5px;
@@ -386,7 +386,7 @@ axios
             border-bottom: 2px solid #820063;
             height: 36px;
             line-height: 36px;
-            font-size: 1rem;
+            font-size: .8rem;
             color: #820063;
           }
         }
@@ -413,12 +413,12 @@ axios
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 240px;
+          width: 220px;
           margin: 0 0.5rem;
           .title {
             height: 36px;
             line-height: 36px;
-            font-size: 1rem;
+            font-size: .9rem;
             color: #fff;
             background-color: #820063;
             border-radius: 5px;
@@ -429,7 +429,7 @@ axios
             border-bottom: 2px solid #820063;
             height: 36px;
             line-height: 36px;
-            font-size: 1.1rem;
+            font-size: .9rem;
             color: #820063;
           }
         }
@@ -456,7 +456,7 @@ axios
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 300px;
+          width: 280px;
           margin: 0 0.5rem;
           .title {
             height: 36px;
@@ -472,7 +472,7 @@ axios
             border-bottom: 2px solid #820063;
             height: 36px;
             line-height: 36px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #820063;
           }
         }
@@ -481,7 +481,7 @@ axios
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   #map {
     width: 66%;
     height: 700px;
@@ -511,6 +511,43 @@ axios
         border-bottom: 2px solid #820063;
         height: 36px;
         line-height: 36px;
+        font-size: 1rem;
+        color: #820063;
+      }
+    }
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1239px) {
+  #map {
+    width: 70%;
+    height: 760px;
+    margin-left: 3%;
+  }
+  .map-content {
+    display: flex;
+    .train-information {
+      width: 27%;
+      text-align: center;
+      .header {
+        font-size: 2rem;
+        border-bottom: 2px solid #820063;
+        color: #820063;
+      }
+      .title {
+        height: 40px;
+        line-height: 40px;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #820063;
+        border-radius: 5px;
+        margin-top: 0.7rem;
+        margin-bottom: 0.3rem;
+      }
+      .data {
+        border-bottom: 2px solid #820063;
+        height: 40px;
+        line-height: 40px;
         font-size: 1.1rem;
         color: #820063;
       }
@@ -518,44 +555,7 @@ axios
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
-  #map {
-    width: 70%;
-    height: 760px;
-    margin-left: 3%;
-  }
-  .map-content {
-    display: flex;
-    .train-information {
-      width: 27%;
-      text-align: center;
-      .header {
-        font-size: 2rem;
-        border-bottom: 2px solid #820063;
-        color: #820063;
-      }
-      .title {
-        height: 40px;
-        line-height: 40px;
-        font-size: 1rem;
-        color: #fff;
-        background-color: #820063;
-        border-radius: 5px;
-        margin-top: 0.7rem;
-        margin-bottom: 0.3rem;
-      }
-      .data {
-        border-bottom: 2px solid #820063;
-        height: 40px;
-        line-height: 40px;
-        font-size: 1.2rem;
-        color: #820063;
-      }
-    }
-  }
-}
-
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   #map {
     width: 70%;
     height: 760px;
@@ -586,7 +586,7 @@ axios
         border-bottom: 2px solid #820063;
         height: 40px;
         line-height: 40px;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         color: #820063;
       }
     }

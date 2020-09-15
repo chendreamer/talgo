@@ -37,23 +37,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
-@media (max-width:320px){
-.video-content {
+@media (max-width: 768px) {
+  .video-content {
     .page-logo {
       display: none;
     }
+  }
+}
+
+@media (min-width: 769px) {
+  .video-content {
+    display: flex;
+  }
+}
+
+@media (max-width: 320px) {
+  .video-content {
     .video-content-list {
       margin-top: 1rem;
     }
   }
 }
 
-@media (min-width:321px) and (max-width:360px){
-.video-content {
-    .page-logo {
-      display: none;
-    }
+@media (min-width: 321px) and (max-width: 360px) {
+  .video-content {
     .video-content-list {
       margin-top: 1rem;
     }
@@ -62,20 +69,14 @@ export default {
 
 @media (min-width: 361px) and (max-width: 420px) {
   .video-content {
-    .page-logo {
-      display: none;
-    }
     .video-content-list {
       margin-top: 1rem;
     }
   }
 }
 
-@media (min-width:421px) and (max-width:520px){
-.video-content {
-    .page-logo {
-      display: none;
-    }
+@media (min-width: 421px) and (max-width: 520px) {
+  .video-content {
     .video-content-list {
       margin-top: 1rem;
     }
@@ -84,58 +85,49 @@ export default {
 
 @media (min-width: 521px) and (max-width: 640px) {
   .video-content {
-    .page-logo {
-      display: none;
-    }
     .video-content-list {
       margin-top: 1rem;
     }
   }
 }
 
-@media (min-width:641px) and (max-width:768px){
-.video-content {
-    .page-logo {
-      display: none;
-    }
-    .video-content-list {
-      margin-top: 1rem;
-    }
-  }
-}
-
-@media (min-width:769px) and (max-width:992px){
-.video-content {
-    display: flex;
-    .video-content-logo {
-      width: 30%;
-    }
-    .video-content-list {
-      width: 70%;
-    }
-  }
-}
-
-@media (min-width:993px) and (max-width:1200px){
-.video-content {
-    display: flex;
-    .video-content-logo {
-      width: 25%;
-    }
-    .video-content-list {
-      width: 75%;
-    }
-  }
-}
-
-@media (min-width: 1201px) {
+@media (min-width: 641px) and (max-width: 768px) {
   .video-content {
-    display: flex;
+    .video-content-list {
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 999px) {
+  .video-content {
     .video-content-logo {
-      width: 20%;
+      width: 212px;
     }
     .video-content-list {
-      width: 80%;
+      width: 516px;
+    }
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1239px) {
+  .video-content {
+    .video-content-logo {
+      width: 224px;
+    }
+    .video-content-list {
+      width: 736px;
+    }
+  }
+}
+
+@media (min-width: 1240px) {
+  .video-content {
+    .video-content-logo {
+      width: 240px;
+    }
+    .video-content-list {
+      width: 960px;
     }
   }
 }

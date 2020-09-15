@@ -67,24 +67,39 @@ export default {
 
 @media (max-width: 320px) {
   .menu-item {
-    padding: 0.3rem;
-    padding-left: 0.9rem;
-    margin-top: 0.8rem;
+    padding: .3rem;
+    padding-left: .6rem;
+    margin-top: .8rem;
     border-radius: 2rem;
-    font-size: 1rem;
+    font-size: .9rem;
     > .menu-img {
-      width: 1.8rem;
-      height: 1.8rem;
-      margin-right: 0.6rem;
+      width: 1.7rem;
+      height: 1.7rem;
+      margin-right: .5rem;
     }
   }
 }
 
 @media (min-width: 321px) and (max-width: 360px) {
   .menu-item {
-    padding: 0.3rem;
+    padding: .3rem;
+    padding-left: .8rem;
+    margin-top: .9rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    > .menu-img {
+      width: 1.8rem;
+      height: 1.8rem;
+      margin-right: .6rem;
+    }
+  }
+}
+
+@media (min-width: 361px) and (max-width: 420px) {
+  .menu-item {
+    padding: .4rem;
     padding-left: 1rem;
-    margin-top: 0.9rem;
+    margin-top: 1rem;
     border-radius: 2rem;
     font-size: 1.1rem;
     > .menu-img {
@@ -95,32 +110,17 @@ export default {
   }
 }
 
-@media (min-width: 361px) and (max-width: 420px) {
+@media (min-width: 421px) and (max-width: 520px) {
   .menu-item {
-    padding: 0.4rem;
-    padding-left: 1.1rem;
-    margin-top: 1rem;
-    border-radius: 2rem;
+    padding: 0.5rem;
+    padding-left: 1.2rem;
+    margin-top: 1.1rem;
+    border-radius: 40px;
     font-size: 1.2rem;
     > .menu-img {
       width: 2rem;
       height: 2rem;
       margin-right: 0.8rem;
-    }
-  }
-}
-
-@media (min-width: 421px) and (max-width: 520px) {
-  .menu-item {
-    padding: 0.5rem;
-    padding-left: 1.3rem;
-    margin-top: 1.2rem;
-    border-radius: 40px;
-    font-size: 1.4rem;
-    > .menu-img {
-      width: 2.1rem;
-      height: 2.1rem;
-      margin-right: 0.85rem;
     }
   }
 }
@@ -155,7 +155,7 @@ export default {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   .menu-item {
     padding: 0.6rem;
     padding-left: 1.4rem;
@@ -170,7 +170,7 @@ export default {
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   .menu-item {
     padding: 0.65rem;
     padding-left: 1.7rem;
@@ -185,7 +185,7 @@ export default {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   .menu-item {
     padding: 0.7rem;
     padding-left: 2rem;

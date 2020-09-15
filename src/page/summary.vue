@@ -512,7 +512,7 @@ export default {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   .summary-content {
     display: flex;
     > .summary-image {
@@ -573,7 +573,7 @@ export default {
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   .summary-content {
     display: flex;
     > .summary-image {
@@ -634,7 +634,7 @@ export default {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
   .summary-content {
     display: flex;
     > .summary-image {

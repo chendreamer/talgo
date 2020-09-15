@@ -50,7 +50,7 @@ a {
 
 @media (max-width: 320px) {
   .container {
-    width: 300px;
+    width: 280px;
     margin-left: auto;
     margin-right: auto;
     padding: 0.3rem 0 0.6rem;
@@ -84,7 +84,7 @@ a {
 
 @media (min-width: 321px) and (max-width: 360px) {
   .container {
-    width: 316px;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
     padding: 0.3rem 0 0.6rem;
@@ -118,7 +118,7 @@ a {
 
 @media (min-width: 361px) and (max-width: 420px) {
   .container {
-    width: 356px;
+    width: 340px;
     margin-left: auto;
     margin-right: auto;
     padding: 0.3rem 0 0.6rem;
@@ -152,7 +152,7 @@ a {
 
 @media (min-width: 421px) and (max-width: 520px) {
   .container {
-    width: 416px;
+    width: 380px;
     margin-left: auto;
     margin-right: auto;
     padding: 0.3rem 0 0.6rem;
@@ -186,7 +186,7 @@ a {
 
 @media (min-width: 521px) and (max-width: 640px) {
   .container {
-    width: 516px;
+    width: 480px;
     margin-left: auto;
     margin-right: auto;
     padding: 0.3rem 0 0.6rem;
@@ -220,7 +220,7 @@ a {
 
 @media (min-width: 641px) and (max-width: 768px) {
   .container {
-    width: 636px;
+    width: 600px;
     margin-left: auto;
     margin-right: auto;
     padding: 0.3rem 0 0.6rem;
@@ -252,9 +252,9 @@ a {
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
   .container {
-    width: 764px;
+    width: 728px;
     margin-left: auto;
     margin-right: auto;
     padding: 0.3rem 0 0.6rem;
@@ -286,9 +286,9 @@ a {
     display: none;
   }
 }
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
   .container {
-    width: 988px;
+    width: 960px;
     margin-left: auto;
     margin-right: auto;
     padding: 0.3rem 0 0.6rem;
@@ -322,9 +322,9 @@ a {
   
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px){
   .container {
-    width: 1196px;
+    width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding: 0.5rem 0;
@@ -397,14 +397,14 @@ a {
 
 // }
 
-// @media (min-width:769px) and (max-width:992px){
+// @media (min-width:769px) and (max-width:999px){
 
 // }
 
-// @media (min-width:993px) and (max-width:1200px){
+// @media (min-width:1000px) and (max-width:1239px){
 
 // }
 
-// @media (min-width:1201px){
+// @media (min-width:1240px){
 
 // }

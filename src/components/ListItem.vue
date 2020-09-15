@@ -27,158 +27,166 @@ export default {
 
 <style lang="scss" scoped>
 @media (max-width: 320px) {
+  $width: 128px;
+  .list-item {
+    margin: 0 .3rem 1.2rem;
+  }
   .image-cover {
-    $width: 100px;
     width: $width;
     height: $width * 1.5;
-    margin: 0 auto;
-    background-size: cover;
   }
   .item-txt {
-    text-align: center;
-    font-size: .9rem;
-    color: white;
-    margin-top: 1.2rem;
+    width: $width;
+    font-size: 1rem;
+    margin-top: 0.8rem;
   }
 }
 
 @media (min-width: 321px) and (max-width: 360px) {
+   $width: 136px;
+  .list-item {
+    margin: 0 .35rem 1.2rem;
+  }
   .image-cover {
-    $width: 120px;
     width: $width;
     height: $width * 1.5;
-    margin: 0 auto;
-    background-size: cover;
   }
   .item-txt {
-    text-align: center;
+    width: $width;
     font-size: 1rem;
-    color: white;
-    margin-top: 1.2rem;
+    margin-top: 0.8rem;
   }
 }
 
 @media (min-width: 361px) and (max-width: 420px) {
+ $width: 150px;
+  .list-item {
+    margin: 0 .5rem 1.2rem;
+  }
   .image-cover {
-    $width: 100px;
     width: $width;
     height: $width * 1.5;
-    margin: 0 auto;
-    background-size: cover;
   }
   .item-txt {
-    text-align: center;
+    width: $width;
     font-size: 1rem;
-    color: white;
-    margin-top: 1.2rem;
+    margin-top: 0.8rem;
   }
 }
 
 @media (min-width: 421px) and (max-width: 520px) {
+   $width: 170px;
+  .list-item {
+    margin: 0 .5rem 1.2rem;
+  }
   .image-cover {
-    $width: 120px;
     width: $width;
     height: $width * 1.5;
-    margin: 0 auto;
-    background-size: cover;
   }
   .item-txt {
-    text-align: center;
-    font-size: .9rem;
-    color: white;
-    margin-top: 1.1rem;
+    width: $width;
+    font-size: 1rem;
+    margin-top: 0.8rem;
   }
 }
 
 @media (min-width: 521px) and (max-width: 640px) {
+  $width: 150px;
+  .list-item {
+    margin: 0 .25rem 1.2rem;
+  }
   .image-cover {
-    $width: 130px;
     width: $width;
     height: $width * 1.5;
-    margin: 0 auto;
-    background-size: cover;
   }
   .item-txt {
-    text-align: center;
-    font-size: .9rem;
-    color: white;
-    margin-top: 1.2rem;
+    width: $width;
+    font-size: 1rem;
+    margin-top: 0.8rem;
   }
 }
 
 @media (min-width: 641px) and (max-width: 768px) {
+   $width: 140px;
   .list-item {
-    padding: 0 0.25rem;
+    margin: 0 .25rem 1.2rem;
   }
   .image-cover {
-    $width: 136px;
     width: $width;
     height: $width * 1.5;
-    margin: 0 auto;
-    background-size: cover;
   }
   .item-txt {
-    text-align: center;
+    width: $width;
     font-size: 1rem;
-    color: white;
-    margin-top: 1.3rem;
+    margin-top: 0.8rem;
   }
 }
 
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 999px) {
+  $width: 158px;
   .list-item {
-    padding: 0 0.2rem;
+    margin: 0 .35rem 1.2rem;
+    // margin-right: 16px;
+    // margin-bottom: 1.2rem;
   }
   .image-cover {
-    $width: 120px;
     width: $width;
     height: $width * 1.5;
-    margin: 0 auto;
-    background-size: cover;
   }
   .item-txt {
-    text-align: center;
+    width: $width;
     font-size: 1rem;
-    color: white;
-    margin-top: 1.2rem;
+    margin-top: 0.8rem;
   }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1239px) {
+  $width: 170px;
   .list-item {
-    padding: 0 0.25rem;
+    margin: 0 .35rem 1.2rem;
+    // margin-right: 16px;
+    // margin-bottom: 1.2rem;
   }
   .image-cover {
-    $width: 126px;
     width: $width;
     height: $width * 1.5;
-    margin: 0 auto;
-    background-size: cover;
   }
   .item-txt {
-    text-align: center;
+    width: $width;
     font-size: 1rem;
-    color: white;
-    margin-top: 1.3rem;
+    margin-top: 0.8rem;
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1240px) {
+  $width: 150px;
   .list-item {
-    padding: 0 0.3rem;
+    margin: 0 .25rem 1.2rem;
+    // margin-right: 10px;
+    // margin-bottom: 1.2rem;
   }
   .image-cover {
-    $width: 150px;
     width: $width;
     height: $width * 1.5;
-    margin: 0 auto;
-    background-size: cover;
   }
   .item-txt {
-    text-align: center;
-    font-size: 1.1rem;
-    color: white;
-    margin-top: 1.5rem;
+    width: $width;
+    font-size: 1rem;
+    margin-top: 0.8rem;
   }
 }
+
+.list-item {
+  box-sizing: border-box;
+}
+.item-txt {
+  text-align: center;
+  color: white;
+}
+.image-cover {
+  //margin: 0 auto;
+  background-size: cover;
+  border-radius: 4px;
+}
+
 </style>
