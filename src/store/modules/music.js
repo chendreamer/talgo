@@ -8,7 +8,7 @@ const state = {
   musicArray: [], //普通音乐列表
   singerOrAlubmArray: [], //歌手专辑列表
   navigationName: "All",
-  media_server: 'http://172.19.6.4',//媒体服务器ip
+  media_server: 'http://172.19.3.20',//媒体服务器ip
   //media_server: 'http://office.theonecraft.com:22280',//媒体服务器ip
   musicDuration: 0,  //音乐总时长
   musicCurrentTime: 0,  //音乐当前时间
@@ -65,9 +65,9 @@ const mutations = {
 const actions = {
   initPlayer: function (context) {
     //var that = this;
-
-    //console.log(state.playList);
-    //console.log(state.currentPlayingID);
+    console.log('!!!!!!!!!!!!!!!===============================================');
+    console.log(state.playList);
+    console.log(state.currentPlayingID);
     state.player = document.getElementById("audioTag");
     //let playPause = document.getElementsByClassName("playPause");
     // var dot = document.getElementsByClassName("dot");
@@ -120,7 +120,15 @@ const actions = {
       // console.log("start play");
       // state.player.play();
       // state.playingStatus = true;
+
+
+      console.log('loadstart');
     };
+
+    state.player.onerror = function(){
+      console.log('loaderror');
+    }
+
     state.player.onloadedmetadata = function () {
       //audioTime.innerHTML = that.transTime(state.player.duration);
       // context.commit({
@@ -361,14 +369,14 @@ const actions = {
       type: "playMusic"
     });
   },
-  replacePlayList(context, index, outIndex) {
+  replacePlayList(context, data) {
     console.log("PlayList changed");
     //此处要深拷贝
     //let that = this;
     if (state.navigationName == "Singer" || state.navigationName == "Album") {
       context.commit({
         type: "setPlayList",
-        data: [...state.singerOrAlubmArray[outIndex]["audio"]],
+        data: [...state.singerOrAlubmArray[data.outIndex]["audio"]],
       });
       //  that.$store.state.playList = ;
     } else {

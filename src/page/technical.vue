@@ -46,7 +46,7 @@ export default {
       .catch(function (error) {
         console.log(error);
         that.$message({
-            message: error,
+            message: i18n.tc("message.networkError"),
             type: "info",
             center: true,
             // iconClass: "",

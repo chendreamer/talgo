@@ -41,8 +41,7 @@ export default {
         })
       .then(function(response) {
         console.log(response);
-        console.log(response["data"]["data"][0]['type']);
-        console.log(that.$store.state.trainType);
+        console.log(that.getTrainType);
         response["data"]["data"].forEach((element,index) => {
           if (response["data"]["data"][index]['type'] == that.getTrainType) {
               that.imagePath = that.$store.state.media_server + response["data"]["data"][index]['filepath'];
@@ -54,7 +53,7 @@ export default {
       .catch(function(error) {
         console.log(error);
         that.$message({
-            message: error,
+            message: i18n.tc("message.networkError"),
             type: "info",
             center: true,
             // iconClass: "",

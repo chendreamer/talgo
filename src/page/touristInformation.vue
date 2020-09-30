@@ -29,17 +29,19 @@
         >{{item}}</div>-->
       </div>
       <div class="container page">
+        <div class="page-left">
         <div class="swiper" style="position: relative;">
           <div class="current-swiper swiper-container">
             <div class="swiper-wrapper">
               <div class="swiper-slide" v-for="(item,index) in pictureArray" :key="index">
-                <img class="swiper-slide" :src="item" />
+                  <img class="swiper-slide" :src="item" />
               </div>
             </div>
           </div>
           <div class="swiper-button-prev"></div>
 
           <div class="swiper-button-next"></div>
+        </div>
         </div>
 
         <div class="detile">
@@ -69,7 +71,8 @@ import i18n from "@/i18n";
 import Header from "@/components/Header.vue";
 import MultimediaLogo from "@/components/MultimediaLogo.vue";
 import "../assets/style/swiper.min.css";
-import Swiper from "swiper";
+//import Swiper from "swiper";
+import Swiper from 'swiper/js/swiper.min.js';
 
 let swiper;
 export default {
@@ -104,7 +107,7 @@ export default {
       .catch(function (error) {
         console.log(error);
         that.$message({
-          message: error,
+          message: i18n.tc("message.networkError"),
           type: "info",
           center: true,
           // iconClass: "",
@@ -128,6 +131,7 @@ export default {
         swiper.destroy();
       }
       swiper = new Swiper(".swiper-container", {
+        updateOnImagesReady : true,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -548,7 +552,7 @@ export default {
 }
 
 @media (min-width: 769px) and (max-width: 999px) {
-  .swiper {
+  .page-left {
     width: 45%;
   }
   .page {
@@ -596,7 +600,7 @@ export default {
 }
 
 @media (min-width: 1000px) and (max-width: 1239px) {
-  .swiper {
+  .page-left {
     width: 45%;
   }
   .page {
@@ -644,8 +648,10 @@ export default {
 }
 
 @media (min-width: 1240px) {
-  .swiper {
+  .page-left {
     width: 45%;
+    //height:400px;
+   //line-height: 360px;
   }
   .page {
     display: flex;

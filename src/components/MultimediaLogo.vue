@@ -4,7 +4,6 @@
       <img class="header-logo" :src="logoPath" alt />
     </span>
     <span>{{getHeaderTitle}}</span>
-    <span></span>
   </div>
 </template>
 

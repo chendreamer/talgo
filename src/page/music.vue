@@ -360,7 +360,7 @@ export default {
           console.log(error);
 
           that.$message({
-            message: error,
+            message: i18n.tc("message.networkError"),
             type: "info",
             center: true,
             // iconClass: "",
@@ -393,6 +393,9 @@ export default {
       }
     },
     playMusic: function (index, outIndex) {
+      console.log('playMusic----------');
+      console.log(index);
+      console.log(outIndex);
       this.$store.dispatch({
         type: "music/playMusic",
         index: index,
@@ -462,7 +465,7 @@ export default {
         that.getList(that.$store.state.music.navigationName);
       } else {
         that.$message({
-          message: "This is first page!",
+          message: i18n.tc("message.firstPageWarning"),
           type: "info",
           center: true,
           // iconClass: "",
@@ -477,7 +480,7 @@ export default {
         that.getList(that.$store.state.music.navigationName);
       } else {
         that.$message({
-          message: "This is last page!",
+          message: i18n.tc("message.lastPageWarning"),
           type: "info",
           center: true,
           // iconClass: "",
@@ -649,7 +652,7 @@ export default {
 
 @media (min-width: 321px) and (max-width: 360px) {
   .music-content-logo {
-    width: 94%;
+    width: 96%;
     margin: 0 auto;
   }
   .music-content-list {
@@ -761,7 +764,7 @@ export default {
 
 @media (min-width: 421px) and (max-width: 520px) {
   .music-content-logo {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
   }
   .music-content-list {

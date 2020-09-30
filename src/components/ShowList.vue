@@ -45,6 +45,7 @@ export default {
       totalPage: 0,
       navigationName: "All",
       loadingState: true,
+      requestArray:[]
     };
   },
   mounted: function () {
@@ -60,17 +61,22 @@ export default {
         that.navigationName = type;
       }
 
-      axios
-        .get(that.url, {
-          params: {
+      var _params = {
             navigation: that.navigationName,
             lang: i18n.locale,
             limit:
               (that.currentPageNum - 1) * that.perPage + "," + that.perPage,
-          },
+          };
+     that.requestArray.push(_params);
+      axios
+        .get(that.url, {
+          params:_params,
         })
         .then(function (response) {
           console.log(response);
+          console.log(that.requestArray);
+          var last = that.requestArray.pop();
+          console.log(last);
           that.loadingState = false;
           that.totalPage = Math.ceil(
             parseInt(response["data"]["count_data"]) / that.perPage
@@ -83,7 +89,7 @@ export default {
           console.log(error);
           //var errorMsg = error.split(':');
           that.$message({
-            message: error,
+            message: i18n.tc("message.networkError"),
             type: "info",
             center: true,
             // iconClass: "",
@@ -98,7 +104,7 @@ export default {
         that.getList();
       } else {
         that.$message({
-          message: "This is first page!",
+          message: i18n.tc("message.firstPageWarning"),
           type: "info",
           center: true,
           // iconClass: "",
@@ -113,7 +119,7 @@ export default {
         that.getList();
       } else {
         that.$message({
-          message: "This is last page!",
+          message: i18n.tc("message.lastPageWarning"),
           type: "info",
           center: true,
           // iconClass: "",

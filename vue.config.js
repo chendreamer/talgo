@@ -30,7 +30,15 @@
 // }
 
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
+    publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
+    // pages: {
+    //   index: {
+    //     // page 的入口
+    //     entry:   ["babel-polyfill", "src/main.js"]
+    //   }
+    // }
+
+
     // chainWebpack: config => {
     //   config.module
     //     .rule('images')

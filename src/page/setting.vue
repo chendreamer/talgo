@@ -10,8 +10,8 @@
       <el-main class="container">
         <ol>
           <li class="tc df" v-for="(item,index) in languageListArray" :key="index">
-            <img class="hover" :src="item[0]" @click="changeLang(index)" alt />
-            <span class="hover language-type" @click="changeLang(index)">{{item[1]}}</span>
+            <img v-once class="hover" :src="item[0]" @click="changeLang(index)" alt />
+            <span v-once class="hover language-type" @click="changeLang(index)">{{item[1]}}</span>
             <div class="checked-circle" v-show="item[2]"></div>
             <div class="checked-circle-fake" v-show="!item[2]"></div>
           </li>
@@ -63,7 +63,7 @@ export default {
       .catch(function (error) {
         console.log(error);
         that.$message({
-          message: error,
+          message: i18n.tc("message.networkError"),
           type: "info",
           center: true,
           // iconClass: "",

@@ -56,14 +56,25 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Header from "@/components/Header.vue";
 import iconImage from "../static/images/marker-icon-2x.png";
+//默认的图片找不到，不会矫正位置
+// import icon from 'leaflet/dist/images/marker-icon.png';
+// import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import axios from "axios";
 // import iconShadow from "../static/images/marker-shadow.png";
+// let DefaultIcon = L.icon({
+//           iconUrl: icon,
+//           shadowUrl: iconShadow
+//       });
+// L.Marker.prototype.options.icon = DefaultIcon;
 
 export default {
   components: { Header },
   data: function () {
     return {
       lang: "",
+      currentMarker: null,
+      currentLine:null,
+      map: null,
       //iconImage:'require("../static/images/marker-icon-2x.png")'
     };
   },
@@ -81,7 +92,7 @@ export default {
         break;
     }
 
-axios
+    axios
       .get(that.$store.state.media_server + "/heart")
       .then(function (response) {
         console.log(response);
@@ -89,7 +100,7 @@ axios
       .catch(function (error) {
         console.log(error);
         that.$message({
-          message: error,
+          message: i18n.tc("message.networkError"),
           type: "info",
           center: true,
           // iconClass: "",
@@ -97,41 +108,50 @@ axios
         });
       });
 
-    setTimeout(() => {
-      var osmUrl =
-          this.$store.state.media_server + "/resource/tiles/{z}/{x}/{y}.png", //tiles
-        //var osmUrl = "http://localhost/{z}/{x}/{y}.png", //tiles
-        osmAttrib =
-          '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        osm = L.tileLayer(osmUrl, {
-          minZoom: 5,
-          maxZoom: 12,
-          attribution: osmAttrib,
-        });
-      //	currentMarker; //当前位置marker
-      //纬度，经度
-      var map = L.map("map", {
-        closePopupOnClick: false, //点击地图不关闭Popup
-      })
-        .setView([that.getLatitude, that.getLongitude], 7)
-        .addLayer(osm);
+    console.log(1);
+console.log(L);
+    var osmUrl =
+      this.$store.state.media_server + "/resource/tiles/{z}/{x}/{y}.png"; //tiles\
+    //var osmUrl = "http://localhost/{z}/{x}/{y}.png", //tiles
+    var osmAttrib = "&copy; OpenStreetMap contributors";
+
+    var osm = L.tileLayer(osmUrl, {
+      minZoom: 5,
+      maxZoom: 12,
+      attribution: osmAttrib,
+    });
+    //	currentMarker; //当前位置marker
+
+    //纬度，经度
+    that.map = L.map("map", {
+      closePopupOnClick: false, //点击地图不关闭Popup
+    })
+      .setView([that.getLatitude, that.getLongitude], 7)
+      .addLayer(osm);
+
+    that.$nextTick(function () {
       //当前位置
       // var _latitude = parseFloat(localStorage.getItem('latitude'));
       // 	var _longitude = parseFloat(localStorage.getItem('longitude'));
-      console.log(that.getLatitude);
-      console.log(that.getLongitude);
+      console.log(4);
       var myIcon = L.icon({
         iconUrl: iconImage,
-        iconSize: [25, 41],
-        //iconAnchor: [that.getLatitude, that.getLongitude],
+        iconSize: [24, 41],
+        iconAnchor: [12, 41],
         //popupAnchor: [-3, -76],
         //shadowUrl: iconShadow,
         //shadowSize: [68, 95],
         // shadowAnchor: [22, 94]
       });
-      L.marker([that.getLatitude, that.getLongitude], { icon: myIcon }).addTo(
-        map
-      );
+      console.log("画标记");
+      console.log(that.getLatitude);
+      console.log(that.getLongitude);
+      if (that.getLatitude != 0 && that.getLongitude != 0) {
+        that.currentMarker = L.marker([that.getLatitude, that.getLongitude], {
+          icon: myIcon,
+        }).addTo(that.map); //, { icon: myIcon }
+      }
+
       // var latlngs = [
       //   [40.43, -3.99],
       //   [40.43, -3.96],
@@ -144,19 +164,37 @@ axios
       //   [40.37, -3.88],
       //   [40.405, -3.913]
       // ];
-      var polyline = L.polyline(that.getTrainNumberGPS, {
+      //var polyline =
+      console.log("画线路");
+      that.currentLine = L.polyline(that.getTrainNumberGPS, {
         color: "#820063",
         weight: 2,
-      }).addTo(map);
-      map.fitBounds(polyline.getBounds()); //直接显示成最适宜的缩放比例
-    }, 1000);
+      }).addTo(that.map);
+      //map.fitBounds(polyline.getBounds()); //直接显示成最适宜的缩放比例
+    });
+  },
+  watch: {
+    getLatitude: function () {
+      //console.log(this.latitude);
+      this.currentMove();
+    },
+    getLongitude: function () {
+      //console.log(this.latitude);
+      this.currentMove();
+    },
+    getTrainNumberGPS: function () {
+      //console.log(this.latitude);
+      this.drawNewLine();
+    },
   },
   computed: {
     trainNumberStatus() {
       return this.$store.state.trainInformation.train_number == "";
     },
     InformationOfDelayStatus() {
-      return parseInt(this.$store.state.trainInformation.informationOfDelay) == 0;
+      return (
+        parseInt(this.$store.state.trainInformation.informationOfDelay) == 0
+      );
     },
     getTtravelledDistance() {
       return this.$store.state.trainInformation.travelledDistance + " Km";
@@ -171,7 +209,9 @@ axios
       if (this.$store.state.trainInformation.nextStation.length == 0) {
         return "null";
       } else {
-        return this.searchStation(this.$store.state.trainInformation.nextStation);
+        return this.searchStation(
+          this.$store.state.trainInformation.nextStation
+        );
       }
     },
     getArrivalTime() {
@@ -181,7 +221,9 @@ axios
       if (this.$store.state.trainInformation.geographicPosition.length == 0) {
         return "null";
       } else {
-        return this.searchStation(this.$store.state.trainInformation.geographicPosition);
+        return this.searchStation(
+          this.$store.state.trainInformation.geographicPosition
+        );
       }
     },
     getInformationOfDelay() {
@@ -208,7 +250,32 @@ axios
     next();
   },
   methods: {
+    currentMove: function () {
+      var that = this;
+      if (that.currentMarker != null) {
+        that.map.removeLayer(that.currentMarker);
+      }
+      var myIcon = L.icon({
+        iconUrl: iconImage,
+        iconSize: [24, 41],
+        iconAnchor: [12, 41],
+      });
+      that.currentMarker = L.marker([that.getLatitude, that.getLongitude], {
+        icon: myIcon,
+      }).addTo(that.map);
+    },
+    drawNewLine:function(){
+      var that = this;
+      if (that.currentLine != null) {
+        that.map.removeLayer(that.currentLine);
+      }
+      L.polyline(that.getTrainNumberGPS, {
+        color: "#820063",
+        weight: 2,
+      }).addTo(that.map);
+    },
     searchStation: function (array) {
+      if (typeof array == "undefined" || array.length == 0) return;
       var _station = "";
       array.forEach((element) => {
         if (element[0] == this.lang) {
@@ -386,7 +453,7 @@ axios
             border-bottom: 2px solid #820063;
             height: 36px;
             line-height: 36px;
-            font-size: .8rem;
+            font-size: 0.8rem;
             color: #820063;
           }
         }
@@ -418,7 +485,7 @@ axios
           .title {
             height: 36px;
             line-height: 36px;
-            font-size: .9rem;
+            font-size: 0.9rem;
             color: #fff;
             background-color: #820063;
             border-radius: 5px;
@@ -429,7 +496,7 @@ axios
             border-bottom: 2px solid #820063;
             height: 36px;
             line-height: 36px;
-            font-size: .9rem;
+            font-size: 0.9rem;
             color: #820063;
           }
         }

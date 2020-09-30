@@ -2,7 +2,7 @@ import mqtt from "mqtt";
 
 const state = {
     client: {}, //mqtt客户端
-    mqtt_server: 'mqtt://172.19.6.20:21884',//现场mqtt服务器ip
+    mqtt_server: 'mqtt://172.19.3.20:21884',//现场mqtt服务器ip
     train_number: 'null',//列车号
     temperature: 'null',//温度
     speed: 'null',//速度
@@ -58,6 +58,7 @@ const actions = {
         });
 
         state.client.on("message", function (topic, message) {
+            //console.log(message);
             message = JSON.parse(message);
             //console.log(message);
             switch (topic) {
@@ -123,6 +124,8 @@ const actions = {
                     // }
                     break;
                 case "/hmi/trainNumber_GPS/in":
+                    // console.log('-------------');
+                    // console.log(message);
                     state.trainNumberGPS = message.trainNumberGps;
                     // if (state.currentGPS != message) {
                     //   state.currentGPS = message;

@@ -24,7 +24,10 @@ const messages = {
         informationOfDelay:'Information Of Delay',
         trainsetFloorPlan:'Trainset Floor Plan',
         technicalFeatures:'Technical Features',
-        view:'View'
+        view:'View',
+        networkError:'Network error',
+        firstPageWarning:'This is first page!',
+        lastPageWarning:'This is last page!',
       }
     },
     es: {
@@ -47,7 +50,10 @@ const messages = {
         informationOfDelay:'Información de retraso',
         trainsetFloorPlan:'Plano de planta de Trainset',
         technicalFeatures:'Características técnicas',
-        view:'Ver'
+        view:'Ver',
+        networkError:'Error de red',
+        firstPageWarning:"¡Esta es la primera página!",
+        lastPageWarning:"¡Esta es la última página!",
       }
     },
     fr: {
@@ -70,7 +76,10 @@ const messages = {
         informationOfDelay:'Information de retard',
         trainsetFloorPlan:'Plan de la rame',
         technicalFeatures:'Caractéristiques techniques',
-        view:'Vue'
+        view:'Vue',
+        networkError:'Erreur réseau',
+        firstPageWarning:"C'est la première page!",
+        lastPageWarning:"C'est la dernière page!",
       }
     }
   }

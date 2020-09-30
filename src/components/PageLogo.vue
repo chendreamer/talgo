@@ -7,6 +7,8 @@
 
 
 <script>
+import i18n from "@/i18n";
+
 export default {
   name: "PageLogo",
   props: ["pagename"],
@@ -17,19 +19,19 @@ export default {
       logo_array: [
         {
           name: "menu",
-          data: ["MENU", require("../assets/images/menu.png")],
+          data: [i18n.tc("message.menu"), require("../assets/images/menu.png")],
         },
         {
           name: "video",
-          data: ["Video", require("../assets/images/video.png")],
+          data: [i18n.tc("message.video"), require("../assets/images/video.png")],
         },
         {
           name: "book",
-          data: ["Book", require("../assets/images/Book.png")],
+          data: [i18n.tc("message.book"), require("../assets/images/Book.png")],
         },
         {
           name: "music",
-          data: ["Music", require("../assets/images/Music.png")],
+          data: [i18n.tc("message.music"), require("../assets/images/Music.png")],
         },
       ],
     };
@@ -58,7 +60,7 @@ export default {
   }
   .menu-logo-txt {
     margin-top: .5rem;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 100;
   }
 }
@@ -70,7 +72,7 @@ export default {
   }
   .menu-logo-txt {
     margin-top: .6rem;
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     font-weight: 100;
   }
 }
@@ -82,7 +84,7 @@ export default {
   }
   .menu-logo-txt {
     margin-top: .65rem;
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 100;
   }
 }
@@ -94,7 +96,7 @@ export default {
   }
   .menu-logo-txt {
     margin-top: .7rem;
-    font-size: 2.1rem;
+    font-size: 2rem;
     font-weight: 100;
   }
 }
@@ -106,7 +108,7 @@ export default {
   }
   .menu-logo-txt {
     margin-top: .75rem;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 100;
   }
 }
@@ -118,43 +120,43 @@ export default {
   }
   .menu-logo-txt {
     margin-top: .8rem;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     font-weight: 100;
   }
 }
 
 @media (min-width: 769px) and (max-width: 999px) {
   .menu-logo {
-    width: 140px;
-    margin-top: 135px;
+    width: 120px;
+    margin-top: 130px;
   }
   .menu-logo-txt {
     margin-top: .8rem;
-    font-size: 2.4rem;
+    font-size: 1.9rem;
     font-weight: 100;
   }
 }
 
 @media (min-width: 1000px) and (max-width: 1239px) {
   .menu-logo {
-    width: 150px;
+    width: 140px;
     margin-top: 145px;
   }
   .menu-logo-txt {
     margin-top: .9rem;
-    font-size: 2.7rem;
+    font-size: 2.3rem;
     font-weight: 100;
   }
 }
 
 @media (min-width: 1240px) {
   .menu-logo {
-    width: 160px;
+    width: 150px;
     margin-top: 155px;
   }
   .menu-logo-txt {
     margin-top: 1rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 100;
   }
 }

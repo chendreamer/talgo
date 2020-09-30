@@ -8,9 +8,12 @@ import './assets/style/main.scss';
 import router from './router';
 import i18n from './i18n';
 import store from './store';
+//import './assets/js/polyfill.min.js';
+//import mqtt from './assets/js/mqtt'
+//import './assets/lib/mqtt.min.js' 
 
 
-//import mqtt from './assets/js/mqtt.min.js'
+
 
 
 //Vue.use(message);

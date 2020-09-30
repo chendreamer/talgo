@@ -2,7 +2,7 @@
   <div>
     <div v-for="(item,index) in menuList" :key="index">
       <router-link :to="item.linkto" class="menu-item">
-        <img class="menu-img" :src="item.path" />
+        <img v-once class="menu-img" :src="item.path" />
         <span>{{item.name}}</span>
       </router-link>
     </div>

@@ -6,7 +6,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide slide1">
               <router-link to="/video">
-                <img :src="videoPicPath" class="to-video" />
+                <img v-once :src="videoPicPath" class="to-video" />
               </router-link>
               <router-link to="/play">
                 <div class="name to-video">{{$t("message.video")}}</div>
@@ -14,7 +14,7 @@
             </div>
             <div class="swiper-slide slide2">
               <router-link to="/music">
-                <img :src="musicPicPath" class="to-music" />
+                <img v-once :src="musicPicPath" class="to-music" />
               </router-link>
               <router-link to="/music">
                 <div class="name to-music">{{$t("message.music")}}</div>
@@ -22,7 +22,7 @@
             </div>
             <div class="swiper-slide slide3">
               <router-link to="/book">
-                <img :src="bookPicPath" class="to-book" />
+                <img v-once :src="bookPicPath" class="to-book" />
               </router-link>
               <router-link to="/book">
                 <div class="name to-book">{{$t("message.book")}}</div>
@@ -31,10 +31,10 @@
           </div>
         </div>
         <div class="swiper-button-prev">
-          <img src="../assets/images/left-arrow.png" />
+          <img v-once src="../assets/images/left-arrow.png" />
         </div>
         <div class="swiper-button-next">
-          <img src="../assets/images/right-arrow.png" />
+          <img v-once src="../assets/images/right-arrow.png" />
         </div>
         <div class="split-line-left"></div>
         <div class="split-line-right"></div>
@@ -46,15 +46,15 @@
         >
           <div class="swiper-wrapper">
             <div class="swiper-slide slide3">
-              <img :src="bookPicPath" />
+              <img v-once :src="bookPicPath" />
               <div class="name">{{$t("message.book")}}</div>
             </div>
             <div class="swiper-slide slide1">
-              <img :src="videoPicPath" />
+              <img v-once :src="videoPicPath" />
               <div class="name">{{$t("message.video")}}</div>
             </div>
             <div class="swiper-slide slide2">
-              <img :src="musicPicPath" />
+              <img v-once :src="musicPicPath" />
               <div class="name">{{$t("message.music")}}</div>
             </div>
           </div>
@@ -67,15 +67,15 @@
         >
           <div class="swiper-wrapper">
             <div class="swiper-slide slide2">
-              <img :src="musicPicPath" />
+              <img v-once :src="musicPicPath" />
               <div class="name">{{$t("message.music")}}</div>
             </div>
             <div class="swiper-slide slide3">
-              <img :src="bookPicPath" />
+              <img v-once :src="bookPicPath" />
               <div class="name">{{$t("message.book")}}</div>
             </div>
             <div class="swiper-slide slide1">
-              <img :src="videoPicPath" />
+              <img v-once :src="videoPicPath" />
               <div class="name">{{$t("message.video")}}</div>
             </div>
           </div>
@@ -87,7 +87,8 @@
 
 <script>
 import "../assets/style/swiper.min.css";
-import Swiper from "swiper";
+//import Swiper from "swiper"; //ie下有问题
+import Swiper from 'swiper/js/swiper.min.js';
 
 export default {
   data: function () {
