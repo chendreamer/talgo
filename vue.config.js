@@ -31,6 +31,9 @@
 
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
+    devServer: {
+      host: 'localhost', // 原为: host: 'localhost'
+      }
     // pages: {
     //   index: {
     //     // page 的入口

@@ -4,11 +4,16 @@
     <!-- <div v-if="loadingState" class="loading-content tc">
       <img src="../assets/images/loading.gif" alt />
     </div>-->
+    <!-- <div class="bt" @click="cancel()"></div> -->
     <div>
-      <div class="show-list" v-loading="loadingState" element-loading-background="transparent">
+      <div
+        class="show-list"
+        v-loading="loadingState"
+        element-loading-background="transparent"
+      >
         <list-item
           class="show-list-item"
-          v-for="(item,index) in listArray"
+          v-for="(item, index) in listArray"
           :key="index"
           :cover_path="item.cover"
           :item_txt="item.title"
@@ -19,7 +24,7 @@
       <div class="pagination">
         <div class="pagination-container df">
           <img src="../assets/images/left-arrow.png" @click="prevPage" />
-          {{currentPageNum}}
+          {{ currentPageNum }}
           <img src="../assets/images/right-arrow.png" @click="nextPage" />
         </div>
       </div>
@@ -31,9 +36,12 @@
 //最低高度两行
 import axios from "axios";
 import i18n from "@/i18n";
+import _ from "lodash";
 import ListItem from "@/components/ListItem.vue";
 import FilterList from "@/components/FilterList.vue";
-
+const CancelToken = axios.CancelToken;
+let cancel;
+//let time=this.$store.state.time_define;
 export default {
   props: ["url", "module_name"],
   components: { ListItem, FilterList },
@@ -45,13 +53,16 @@ export default {
       totalPage: 0,
       navigationName: "All",
       loadingState: true,
-      requestArray:[]
+      requestArray: [],
     };
   },
   mounted: function () {
     this.getList();
   },
   methods: {
+    cancel: function () {
+      cancel("取消查询列表");
+    },
     getList: function (type) {
       let that = this;
       that.loadingState = true;
@@ -62,15 +73,20 @@ export default {
       }
 
       var _params = {
-            navigation: that.navigationName,
-            lang: i18n.locale,
-            limit:
-              (that.currentPageNum - 1) * that.perPage + "," + that.perPage,
-          };
-     that.requestArray.push(_params);
+        navigation: that.navigationName,
+        lang: i18n.locale,
+        limit: (that.currentPageNum - 1) * that.perPage + "," + that.perPage,
+      };
+
+      console.log(_params);
+
+      that.requestArray.push(_params);
       axios
         .get(that.url, {
-          params:_params,
+          params: _params,
+          cancelToken: new CancelToken(function executor(c) {
+            cancel = c;
+          }),
         })
         .then(function (response) {
           console.log(response);
@@ -87,6 +103,13 @@ export default {
         })
         .catch(function (error) {
           console.log(error);
+          //       if (error.response) {
+          //   console.log(error.response.data);
+          //   console.log(error.response.status);
+          //   console.log(error.response.headers);
+          // } else {
+          //   console.log('Error', error.message);
+          // }
           //var errorMsg = error.split(':');
           that.$message({
             message: i18n.tc("message.networkError"),
@@ -96,8 +119,37 @@ export default {
             duration: 1800,
           });
         });
+
+      // 添加请求拦截器
+      var myInterceptor1 = axios.interceptors.request.use(
+        function (config) {
+          // 在发送请求之前做些什么
+          console.log("发送请求");
+          axios.interceptors.request.eject(myInterceptor1);
+          return config;
+        },
+        function (error) {
+          // 对请求错误做些什么
+          return Promise.reject(error);
+        }
+      );
+
+      // 添加响应拦截器
+      var myInterceptor2 = axios.interceptors.response.use(
+        function (response) {
+          // 对响应数据做点什么
+          console.log("接受数据");
+          console.log(response);
+          axios.interceptors.response.eject(myInterceptor2);
+          return response;
+        },
+        function (error) {
+          // 对响应错误做点什么
+          return Promise.reject(error);
+        }
+      );
     },
-    prevPage: function () {
+    prevPage: _.throttle(function () {
       let that = this;
       if (that.currentPageNum > 1) {
         that.currentPageNum--;
@@ -107,12 +159,11 @@ export default {
           message: i18n.tc("message.firstPageWarning"),
           type: "info",
           center: true,
-          // iconClass: "",
           duration: 1800,
         });
       }
-    },
-    nextPage: function () {
+    }, 1200),
+    nextPage: _.throttle(function () {
       let that = this;
       if (that.currentPageNum < that.totalPage) {
         that.currentPageNum++;
@@ -122,11 +173,10 @@ export default {
           message: i18n.tc("message.lastPageWarning"),
           type: "info",
           center: true,
-          // iconClass: "",
           duration: 1800,
         });
       }
-    },
+    }, 1200),
   },
 };
 </script>
@@ -142,6 +192,11 @@ export default {
 // .show-list {
 //   flex-wrap: wrap;
 // }
+
+.bt {
+  height: 100px;
+  background-color: cadetblue;
+}
 
 @media (max-width: 320px) {
   .show-list {

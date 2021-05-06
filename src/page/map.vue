@@ -111,7 +111,7 @@ export default {
     console.log(1);
 console.log(L);
     var osmUrl =
-      this.$store.state.media_server + "/resource/tiles/{z}/{x}/{y}.png"; //tiles\
+      this.$store.state.media_server + "/resource/tiles/4uMaps/{z}/{x}/{y}.png"; //tiles\
     //var osmUrl = "http://localhost/{z}/{x}/{y}.png", //tiles
     var osmAttrib = "&copy; OpenStreetMap contributors";
 

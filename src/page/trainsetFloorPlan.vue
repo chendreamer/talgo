@@ -43,7 +43,8 @@ export default {
         console.log(response);
         console.log(that.getTrainType);
         response["data"]["data"].forEach((element,index) => {
-          if (response["data"]["data"][index]['type'] == that.getTrainType) {
+          //response["data"]["data"][index]['type'] == that.getTrainType
+          if (response["data"]["data"][index]['type'] == '0x10') {
               that.imagePath = that.$store.state.media_server + response["data"]["data"][index]['filepath'];
               return;
           }

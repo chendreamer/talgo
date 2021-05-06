@@ -23,38 +23,49 @@
             v-loading="loadingState"
             element-loading-background="transparent"
           >
-            <img src="../assets/images/left-arrow.png" @click="prevPage" class="pagination-btn-web" />
+            <img
+              src="../assets/images/left-arrow.png"
+              @click="prevPage"
+              class="pagination-btn-web"
+            />
             <!-- 歌手列表 -->
             <el-collapse
               class="music-list-collapse flex-1"
-              v-if="getNavigationName =='Singer'"
+              v-if="getNavigationName == 'Singer'"
               v-model="activeName"
               accordion
             >
               <el-collapse-item
                 :name="index"
-                v-for="(item,index) in getSingerOrAlubmArray"
+                v-for="(item, index) in getSingerOrAlubmArray"
                 :key="index"
               >
                 <template slot="title">
-                  <span class="music-order">{{index+1}}</span>
-                  <span class="music-filename ellipsis">{{item.singer}}</span>
+                  <span class="music-order">{{ index + 1 }}</span>
+                  <span class="music-filename ellipsis">{{ item.singer }}</span>
                 </template>
                 <ol class="music-list">
-                  <li v-for="(childItem,chilIndex) in item.audio" :key="chilIndex">
-                    <span class="music-order">{{chilIndex+1}}</span>
-                    <span class="music-filename ellipsis">{{childItem.title}}</span>
+                  <li
+                    v-for="(childItem, chilIndex) in item.audio"
+                    :key="chilIndex"
+                  >
+                    <span class="music-order">{{ chilIndex + 1 }}</span>
+                    <span class="music-filename ellipsis">{{
+                      childItem.title
+                    }}</span>
                     <img
                       class="list-play-btn"
                       src="../assets/images/media_music_list_pause.png"
-                      v-if="childItem.id == getCurrentPlayingID && getPlayingStatus"
+                      v-if="
+                        childItem.id == getCurrentPlayingID && getPlayingStatus
+                      "
                       @click="stopMusic(childItem.id)"
                     />
                     <img
                       class="list-play-btn"
                       src="../assets/images/play_music.png"
                       v-else
-                      @click="playMusic(childItem.id,index)"
+                      @click="playMusic(childItem.id, index)"
                     />
                   </li>
                 </ol>
@@ -65,32 +76,39 @@
               class="music-list-collapse flex-1"
               v-model="activeName"
               accordion
-              v-else-if="getNavigationName =='Album'"
+              v-else-if="getNavigationName == 'Album'"
             >
               <el-collapse-item
                 :name="index"
-                v-for="(item,index) in getSingerOrAlubmArray"
+                v-for="(item, index) in getSingerOrAlubmArray"
                 :key="index"
               >
                 <template slot="title">
-                  <span class="music-order">{{index+1}}</span>
-                  <span class="music-filename ellipsis">{{item.album}}</span>
+                  <span class="music-order">{{ index + 1 }}</span>
+                  <span class="music-filename ellipsis">{{ item.album }}</span>
                 </template>
                 <ol class="music-list">
-                  <li v-for="(childItem,chilIndex) in item.audio" :key="chilIndex">
-                    <span class="music-order">{{chilIndex+1}}</span>
-                    <span class="music-filename ellipsis">{{childItem.title}}</span>
+                  <li
+                    v-for="(childItem, chilIndex) in item.audio"
+                    :key="chilIndex"
+                  >
+                    <span class="music-order">{{ chilIndex + 1 }}</span>
+                    <span class="music-filename ellipsis">{{
+                      childItem.title
+                    }}</span>
                     <img
                       class="list-play-btn"
                       src="../assets/images/media_music_list_pause.png"
-                      v-if="childItem.id == getCurrentPlayingID && getPlayingStatus"
+                      v-if="
+                        childItem.id == getCurrentPlayingID && getPlayingStatus
+                      "
                       @click="stopMusic(childItem.id)"
                     />
                     <img
                       src="../assets/images/play_music.png"
                       class="list-play-btn"
                       v-else
-                      @click="playMusic(childItem.id,index)"
+                      @click="playMusic(childItem.id, index)"
                     />
                   </li>
                 </ol>
@@ -98,9 +116,9 @@
             </el-collapse>
             <!-- 普通类型音乐列表 -->
             <ol class="music-list flex-1" v-else>
-              <li v-for="(item,index) in getMusicArray" :key="index">
-                <span class="music-order">{{getOrder(index)}}</span>
-                <span class="music-filename ellipsis">{{item.title}}</span>
+              <li v-for="(item, index) in getMusicArray" :key="index">
+                <span class="music-order">{{ getOrder(index) }}</span>
+                <span class="music-filename ellipsis">{{ item.title }}</span>
                 <img
                   class="list-play-btn"
                   src="../assets/images/media_music_list_pause.png"
@@ -130,7 +148,7 @@
                 class="pagination-btn-mobile"
               />
               <div class="music-list-page-decorat-left"></div>
-              {{currentPageNum}}
+              {{ currentPageNum }}
               <div class="music-list-page-decorat-right"></div>
               <img
                 src="../assets/images/right-arrow.png"
@@ -157,6 +175,7 @@ import MultimediaLogo from "@/components/MultimediaLogo.vue";
 import PageLogo from "@/components/PageLogo.vue";
 import FilterList from "@/components/FilterList.vue";
 import MusicControl from "@/components/MusicControl.vue";
+import _ from "lodash";
 import { mapState } from "vuex";
 
 //思路：创建一个数组，用于存放历史请求的接口与参数，每次getlist判断是否有相同的请求记录，有相同的话则不去请求。
@@ -166,10 +185,8 @@ import { mapState } from "vuex";
 //低网速下内容切换有问题
 //当前播放音乐名省略号
 
-//var left;
-
 export default {
-  components: { Header, MultimediaLogo, PageLogo, FilterList,MusicControl },
+  components: { Header, MultimediaLogo, PageLogo, FilterList, MusicControl },
   data: function () {
     return {
       path: "",
@@ -185,90 +202,6 @@ export default {
   mounted: function () {
     //var that = this;
     this.getList("All");
-
-    
-    // var pgs = document.getElementsByClassName("pgs");
-    // var dotStart = 0,
-    //   diff = 0,
-    //   _offset = 0;
-    // var _left = window.getComputedStyle
-    //   ? window.getComputedStyle(divSlider).left
-    //   : divSlider.currentStyle.left;
-    // divSlider.addEventListener("mousedown", mouseDown, true);
-
-    // divSlider.addEventListener("mouseup", mouseUp, true);
-
-    // function mouseDown() {
-    //   var e = e || event;
-    //   e.stopPropagation();
-    //   that.$store.state.music.seeking = true;
-    //   dotStart = e.clientX;
-    //   _offset = 0;
-    //   _left = window.getComputedStyle
-    //     ? window.getComputedStyle(divSlider).left
-    //     : divSlider.currentStyle.left;
-    //   console.log(e.clientX);
-
-    //   document.addEventListener("mousemove", sliderMove, false);
-    // }
-
-    // function mouseUp() {
-    //   (dotStart = 0), (diff = 0);
-    //   document.removeEventListener("mousemove", sliderMove, false);
-
-    //   var value = (
-    //     _offset.slice(0, _offset.length - 2) / pgs[0].clientWidth
-    //   ).toFixed(3);
-    //   console.log(value);
-    //   var _arr = that.getMusicDuration.split(":");
-    //   console.log((parseInt(_arr[0]) * 60 + parseInt(_arr[1])) * value);
-    //   that.$store.commit({
-    //     type: "music/setMusicCurrentTime",
-    //     data: (parseInt(_arr[0]) * 60 + parseInt(_arr[1])) * value,
-    //   });
-    //   that.$store.commit({
-    //     type: "music/resetMusicCurrentTime",
-    //     data: (parseInt(_arr[0]) * 60 + parseInt(_arr[1])) * value,
-    //   });
-    //   that.$store.state.music.seeking = false;
-    //   //   var dot = document.getElementsByClassName("dot");
-    //   //   dot[0].style.left =
-    //   //     -4 +
-    //   //     Math.round(
-    //   //       document.getElementsByClassName("pgs")[0].clientWidth * value
-    //   //     ) +
-    //   //     "px";
-    // }
-    // function sliderMove(e) {
-    //   // 解决拖拽鼠标粘滞的问题
-    //   // if (e.preventDefault) {
-    //   //     e.preventDefault();
-    //   // } else {
-    //   //     e.returnValue = false;
-    //   // }
-    //   //console.log(e.clientX);
-    //   diff = e.clientX - dotStart;
-    //   //console.log(diff);
-    //   // console.log(pgs.style);
-
-    //   if (diff <= 0) {
-    //     //diff = 0;
-    //     _offset = 0;
-    //   } else if (
-    //     parseInt(_left.slice(0, _left.length - 2)) + diff >=
-    //     pgs[0].clientWidth - 4
-    //   ) {
-    //     pgs[0].clientWidth - 4 + "px";
-    //     _offset = pgs[0].clientWidth - 4 + "px";
-    //   } else {
-    //     _offset = parseInt(_left.slice(0, _left.length - 2)) + diff + "px";
-    //   }
-    //   divSlider.style.left = _offset;
-
-    //   // console.log('-----------------------');
-    //   // console.log(diff);
-    //   //console.log(parseInt(_left.slice(0,divSlider.style.left.length -2)) + diff + 'px');
-    // }
   },
   computed: mapState({
     getPlayingStatus() {
@@ -341,20 +274,9 @@ export default {
             if (type == "Singer" || type == "Album") {
               that.$store.state.music.singerOrAlubmArray.push(element);
             } else {
-              //   if (that.currentPlayingID == -1) {
-              //   that.currentPlayingID = element["id"];
-              // }
               that.$store.state.music.musicArray.push(element);
             }
           });
-          // that.musicURL =
-          //   that.$store.state.media_server + that.musicArray[1]["filepath"];
-
-          // that.$nextTick(function () {
-          //   console.log(that.musicArray);
-          // console.log(that.singerOrAlubmArray);
-          //   that.initPlayer();
-          // });
         })
         .catch(function (error) {
           console.log(error);
@@ -381,19 +303,16 @@ export default {
           type: "music/setPlayList",
           data: [...that.singerOrAlubmArray[outIndex]["audio"]],
         });
-
-        //  that.$store.state.playList = ;
       } else {
         console.log([...that.$store.state.music.musicArray]);
         that.$store.commit({
           type: "music/setPlayList",
           data: [...that.$store.state.music.musicArray],
         });
-        //  that.$store.state.playList = [...that.musicArray];
       }
     },
     playMusic: function (index, outIndex) {
-      console.log('playMusic----------');
+      console.log("playMusic----------");
       console.log(index);
       console.log(outIndex);
       this.$store.dispatch({
@@ -402,63 +321,15 @@ export default {
         outIndex: outIndex,
       });
     },
-    
-    // playMusic: function (index, outIndex) {
-    //   let that = this;
-    //   if (that.getPlayingStatus) {
-    //     console.log("重置了！");
-    //     that.$store.state.music.player.pause();
-    //     that.$store.state.music.playingStatus = false;
-    //   }
-    //   // console.log(index);
-    //   // console.log(that.currentPlayingID);
 
-    //   if (typeof index != "undefined") {
-    //     if (index != that.getCurrentPlayingID) {
-    //       //如果当前正在播放，先暂停，再重置
-    //       that.$store.state.music.player = null;
-    //     } else {
-    //       //当前有正在播放的歌曲
-    //       that.$store.state.music.player.play();
-    //       that.$store.state.music.playingStatus = true;
-    //       return;
-    //     }
-    //     that.$store.commit({
-    //       type: "music/setCurrentPlayingID",
-    //       data: index,
-    //     });
-    //     that.replacePlayList(index, outIndex);
-    //   }
-    //   // var _array;
-    //   // if (that.navigationName == "Singer" || that.navigationName == "Album") {
-    //   //         _array = that.singerOrAlubmArray[outIndex]['audio'];
-    //   //       }else {
-    //   //         _array = that.musicArray;
-    //   //       }
-    //   that.$nextTick(function () {
-    //     that.$store.dispatch("music/initPlayer");
-    //     //console.log(that.playList);
-
-    //     //that.$nextTick(function () {
-    //       //console.log(that.currentPlayingID);
-    //       //console.log(that.musicURL);
-
-    //     //});
-    //   });
-    // },
-    
     stopMusic: function () {
       let that = this;
       if (that.$store.state.music.currentPlayingID == -1) {
         return;
       }
       that.$store.dispatch("music/stopMusic");
-      //that.$store.state.music.player.pause();
-      //that.$store.state.music.playingStatus = false;
-      //that.getPlayingStatus = false;
     },
-
-    prevPage: function () {
+    prevPage: _.throttle(function () {
       let that = this;
       if (that.currentPageNum > 1) {
         that.currentPageNum--;
@@ -472,8 +343,23 @@ export default {
           duration: 1800,
         });
       }
-    },
-    nextPage: function () {
+    }, 1200),
+    // prevPage: function () {
+    //   let that = this;
+    //   if (that.currentPageNum > 1) {
+    //     that.currentPageNum--;
+    //     that.getList(that.$store.state.music.navigationName);
+    //   } else {
+    //     that.$message({
+    //       message: i18n.tc("message.firstPageWarning"),
+    //       type: "info",
+    //       center: true,
+    //       // iconClass: "",
+    //       duration: 1800,
+    //     });
+    //   }
+    // },
+    nextPage: _.throttle(function () {
       let that = this;
       if (that.currentPageNum < that.totalPage) {
         that.currentPageNum++;
@@ -487,21 +373,25 @@ export default {
           duration: 1800,
         });
       }
-    },
+    }, 1200),
+    // nextPage: function () {
+    //   let that = this;
+    //   if (that.currentPageNum < that.totalPage) {
+    //     that.currentPageNum++;
+    //     that.getList(that.$store.state.music.navigationName);
+    //   } else {
+    //     that.$message({
+    //       message: i18n.tc("message.lastPageWarning"),
+    //       type: "info",
+    //       center: true,
+    //       // iconClass: "",
+    //       duration: 1800,
+    //     });
+    //   }
+    // },
     returnRef: function (i) {
       return "listPlayBtnRef" + i;
     },
-    // changePlayStatus:function(){
-    //   let that = this;
-    //   if (that.$store.state.player.paused) {
-    //     that.$store.state.player.play();
-    //     that.$store.state.playingStatus = true;
-    //   } else {
-    //     that.$store.state.player.pause();
-    //     that.$store.state.playingStatus = false;
-    //   }
-    // },
-    
   },
 };
 </script>

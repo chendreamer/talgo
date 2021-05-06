@@ -74,84 +74,7 @@ export default {
     };
   },
   mounted: function () {
-    //var that = this;
-    // var pgs = document.getElementsByClassName("pgs");
-    // var divSlider = document.getElementById("dot");
-    // var dotStart = 0,
-    //   diff = 0,
-    //   _offset = 0;
-    // var _left = 0;
-    // divSlider.addEventListener("mousedown", mouseDown, true);
-    // divSlider.addEventListener("mouseup", mouseUp, true);
-    // function mouseDown() {
-    //   var e = e || event;
-    //   e.stopPropagation();
-    //   that.$store.state.music.seeking = true;
-    //   dotStart = e.clientX;
-    //   _offset = 0;
-    //   _left = window.getComputedStyle ? window.getComputedStyle(divSlider).left : divSlider.currentStyle.left;
-    //   console.log(e.clientX);
-    //   document.addEventListener("mousemove", sliderMove, false);
-    // }
-    // function mouseUp() {
-    //   document.removeEventListener("mousemove", sliderMove, false);
-    //   that.changeProgress();
-    //   that.$store.state.music.seeking = false;
-    //   _left = 0;
-    //   return;
-    //   // (dotStart = 0), (diff = 0);
-    //   // document.removeEventListener("mousemove", sliderMove, false);
-    //   // var value = (
-    //   //   _offset.slice(0, _offset.length - 2) / pgs[0].clientWidth
-    //   // ).toFixed(3);
-    //   // console.log(value);
-    //   // var _arr = that.getMusicDuration.split(":");
-    //   // console.log('调整中');
-    //   // console.log((parseInt(_arr[0]) * 60 + parseInt(_arr[1])) * value);
-    //   // that.$store.commit({
-    //   //   type: "music/setMusicCurrentTime",
-    //   //   data: (parseInt(_arr[0]) * 60 + parseInt(_arr[1])) * value,
-    //   // });
-    //   // that.$store.commit({
-    //   //   type: "music/resetMusicCurrentTime",
-    //   //   data: (parseInt(_arr[0]) * 60 + parseInt(_arr[1])) * value,
-    //   // });
-    //   // that.$store.state.music.seeking = false;
-    //   //   var dot = document.getElementsByClassName("dot");
-    //   //   dot[0].style.left =
-    //   //     -4 +
-    //   //     Math.round(
-    //   //       document.getElementsByClassName("pgs")[0].clientWidth * value
-    //   //     ) +
-    //   //     "px";
-    // }
-    // function sliderMove(e) {
-    //   // 解决拖拽鼠标粘滞的问题
-    //   // if (e.preventDefault) {
-    //   //     e.preventDefault();
-    //   // } else {
-    //   //     e.returnValue = false;
-    //   // }
-    //   //console.log(e.clientX);
-    //   diff = e.clientX - dotStart;
-    //   console.log(diff);
-    //   // console.log(pgs.style);
-    //   if (_left + diff <= -4) {
-    //     //diff = 0;
-    //     _offset = -4 + "px";
-    //   } else if (
-    //     parseInt(_left.slice(0, _left.length - 2)) + diff >= pgs[0].clientWidth - 4
-    //   ) {
-    //     _offset = pgs[0].clientWidth - 4 + "px";
-    //   } else {
-    //     _offset = parseInt(_left.slice(0, _left.length - 2)) + diff + "px";
-    //   }
-    //   console.log(_offset);
-    //   divSlider.style.left = _offset;
-    //   // console.log('-----------------------');
-    //   // console.log(diff);
-    //   //console.log(parseInt(_left.slice(0,divSlider.style.left.length -2)) + diff + 'px');
-    // }
+   
   },
   computed: {
     musicProgress: function () {
@@ -269,11 +192,6 @@ export default {
     },
     sliderMove: function (e) {
       e = window.event || e;
-      //  if (e.preventDefault) {
-      //     e.preventDefault();
-      // } else {
-      //     e.returnValue = false;
-      // }
       console.log(dotLeft);
       //let that = this;
       var divSlider = document.getElementById("dot");
@@ -325,58 +243,6 @@ export default {
 
       // this.$store.state.music.seeking = false;
     },
-
-    // changeProgress: function (e) {
-    //   let that = this;
-    //   if (that.$store.state.music.currentPlayingID == -1) {
-    //     return;
-    //   }
-    //   var e_ = window.event || e; // 兼容IE，FF事件源
-    //   var x = e_.offsetX; // 获取鼠标位置
-    //   //console.log(e_);
-    //   //console.log(x);
-    //   var pgs = document.getElementsByClassName("pgs");
-    //   // console.log((x/ pgs[0].clientWidth).toFixed(3));
-    //   // console.log(player);
-    //   //console.log(that.$store.state);
-    //   var value = (x / pgs[0].clientWidth).toFixed(3);
-    //   // console.log(value);
-    //   // console.log(that.getMusicDuration);
-    //   var _arr = that.getMusicDuration.split(":");
-    //   console.log((parseInt(_arr[0]) * 60 + parseInt(_arr[1])) * value);
-    //   that.$store.commit({
-    //     type: "music/setMusicCurrentTime",
-    //     data: (parseInt(_arr[0]) * 60 + parseInt(_arr[1])) * value,
-    //   });
-    //   that.$store.commit({
-    //     type: "music/resetMusicCurrentTime",
-    //     data: (parseInt(_arr[0]) * 60 + parseInt(_arr[1])) * value,
-    //   });
-    //   // that.$store.state.music.player.currentTime =
-    //   //   that.$store.state.music.player.duration * value;
-    //   // console.log('-----------------------');
-    //   // console.log(player.currentTime);
-    //   // console.log(Math.floor(player.duration));
-    //   //console.log(value);
-    //   var dot = document.getElementsByClassName("dot");
-    //   dot[0].style.left =
-    //     -4 +
-    //     Math.round(
-    //       document.getElementsByClassName("pgs")[0].clientWidth * value
-    //     ) +
-    //     "px";
-
-    //   // console.log((x/ pgs[0].clientWidth).toFixed(4));
-    //   //         document.getElementsByClassName("pgs-play")[0].style.width =
-    //   //           value + "%";
-    //   //console.log(that);
-    //   // document.getElementsByClassName(
-    //   //   "played-time"
-    //   // )[0].innerHTML = that.$store.getters({
-    //   //   'type':'music/transTime',
-    //   //   data:that.$store.state.music.player.currentTime,
-    //   // });
-    // },
     changePlayStatus: function () {
       this.$store.dispatch({
         type: "music/playMusicPrev",
@@ -1721,39 +1587,6 @@ export default {
     background-color: #fff;
   }
 }
-
-// .pagination {
-//   img {
-//     width: 2rem;
-//     height: 2rem;
-//   }
-// }
-// .pagination-btn-web {
-//   width: 2rem;
-//   height: 2rem;
-//   margin: 200px 5px;
-// }
-// .pagination-btn-mobile {
-//   display: none;
-// }
-
-// .play-pause {
-//   border: 0;
-//   outline: 0;
-//   padding: 0;
-//   width: 40px;
-//   height: 40px;
-//   margin: 0 28px;
-//   background: none;
-//   display: inline-block;
-//   vertical-align: middle;
-// }
-// .controls span {
-//   color: #b3b5b7;
-//   font-size: 12px;
-//   display: inline-block;
-//   width: 34px;
-// }
 
 .flex-1 {
   flex: 1;

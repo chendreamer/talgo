@@ -8,13 +8,13 @@ import './assets/style/main.scss';
 import router from './router';
 import i18n from './i18n';
 import store from './store';
+//import _ from 'lodash';
 //import './assets/js/polyfill.min.js';
 //import mqtt from './assets/js/mqtt'
 //import './assets/lib/mqtt.min.js' 
 
 
-
-
+// Vue.prototype._ = _ ;
 
 //Vue.use(message);
 //Vue.use(mqtt);

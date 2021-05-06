@@ -3,7 +3,7 @@
     <span v-if="show">
       <img class="header-logo" :src="logoPath" alt />
     </span>
-    <span>{{getHeaderTitle}}</span>
+    <span>{{ getHeaderTitle }}</span>
   </div>
 </template>
 
@@ -95,7 +95,7 @@ export default {
 
 @media (max-width: 320px) {
   span {
-    font-size: .9rem;
+    font-size: 0.9rem;
     margin-left: 0.25rem;
   }
   .header-logo {
@@ -191,10 +191,9 @@ export default {
 }
 
 @media (min-width: 1240px) {
-  
   span {
     font-size: 2.1rem;
-    margin-left: .9rem;
+    margin-left: 0.9rem;
   }
 
   .header-logo {
@@ -210,8 +209,8 @@ export default {
   }
 }
 
-@media (min-width: 769px){
-.page-title {
+@media (min-width: 769px) {
+  .page-title {
     padding: 0.5rem 0;
   }
 }

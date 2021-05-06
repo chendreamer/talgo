@@ -5,7 +5,7 @@
         <Header></Header>
       </el-header>
       <div>
-        <h2 id="bookTitle">{{bookTitle}}</h2>
+        <h2 id="bookTitle">{{ bookTitle }}</h2>
       </div>
       <!-- <pre
         id="textCalculation"
@@ -27,7 +27,13 @@
           <div v-else>
             <div id="textContent" :style="textContentTop">
               <p id="heightCalculation" v-if="calculating"></p>
-              <p v-else v-for="(item,index) in currentPageContentArray" :key="index">{{item.text}}</p>
+              <p
+                v-else
+                v-for="(item, index) in currentPageContentArray"
+                :key="index"
+              >
+                {{ item.text }}
+              </p>
             </div>
           </div>
         </div>
@@ -40,13 +46,13 @@
         </div>
       </div>
 
-      <h2 class="tc read-pagination" style="color:white;margin-top:.5rem">
+      <h2 class="tc read-pagination" style="color: white; margin-top: 0.5rem">
         <img
           class="pagination-btn-mobile read-last hover"
           src="../assets/images/left-arrow.png"
           @click="lastPage"
         />
-        {{currentPage}}/{{totalPage}}
+        {{ currentPage }}/{{ totalPage }}
         <img
           class="pagination-btn-mobile read-next hover"
           src="../assets/images/right-arrow.png"
@@ -61,6 +67,7 @@
 import axios from "axios";
 import i18n from "@/i18n";
 import Header from "@/components/Header.vue";
+import _ from "lodash";
 export default {
   components: { Header },
   name: "read",
@@ -172,7 +179,7 @@ export default {
         //计算每段行数,固定每页17行
         that.contentArray.forEach((element, index) => {
           textContainer.innerHTML = element;
-          var _tempLineNum = textContainer.clientHeight / 28; //每行高28px
+          var _tempLineNum = Math.round(textContainer.clientHeight / 28); //每行高28px  ,防止设备差异导致不是整数
           if (index == 0) {
             that.contentHeightArray.push(_tempLineNum);
           } else {
@@ -239,22 +246,22 @@ export default {
         that.calculating = false;
       });
     },
-    nextPage: function () {
+    nextPage: _.throttle(function () {
       var that = this;
       if (that.currentPage < that.totalPage) {
         that.init_startIndex = that.currentPageContentArray.pop().index;
         that.currentPage++;
         that.produceCurrentContentArray();
       }
-    },
-    lastPage: function () {
+    }, 500),
+    lastPage: _.throttle(function () {
       var that = this;
       if (that.currentPage > 1) {
         that.init_startIndex = that.currentPageContentArray.pop().index;
         that.currentPage--;
         that.produceCurrentContentArray();
       }
-    },
+    }, 500),
     getType: function (width) {
       //依据屏幕宽度划分出不同类型
       if (width < 320) {
@@ -292,10 +299,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#textContainer{
-  box-sizing: border-box;
-}
 
+#textContent p {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 @media (max-width: 320px) {
   #bookTitle {
@@ -462,7 +470,7 @@ export default {
 }
 
 @media (min-width: 521px) and (max-width: 640px) {
-   #bookTitle {
+  #bookTitle {
     color: #f8ab08;
     font-size: 2rem;
     padding-left: 5%;

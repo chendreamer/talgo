@@ -30,6 +30,7 @@ export default {
   data: function () {
     return {
       listURL: this.$store.state.media_server + "/book",
+      user: "peter",
     };
   },
 };
@@ -37,9 +38,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
-@media (max-width:320px){
-.book-content {
+@media (max-width: 320px) {
+  .book-content {
     .page-logo {
       display: none;
     }
@@ -49,8 +49,8 @@ export default {
   }
 }
 
-@media (min-width:321px) and (max-width:360px){
-.book-content {
+@media (min-width: 321px) and (max-width: 360px) {
+  .book-content {
     .page-logo {
       display: none;
     }
@@ -71,8 +71,8 @@ export default {
   }
 }
 
-@media (min-width:421px) and (max-width:520px){
-.book-content {
+@media (min-width: 421px) and (max-width: 520px) {
+  .book-content {
     .page-logo {
       display: none;
     }
@@ -93,8 +93,8 @@ export default {
   }
 }
 
-@media (min-width:641px) and (max-width:768px){
-.book-content {
+@media (min-width: 641px) and (max-width: 768px) {
+  .book-content {
     .page-logo {
       display: none;
     }
@@ -104,8 +104,8 @@ export default {
   }
 }
 
-@media (min-width:769px) and (max-width:999px){
-.book-content {
+@media (min-width: 769px) and (max-width: 999px) {
+  .book-content {
     display: flex;
     .book-content-logo {
       width: 30%;
@@ -116,8 +116,8 @@ export default {
   }
 }
 
-@media (min-width:1000px) and (max-width:1239px){
-.book-content {
+@media (min-width: 1000px) and (max-width: 1239px) {
+  .book-content {
     display: flex;
     .book-content-logo {
       width: 25%;

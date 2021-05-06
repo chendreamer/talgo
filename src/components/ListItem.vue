@@ -186,6 +186,7 @@ export default {
 .image-cover {
   //margin: 0 auto;
   background-size: cover;
+  background-position: center;
   border-radius: 4px;
 }
 

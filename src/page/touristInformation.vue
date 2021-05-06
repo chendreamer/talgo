@@ -8,16 +8,20 @@
         <multimedia-logo pagename="tourist" class="container"></multimedia-logo>
       </div>
       <div class="filter-list clearfix container">
-        <div class="hover prev" v-show="currentChecked != 0" @click="trigger(currentChecked -1)">
+        <div
+          class="hover prev"
+          v-show="currentChecked != 0"
+          @click="trigger(currentChecked - 1)"
+        >
           <span class="left"></span>
-          <span class="ellipsis">{{filterData[currentChecked-1]}}</span>
+          <span class="ellipsis">{{ filterData[currentChecked - 1] }}</span>
         </div>
         <div
           class="hover next"
-          v-show="currentChecked != filterData.length -1"
-          @click="trigger(currentChecked +1)"
+          v-show="currentChecked != filterData.length - 1"
+          @click="trigger(currentChecked + 1)"
         >
-          <span class="ellipsis">{{filterData[currentChecked+1]}}</span>
+          <span class="ellipsis">{{ filterData[currentChecked + 1] }}</span>
           <span class="right"></span>
         </div>
         <!-- <div
@@ -30,23 +34,27 @@
       </div>
       <div class="container page">
         <div class="page-left">
-        <div class="swiper" style="position: relative;">
-          <div class="current-swiper swiper-container">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(item,index) in pictureArray" :key="index">
+          <div class="swiper" style="position: relative">
+            <div class="current-swiper swiper-container">
+              <div class="swiper-wrapper">
+                <div
+                  class="swiper-slide"
+                  v-for="(item, index) in pictureArray"
+                  :key="index"
+                >
                   <img class="swiper-slide" :src="item" />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="swiper-button-prev"></div>
+            <div class="swiper-button-prev"></div>
 
-          <div class="swiper-button-next"></div>
-        </div>
+            <div class="swiper-button-next"></div>
+          </div>
         </div>
 
         <div class="detile">
           <div class="detile-content">
-            <span class="title flex-1 ellipsis">{{headerContent}}</span>
+            <span class="title flex-1 ellipsis">{{ headerContent }}</span>
             <el-rate
               v-model="value"
               disabled
@@ -58,7 +66,7 @@
           </div>
 
           <p class="artical-introduction">Introduction</p>
-          <p class="artical">{{introduction}}</p>
+          <p class="artical">{{ introduction }}</p>
         </div>
       </div>
     </el-container>
@@ -71,8 +79,9 @@ import i18n from "@/i18n";
 import Header from "@/components/Header.vue";
 import MultimediaLogo from "@/components/MultimediaLogo.vue";
 import "../assets/style/swiper.min.css";
+import _ from "lodash";
 //import Swiper from "swiper";
-import Swiper from 'swiper/js/swiper.min.js';
+import Swiper from "swiper/js/swiper.min.js";
 
 let swiper;
 export default {
@@ -131,14 +140,14 @@ export default {
         swiper.destroy();
       }
       swiper = new Swiper(".swiper-container", {
-        updateOnImagesReady : true,
+        updateOnImagesReady: true,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
       });
     },
-    trigger: function (index) {
+    trigger: _.debounce(function (index) {
       let that = this;
       that.currentChecked = index;
       //console.log(index);
@@ -153,7 +162,7 @@ export default {
       that.$nextTick(function () {
         that.swiperInit();
       });
-    },
+    }, 300),
     ifCheck: function (index) {
       return this.currentChecked == index;
     },
@@ -651,7 +660,7 @@ export default {
   .page-left {
     width: 45%;
     //height:400px;
-   //line-height: 360px;
+    //line-height: 360px;
   }
   .page {
     display: flex;
@@ -697,6 +706,9 @@ export default {
   }
 }
 
+.artical {
+  word-break: break-word;
+}
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);

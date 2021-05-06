@@ -1,18 +1,21 @@
 <template>
   <div class="filter-list">
     <div
-      v-for="(item,index) in filterData"
+      v-for="(item, index) in filterData"
       :key="index"
       class="filter-item hover"
-      :class="{checked:ifCheck(index)}"
-      @click="trigger(item.navigation_bar,index)"
-    >{{item.navigation_bar}}</div>
+      :class="{ checked: ifCheck(index) }"
+      @click="trigger(item.navigation_bar, index)"
+    >
+      {{ item.navigation_bar }}
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import i18n from "@/i18n";
+import _ from "lodash";
 
 export default {
   name: "FilterList",
@@ -46,11 +49,15 @@ export default {
       });
   },
   methods: {
-    trigger: function (item, index) {
+    trigger: _.debounce(function (item, index) {
       this.currentChecked = index;
-
       this.$emit("navigation", item);
-    },
+    }, 300),
+    // trigger: function (item, index) {
+    //   this.currentChecked = index;
+
+    //   this.$emit("navigation", item);
+    // },
     ifCheck: function (index) {
       return this.currentChecked == index;
     },
@@ -59,9 +66,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-@media (max-width:320px){
-.filter-list {
+@media (max-width: 320px) {
+  .filter-list {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1rem;
@@ -69,7 +75,7 @@ export default {
   .filter-item {
     height: 28px;
     line-height: 28px;
-    font-size: .75rem;
+    font-size: 0.75rem;
     color: #fff;
     width: 30%;
     background-color: #820063;
@@ -85,8 +91,8 @@ export default {
   }
 }
 
-@media (min-width:321px) and (max-width:360px){
-.filter-list {
+@media (min-width: 321px) and (max-width: 360px) {
+  .filter-list {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1rem;
@@ -94,7 +100,7 @@ export default {
   .filter-item {
     height: 28px;
     line-height: 28px;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: #fff;
     width: 30%;
     background-color: #820063;
@@ -135,8 +141,8 @@ export default {
   }
 }
 
-@media (min-width:421px) and (max-width:520px){
-.filter-list {
+@media (min-width: 421px) and (max-width: 520px) {
+  .filter-list {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1rem;
@@ -144,7 +150,7 @@ export default {
   .filter-item {
     height: 28px;
     line-height: 28px;
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: #fff;
     width: 30%;
     background-color: #820063;
@@ -185,8 +191,8 @@ export default {
   }
 }
 
-@media (min-width:641px) and (max-width:768px){
-.filter-list {
+@media (min-width: 641px) and (max-width: 768px) {
+  .filter-list {
     display: flex;
     justify-content: space-around;
     margin-bottom: 1rem;
@@ -194,7 +200,7 @@ export default {
   .filter-item {
     height: 40px;
     line-height: 36px;
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: #fff;
     width: 18%;
     background-color: #820063;
@@ -205,8 +211,8 @@ export default {
   }
 }
 
-@media (min-width:769px) and (max-width:999px){
-.filter-list {
+@media (min-width: 769px) and (max-width: 999px) {
+  .filter-list {
     display: flex;
     justify-content: space-around;
     margin-bottom: 1rem;
@@ -214,7 +220,7 @@ export default {
   .filter-item {
     height: 40px;
     line-height: 36px;
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: #fff;
     width: 18.5%;
     background-color: #820063;
@@ -226,8 +232,8 @@ export default {
   }
 }
 
-@media (min-width:1000px) and (max-width:1239px){
-.filter-list {
+@media (min-width: 1000px) and (max-width: 1239px) {
+  .filter-list {
     display: flex;
     justify-content: space-around;
     margin-bottom: 1rem;
@@ -269,7 +275,7 @@ export default {
 }
 
 .checked {
-    background-color: #fff;
-    color: #820063;
-  }
+  background-color: #fff;
+  color: #820063;
+}
 </style>
