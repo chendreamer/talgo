@@ -142,10 +142,10 @@ export default {
             that.summary_title = response["data"]["data"][0]["title"];
             that.summary_director = response["data"]["data"][0]["director"];
             that.summary_region = response["data"]["data"][0]["region"];
-            that.summary_length = response["data"]["data"][0]["director"];
-            that.summary_mainActor = response["data"]["data"][0]["director"];
-            that.summary_type = response["data"]["data"][0]["director"];
-            that.summary_releaseTime = response["data"]["data"][0]["director"];
+            that.summary_length = response["data"]["data"][0]["mins"];
+            that.summary_mainActor = response["data"]["data"][0]["performer"];
+            that.summary_type = response["data"]["data"][0]["navigation"];
+            that.summary_releaseTime = response["data"]["data"][0]["release_time"];
           } else {
             that.summary_title = response["data"]["data"][0]["title"];
             that.summary_author = response["data"]["data"][0]["author"];
