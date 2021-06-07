@@ -34,9 +34,12 @@ export default {
   data: function () {
     return {
       languageListArray: [
-        [require("../assets/images/English.png"), "English", 1, "en"],
+        // [require("../assets/images/English.png"), "English", 1, "en"],
+        // [require("../assets/images/Español.png"), "Español", 0, "es"],
+        // [require("../assets/images/Français.png"), "Français", 0, "fr"],
+        [require("../assets/images/Russia.png"), "русский", 1, "en"],
         [require("../assets/images/Español.png"), "Español", 0, "es"],
-        [require("../assets/images/Français.png"), "Français", 0, "fr"],
+        [require("../assets/images/Uzbekistan.png"), "O'zbek", 0, "fr"],
       ],
     };
   },

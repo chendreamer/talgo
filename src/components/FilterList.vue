@@ -5,9 +5,9 @@
       :key="index"
       class="filter-item hover"
       :class="{ checked: ifCheck(index) }"
-      @click="trigger(item.navigation_bar, index)"
+      @click="trigger(item.origin, index)"
     >
-      {{ item.navigation_bar }}
+      {{ item.real }}
     </div>
   </div>
 </template>
@@ -39,9 +39,31 @@ export default {
         params: that.filterParam,
       })
       .then(function (response) {
-        console.log(response);
         response["data"]["data"].forEach((element) => {
-          that.filterData.push(element);
+          //var a = "filter_" + element.navigation_bar;
+          var a = i18n.tc("message.filter_" + element.navigation_bar);
+          // switch (element.navigation_bar) {
+          //   case "All":
+          //     a = i18n.tc("message.filter_" + element.navigation_bar);
+          //     break;
+          //   case "Romance":
+          //     a = i18n.tc("message.filter_romance");
+          //     break;
+          //   case "Comedy":
+          //     a = i18n.tc("message.filter_comedy");
+          //     break;
+          //   case "Adventure":
+          //     a = i18n.tc("message.filter_adventure");
+          //     break;
+          //   case "Cartoon":
+          //     a = i18n.tc("message.filter_cartoon");
+          //     break;
+          // }
+          //console.log(a);
+          //展示real ，查询用origin
+          that.filterData.push({ origin: element.navigation_bar, real: a });
+          //i18n.tc("message.multimedia")
+          //that.filterData.push(element);
         });
       })
       .catch(function (error) {
@@ -75,7 +97,7 @@ export default {
   .filter-item {
     height: 28px;
     line-height: 28px;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     color: #fff;
     width: 30%;
     background-color: #820063;
@@ -100,7 +122,7 @@ export default {
   .filter-item {
     height: 28px;
     line-height: 28px;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     color: #fff;
     width: 30%;
     background-color: #820063;
@@ -125,7 +147,7 @@ export default {
   .filter-item {
     height: 28px;
     line-height: 28px;
-    font-size: 1rem;
+    font-size: 0.7rem;
     color: #fff;
     width: 30%;
     background-color: #820063;
@@ -150,7 +172,7 @@ export default {
   .filter-item {
     height: 28px;
     line-height: 28px;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     color: #fff;
     width: 30%;
     background-color: #820063;
@@ -175,7 +197,7 @@ export default {
   .filter-item {
     height: 28px;
     line-height: 28px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #fff;
     width: 30%;
     background-color: #820063;
@@ -200,7 +222,7 @@ export default {
   .filter-item {
     height: 40px;
     line-height: 36px;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: #fff;
     width: 18%;
     background-color: #820063;
@@ -220,7 +242,7 @@ export default {
   .filter-item {
     height: 40px;
     line-height: 36px;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     color: #fff;
     width: 18.5%;
     background-color: #820063;
@@ -241,7 +263,7 @@ export default {
   .filter-item {
     height: 44px;
     line-height: 40px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     color: #fff;
     width: 18.5%;
     background-color: #820063;
@@ -262,7 +284,7 @@ export default {
   .filter-item {
     height: 48px;
     line-height: 44px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #fff;
     width: 18.5%;
     background-color: #820063;
@@ -277,5 +299,11 @@ export default {
 .checked {
   background-color: #fff;
   color: #820063;
+}
+
+.filter-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>

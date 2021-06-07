@@ -3,17 +3,25 @@
     <div class="main-content">
       <div class="select-language">
           <div class="language language-en" language="en" @click="setLang('en')">
-            <p>Hello</p>
-            <img src="../assets/images/UK.png" />
+            <p>Привет</p>
+            <img src="../assets/images/Russia.jpg" />
           </div>
           <div class="language language-fr" language="fr" @click="setLang('es')">
+            <p>Salom</p>
+            <img src="../assets/images/Uzbekistan.jpg" />
+          </div>
+          <div class="language language-sp" language="es" @click="setLang('fr')">
+            <p>Bonjour</p>
+            <img src="../assets/images/Spain.png" />
+          </div>
+          <!-- <div class="language language-fr" language="fr" @click="setLang('es')">
             <p>Halo</p>
             <img src="../assets/images/France.png" />
           </div>
           <div class="language language-sp" language="es" @click="setLang('fr')">
             <p>Bonjour</p>
             <img src="../assets/images/Spain.png" />
-          </div>
+          </div> -->
         
       </div>
 

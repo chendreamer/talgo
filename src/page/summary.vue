@@ -27,29 +27,29 @@
           <div class="summary-list" v-if="summaryType == 'video'">
             <div class="flex-first">
               <p class>
-                <em>Director:</em>
+                <em>{{$t("message.summary_director")}}:</em>
                 {{summary_director}}
               </p>
               <p class>
-                <em>Region:</em>
+                <em>{{$t("message.summary_region")}}:</em>
                 {{summary_region}}
               </p>
               <p class>
-                <em>Length:</em>
+                <em>{{$t("message.summary_length")}}:</em>
                 {{summary_length}}
               </p>
             </div>
             <div class="flex-all">
               <p class>
-                <em>Main Actor:</em>
+                <em>{{$t("message.summary_main_actor")}}:</em>
                 {{summary_mainActor}}
               </p>
               <p class>
-                <em>Type:</em>
+                <em>{{$t("message.summary_type")}}:</em>
                 {{summary_type}}
               </p>
               <p class>
-                <em>Release Time:</em>
+                <em>{{$t("message.summary_release_time")}}:</em>
                 {{summary_releaseTime}}
               </p>
             </div>
@@ -57,22 +57,22 @@
           <div class="summary-list" v-else>
             <div class="flex-all">
               <p class>
-                <em>Author:</em>
+                <em>{{$t("message.summary_author")}}:</em>
                 {{summary_author}}
               </p>
               <p class>
-                <em>Publishing House:</em>
+                <em>{{$t("message.summary_publishing_house")}}:</em>
                 {{summary_publishingHouse}}
               </p>
               <p class>
-                <em>Publication Time:</em>
+                <em>{{$t("message.summary_publication_time")}}:</em>
                 {{summary_publicationTime}}
               </p>
             </div>
           </div>
 
-          <p class="review-title" v-if="summaryType == 'video'">Movie Review ></p>
-          <p class="review-title" v-else>Novel Review ></p>
+          <p class="review-title" v-if="summaryType == 'video'">{{$t("message.summary_movie_review")}} ></p>
+          <p class="review-title" v-else>{{$t("message.summary_novel_review")}} ></p>
           <p class="review-content">{{summary_review}}</p>
         </div>
       </div>
@@ -142,10 +142,10 @@ export default {
             that.summary_title = response["data"]["data"][0]["title"];
             that.summary_director = response["data"]["data"][0]["director"];
             that.summary_region = response["data"]["data"][0]["region"];
-            that.summary_length = response["data"]["data"][0]["director"];
-            that.summary_mainActor = response["data"]["data"][0]["director"];
-            that.summary_type = response["data"]["data"][0]["director"];
-            that.summary_releaseTime = response["data"]["data"][0]["director"];
+            that.summary_length = response["data"]["data"][0]["mins"];
+            that.summary_mainActor = response["data"]["data"][0]["performer"];
+            that.summary_type = response["data"]["data"][0]["navigation"];
+            that.summary_releaseTime = response["data"]["data"][0]["release_time"];
           } else {
             that.summary_title = response["data"]["data"][0]["title"];
             that.summary_author = response["data"]["data"][0]["author"];

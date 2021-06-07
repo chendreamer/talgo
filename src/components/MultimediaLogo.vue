@@ -95,61 +95,56 @@ export default {
 
 @media (max-width: 320px) {
   span {
-    font-size: 0.9rem;
-    margin-left: 0.25rem;
+    font-size: 0.85rem;
+    margin-left: 0.2rem;
   }
   .header-logo {
     width: 1.2rem;
     height: 1.2rem;
-    vertical-align: middle;
   }
 }
 
 @media (min-width: 321px) and (max-width: 360px) {
   span {
-    font-size: 1rem;
-    margin-left: 0.3rem;
+    font-size: 0.9rem;
+    margin-left: 0.25rem;
   }
   .header-logo {
     width: 1.4rem;
     height: 1.4rem;
-    vertical-align: middle;
   }
 }
 
 @media (min-width: 361px) and (max-width: 420px) {
   span {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-left: 0.35rem;
   }
   .header-logo {
     width: 1.6rem;
     height: 1.6rem;
-    vertical-align: middle;
   }
 }
 
 @media (min-width: 421px) and (max-width: 520px) {
   span {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     margin-left: 0.4rem;
   }
   .header-logo {
     width: 1.7rem;
     height: 1.7rem;
-    vertical-align: middle;
   }
 }
 
 @media (min-width: 521px) and (max-width: 640px) {
   span {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-left: 0.5rem;
   }
   .header-logo {
     width: 1.9rem;
     height: 1.9rem;
-    vertical-align: middle;
   }
 }
 
@@ -161,7 +156,6 @@ export default {
   .header-logo {
     width: 2rem;
     height: 2rem;
-    vertical-align: middle;
   }
 }
 
@@ -173,7 +167,6 @@ export default {
   .header-logo {
     width: 2.4rem;
     height: 2.4rem;
-    vertical-align: middle;
   }
 }
 
@@ -186,7 +179,6 @@ export default {
   .header-logo {
     width: 2.4rem;
     height: 2.4rem;
-    vertical-align: middle;
   }
 }
 
@@ -199,7 +191,6 @@ export default {
   .header-logo {
     width: 2.4rem;
     height: 2.4rem;
-    vertical-align: middle;
   }
 }
 
@@ -217,5 +208,9 @@ export default {
 
 span {
   display: inline-block;
+}
+
+.header-logo {
+  vertical-align: middle;
 }
 </style>

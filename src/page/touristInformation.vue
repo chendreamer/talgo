@@ -7,7 +7,7 @@
       <div class="bg-color">
         <multimedia-logo pagename="tourist" class="container"></multimedia-logo>
       </div>
-      <div class="filter-list clearfix container">
+      <div v-if="responseData.length" class="filter-list clearfix container">
         <div
           class="hover prev"
           v-show="currentChecked != 0"
@@ -32,9 +32,9 @@
           @click="trigger(index)"
         >{{item}}</div>-->
       </div>
-      <div class="container page">
+      <div class="container page" v-if="responseData.length">
         <div class="page-left">
-          <div class="swiper" style="position: relative">
+          <div class="swiper">
             <div class="current-swiper swiper-container">
               <div class="swiper-wrapper">
                 <div
@@ -42,6 +42,7 @@
                   v-for="(item, index) in pictureArray"
                   :key="index"
                 >
+                  <!-- @load="loaded(index)" -->
                   <img class="swiper-slide" :src="item" />
                 </div>
               </div>
@@ -95,6 +96,7 @@ export default {
       introduction: "",
       filterData: [],
       currentChecked: 0,
+      loadedImageSize: 0,
     };
   },
   mounted: function () {
@@ -106,12 +108,16 @@ export default {
         },
       })
       .then(function (response) {
-        console.log(response);
+        //console.log(response);
         that.responseData = response["data"]["data"];
         that.responseData.forEach((element) => {
           that.filterData.push(element.title);
         });
-        that.trigger(0);
+        //filterData有内容才init
+        if (that.filterData.length) {
+         // console.log("---init start---");
+          that.trigger(0);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -159,13 +165,22 @@ export default {
       that.introduction = that.responseData[index]["description"];
       that.value = that.responseData[index]["score"] / 2;
 
-      that.$nextTick(function () {
-        that.swiperInit();
-      });
+      if (that.responseData.length != 0) {
+        that.$nextTick(function () {
+          that.swiperInit();
+        });
+      }
     }, 300),
-    ifCheck: function (index) {
-      return this.currentChecked == index;
-    },
+    // ifCheck: function (index) {
+    //   return this.currentChecked == index;
+    // },
+    // loaded : function(param){
+    //   this.loadedImageSize++;
+    //   console.log(param);
+    //   console.log('img loaded');
+    //   console.log(this.pictureArray.length);
+    //   console.log(this.loadedImageSize);
+    // }
   },
   computed: {
     scoreTemplate: function () {
@@ -734,6 +749,9 @@ export default {
 }
 .flex-1 {
   flex: 1;
+}
+.swiper {
+  position: relative;
 }
 .swiper-wrapper {
   align-items: center;

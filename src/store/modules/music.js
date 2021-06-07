@@ -9,8 +9,8 @@ const state = {
   singerOrAlubmArray: [], //歌手专辑列表
   navigationName: "All",
   //media_server: 'http://172.19.6.20',//f070媒体服务器ip
-  media_server: 'http://172.19.3.20',//re02媒体服务器ip
-  //media_server: 'http://172.18.11.20',//f075媒体服务器ip
+  //media_server: 'http://172.19.3.20',//re02媒体服务器ip
+  media_server: 'http://172.18.11.20',//f075媒体服务器ip
   //media_server: 'http://office.theonecraft.com:22280',//公网媒体服务器ip
   musicDuration: 0,  //音乐总时长
   musicCurrentTime: 0,  //音乐当前时间

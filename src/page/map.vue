@@ -6,41 +6,57 @@
       </el-header>
       <div class="map-content container">
         <div class="train-information">
-          <p class="header">{{$t("message.map")}}</p>
+          <p class="header">{{ $t("message.map") }}</p>
           <div class="data-list">
             <div class="data-list-item">
-              <p class="title" v-if="!trainNumberStatus">{{$t("message.travelledDistance")}}</p>
-              <p class="data" v-if="!trainNumberStatus">{{getTtravelledDistance}}</p>
+              <p class="title" v-if="!trainNumberStatus">
+                {{ $t("message.travelledDistance") }}
+              </p>
+              <p class="data" v-if="!trainNumberStatus">
+                {{ getTtravelledDistance }}
+              </p>
             </div>
             <div class="data-list-item">
-              <p class="title" v-if="!trainNumberStatus">{{$t("message.distanceToGo")}}</p>
-              <p class="data" v-if="!trainNumberStatus">{{getDistanceToGo}}</p>
+              <p class="title" v-if="!trainNumberStatus">
+                {{ $t("message.distanceToGo") }}
+              </p>
+              <p class="data" v-if="!trainNumberStatus">
+                {{ getDistanceToGo }}
+              </p>
             </div>
             <div class="data-list-item">
-              <p class="title">{{$t("message.trainSpeed")}}</p>
-              <p class="data">{{getSpeed}}</p>
+              <p class="title">{{ $t("message.trainSpeed") }}</p>
+              <p class="data">{{ getSpeed }}</p>
             </div>
             <div class="data-list-item">
-              <p class="title" v-if="!trainNumberStatus">{{$t("message.nextStation")}}</p>
-              <p class="data" v-if="!trainNumberStatus">{{getNextStation}}</p>
+              <p class="title" v-if="!trainNumberStatus">
+                {{ $t("message.nextStation") }}
+              </p>
+              <p class="data" v-if="!trainNumberStatus">{{ getNextStation }}</p>
             </div>
             <div class="data-list-item">
-              <p class="title" v-if="!trainNumberStatus">{{$t("message.arrivalTime")}}</p>
-              <p class="data" v-if="!trainNumberStatus">{{getArrivalTime}}</p>
+              <p class="title" v-if="!trainNumberStatus">
+                {{ $t("message.arrivalTime") }}
+              </p>
+              <p class="data" v-if="!trainNumberStatus">{{ getArrivalTime }}</p>
             </div>
             <div class="data-list-item">
-              <p class="title">{{$t("message.geographicPosition")}}</p>
-              <p class="data">{{getGeographicPosition}}</p>
+              <p class="title">{{ $t("message.geographicPosition") }}</p>
+              <p class="data">{{ getGeographicPosition }}</p>
             </div>
             <div class="data-list-item">
               <p
                 class="title"
                 v-if="!trainNumberStatus && !InformationOfDelayStatus"
-              >{{$t("message.informationOfDelay")}}</p>
+              >
+                {{ $t("message.informationOfDelay") }}
+              </p>
               <p
                 class="data"
                 v-if="!trainNumberStatus && !InformationOfDelayStatus"
-              >{{getInformationOfDelay}}</p>
+              >
+                {{ getInformationOfDelay }}
+              </p>
             </div>
           </div>
         </div>
@@ -73,7 +89,7 @@ export default {
     return {
       lang: "",
       currentMarker: null,
-      currentLine:null,
+      currentLine: null,
       map: null,
       //iconImage:'require("../static/images/marker-icon-2x.png")'
     };
@@ -108,8 +124,8 @@ export default {
         });
       });
 
-    console.log(1);
-console.log(L);
+    // console.log(1);
+    // console.log(L);
     var osmUrl =
       this.$store.state.media_server + "/resource/tiles/4uMaps/{z}/{x}/{y}.png"; //tiles\
     //var osmUrl = "http://localhost/{z}/{x}/{y}.png", //tiles
@@ -133,7 +149,7 @@ console.log(L);
       //当前位置
       // var _latitude = parseFloat(localStorage.getItem('latitude'));
       // 	var _longitude = parseFloat(localStorage.getItem('longitude'));
-      console.log(4);
+      //console.log(4);
       var myIcon = L.icon({
         iconUrl: iconImage,
         iconSize: [24, 41],
@@ -143,9 +159,9 @@ console.log(L);
         //shadowSize: [68, 95],
         // shadowAnchor: [22, 94]
       });
-      console.log("画标记");
-      console.log(that.getLatitude);
-      console.log(that.getLongitude);
+      // console.log("画标记");
+      // console.log(that.getLatitude);
+      // console.log(that.getLongitude);
       if (that.getLatitude != 0 && that.getLongitude != 0) {
         that.currentMarker = L.marker([that.getLatitude, that.getLongitude], {
           icon: myIcon,
@@ -165,7 +181,7 @@ console.log(L);
       //   [40.405, -3.913]
       // ];
       //var polyline =
-      console.log("画线路");
+      //console.log("画线路");
       that.currentLine = L.polyline(that.getTrainNumberGPS, {
         color: "#820063",
         weight: 2,
@@ -264,7 +280,7 @@ console.log(L);
         icon: myIcon,
       }).addTo(that.map);
     },
-    drawNewLine:function(){
+    drawNewLine: function () {
       var that = this;
       if (that.currentLine != null) {
         that.map.removeLayer(that.currentLine);
@@ -298,7 +314,7 @@ console.log(L);
   .map-content {
     .train-information {
       .header {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         border-bottom: 2px solid #820063;
         color: #820063;
         padding-left: 0.1rem;
@@ -313,18 +329,21 @@ console.log(L);
           .title {
             height: 26px;
             line-height: 26px;
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: #fff;
             background-color: #820063;
             border-radius: 4px;
             margin-top: 0.4rem;
             margin-bottom: 0.1rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
           .data {
             border-bottom: 2px solid #820063;
             height: 26px;
             line-height: 26px;
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: #820063;
           }
         }
@@ -341,7 +360,7 @@ console.log(L);
   .map-content {
     .train-information {
       .header {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         border-bottom: 2px solid #820063;
         color: #820063;
         padding-left: 0.15rem;
@@ -351,12 +370,12 @@ console.log(L);
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 144px;
-          margin: 0 0.15rem;
+          width: 146px;
+          margin: 0 0.1rem;
           .title {
             height: 28px;
             line-height: 28px;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #fff;
             background-color: #820063;
             border-radius: 4px;
@@ -384,7 +403,7 @@ console.log(L);
   .map-content {
     .train-information {
       .header {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         border-bottom: 2px solid #820063;
         color: #820063;
         padding-left: 0.2rem;
@@ -394,12 +413,12 @@ console.log(L);
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 162px;
-          margin: 0 0.2rem;
+          width: 166px;
+          margin: 0 0.1rem;
           .title {
             height: 32px;
             line-height: 32px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #fff;
             background-color: #820063;
             border-radius: 4px;
@@ -427,7 +446,7 @@ console.log(L);
   .map-content {
     .train-information {
       .header {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         border-bottom: 2px solid #820063;
         color: #820063;
         padding-left: 0.4rem;
@@ -437,16 +456,16 @@ console.log(L);
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 174px;
-          margin: 0 0.4rem;
+          width: 180px;
+          margin: 0 0.25rem;
           .title {
             height: 36px;
             line-height: 36px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #fff;
             background-color: #820063;
             border-radius: 5px;
-            margin-top: 0.7rem;
+            margin-top: 0.75rem;
             margin-bottom: 0.25rem;
           }
           .data {
@@ -470,7 +489,7 @@ console.log(L);
   .map-content {
     .train-information {
       .header {
-        font-size: 2rem;
+        font-size: 1.8rem;
         border-bottom: 2px solid #820063;
         color: #820063;
         padding-left: 0.5rem;
@@ -480,8 +499,8 @@ console.log(L);
         text-align: center;
         flex-wrap: wrap;
         .data-list-item {
-          width: 220px;
-          margin: 0 0.5rem;
+          width: 224px;
+          margin: 0 0.4rem;
           .title {
             height: 36px;
             line-height: 36px;
@@ -496,7 +515,7 @@ console.log(L);
             border-bottom: 2px solid #820063;
             height: 36px;
             line-height: 36px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #820063;
           }
         }
@@ -513,7 +532,7 @@ console.log(L);
   .map-content {
     .train-information {
       .header {
-        font-size: 2rem;
+        font-size: 1.9rem;
         border-bottom: 2px solid #820063;
         color: #820063;
         padding-left: 0.5rem;
@@ -539,7 +558,7 @@ console.log(L);
             border-bottom: 2px solid #820063;
             height: 36px;
             line-height: 36px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #820063;
           }
         }
@@ -567,7 +586,7 @@ console.log(L);
       .title {
         height: 36px;
         line-height: 36px;
-        font-size: 1rem;
+        font-size: 0.85rem;
         color: #fff;
         background-color: #820063;
         border-radius: 5px;
@@ -578,7 +597,7 @@ console.log(L);
         border-bottom: 2px solid #820063;
         height: 36px;
         line-height: 36px;
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: #820063;
       }
     }
@@ -615,7 +634,7 @@ console.log(L);
         border-bottom: 2px solid #820063;
         height: 40px;
         line-height: 40px;
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: #820063;
       }
     }
@@ -653,9 +672,19 @@ console.log(L);
         border-bottom: 2px solid #820063;
         height: 40px;
         line-height: 40px;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         color: #820063;
       }
+    }
+  }
+}
+
+.data-list {
+  .data-list-item {
+    .data {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }

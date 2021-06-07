@@ -67,41 +67,53 @@ export default {
 
 @media (max-width: 320px) {
   .menu-item {
-    padding: .3rem;
-    padding-left: .6rem;
+    padding: .3rem .2rem .3rem .5rem;
+    // padding-left: .5rem;
     margin-top: .8rem;
     border-radius: 2rem;
-    font-size: .9rem;
+    font-size: .8rem;
     > .menu-img {
-      width: 1.7rem;
-      height: 1.7rem;
-      margin-right: .5rem;
+      width: 1.65rem;
+      height: 1.65rem;
+      margin-right: .4rem;
     }
   }
 }
 
 @media (min-width: 321px) and (max-width: 360px) {
   .menu-item {
-    padding: .3rem;
-    padding-left: .8rem;
+    padding: .3rem .3rem .3rem .6rem;
     margin-top: .9rem;
     border-radius: 2rem;
-    font-size: 1rem;
+    font-size: .85rem;
     > .menu-img {
-      width: 1.8rem;
-      height: 1.8rem;
-      margin-right: .6rem;
+      width: 1.7rem;
+      height: 1.7rem;
+      margin-right: .4rem;
     }
   }
 }
 
 @media (min-width: 361px) and (max-width: 420px) {
   .menu-item {
-    padding: .4rem;
-    padding-left: 1rem;
+    padding: .4rem .4rem .4rem .8rem;
     margin-top: 1rem;
     border-radius: 2rem;
-    font-size: 1.1rem;
+    font-size: .95rem;
+    > .menu-img {
+      width: 1.8rem;
+      height: 1.8rem;
+      margin-right: 0.6rem;
+    }
+  }
+}
+
+@media (min-width: 421px) and (max-width: 520px) {
+  .menu-item {
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    margin-top: 1.1rem;
+    border-radius: 40px;
+    font-size: 1.05rem;
     > .menu-img {
       width: 1.9rem;
       height: 1.9rem;
@@ -110,28 +122,12 @@ export default {
   }
 }
 
-@media (min-width: 421px) and (max-width: 520px) {
-  .menu-item {
-    padding: 0.5rem;
-    padding-left: 1.2rem;
-    margin-top: 1.1rem;
-    border-radius: 40px;
-    font-size: 1.2rem;
-    > .menu-img {
-      width: 2rem;
-      height: 2rem;
-      margin-right: 0.8rem;
-    }
-  }
-}
-
 @media (min-width: 521px) and (max-width: 640px) {
   .menu-item {
-    padding: 0.5rem;
-    padding-left: 1.4rem;
+    padding: 0.5rem 0.5rem 0.5rem 1.4rem;
     margin-top: 1.3rem;
     border-radius: 40px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     > .menu-img {
       width: 2.2rem;
       height: 2.2rem;
@@ -143,13 +139,13 @@ export default {
 @media (min-width: 641px) and (max-width: 768px) {
   .menu-item {
     padding: 0.6rem;
-    padding-left: 1.4rem;
+    padding-left: 1.5rem;
     margin-top: 1.4rem;
     border-radius: 40px;
     font-size: 1.55rem;
     > .menu-img {
-      width: 2.2rem;
-      height: 2.2rem;
+      width: 2.3rem;
+      height: 2.3rem;
       margin-right: 0.9rem;
     }
   }
@@ -157,26 +153,24 @@ export default {
 
 @media (min-width: 769px) and (max-width: 999px) {
   .menu-item {
-    padding: 0.6rem;
-    padding-left: 1.4rem;
+    padding: 0.6rem 0.2rem 0.6rem 1.1rem;
     margin-top: 1.4rem;
     border-radius: 40px;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     > .menu-img {
       width: 2.2rem;
       height: 2.2rem;
-      margin-right: 0.9rem;
+      margin-right: 0.8rem;
     }
   }
 }
 
 @media (min-width: 1000px) and (max-width: 1239px) {
   .menu-item {
-    padding: 0.65rem;
-    padding-left: 1.7rem;
+    padding: 0.65rem 0.65rem 0.65rem 1.6rem;
     margin-top: 1.5rem;
     border-radius: 40px;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     > .menu-img {
       width: 2.3rem;
       height: 2.3rem;

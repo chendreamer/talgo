@@ -135,31 +135,31 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 320px) {
   h2 {
-    font-size: 0.8rem;
+    font-size: .7rem;
   }
 }
 
 @media (min-width: 321px) and (max-width: 360px) {
   h2 {
-    font-size: 0.8rem;
+    font-size: .7rem;
   }
 }
 
 @media (min-width: 361px) and (max-width: 420px) {
   h2 {
-    font-size: 0.9rem;
+    font-size: .8rem;
   }
 }
 
 @media (min-width: 421px) and (max-width: 520px) {
   h2 {
-    font-size: 1rem;
+    font-size: .9rem;
   }
 }
 
 @media (min-width: 521px) and (max-width: 640px) {
   h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 
