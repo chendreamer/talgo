@@ -6,11 +6,11 @@
             <p>Привет</p>
             <img src="../assets/images/Russia.jpg" />
           </div>
-          <div class="language language-fr" language="fr" @click="setLang('es')">
+          <div class="language language-fr" language="fr" @click="setLang('fr')">
             <p>Salom</p>
             <img src="../assets/images/Uzbekistan.jpg" />
           </div>
-          <div class="language language-sp" language="es" @click="setLang('fr')">
+          <div class="language language-sp" language="es" @click="setLang('es')">
             <p>Bonjour</p>
             <img src="../assets/images/Spain.png" />
           </div>
