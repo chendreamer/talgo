@@ -6,15 +6,14 @@
             <p>Hello</p>
             <img src="../assets/images/UK.png" />
           </div>
-          <div class="language language-fr" language="fr" @click="setLang('es')">
-            <p>Halo</p>
-            <img src="../assets/images/France.png" />
-          </div>
-          <div class="language language-sp" language="es" @click="setLang('fr')">
-            <p>Bonjour</p>
+          <div class="language language-sp" language="es" @click="setLang('es')">
+            <p>Hola</p>
             <img src="../assets/images/Spain.png" />
           </div>
-        
+          <div class="language language-fr" language="fr" @click="setLang('fr')">
+            <p>Bonjour</p>
+            <img src="../assets/images/France.png" />
+          </div>
       </div>
 
       <div class="welcome-slogan">
