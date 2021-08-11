@@ -30,23 +30,24 @@
 // }
 
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
-    devServer: {
-      host: 'localhost', // 原为: host: 'localhost'
-      }
-    // pages: {
-    //   index: {
-    //     // page 的入口
-    //     entry:   ["babel-polyfill", "src/main.js"]
-    //   }
-    // }
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
+  devServer: {
+    host: 'localhost', // 原为: host: 'localhost'
+  },
+  productionSourceMap: false
+  // pages: {
+  //   index: {
+  //     // page 的入口
+  //     entry:   ["babel-polyfill", "src/main.js"]
+  //   }
+  // }
 
 
-    // chainWebpack: config => {
-    //   config.module
-    //     .rule('images')
-    //       .use('url-loader')
-    //         .loader('url-loader')
-    //         .tap(options => Object.assign(options, { limit: 1024 }))
-    // }
-  }
+  // chainWebpack: config => {
+  //   config.module
+  //     .rule('images')
+  //       .use('url-loader')
+  //         .loader('url-loader')
+  //         .tap(options => Object.assign(options, { limit: 1024 }))
+  // }
+}
