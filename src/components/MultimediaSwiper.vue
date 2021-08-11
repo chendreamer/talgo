@@ -8,7 +8,7 @@
               <router-link to="/video">
                 <img v-once :src="videoPicPath" class="to-video" />
               </router-link>
-              <router-link to="/play">
+              <router-link to="/video">
                 <div class="name to-video">{{$t("message.video")}}</div>
               </router-link>
             </div>
