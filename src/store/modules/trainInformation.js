@@ -2,9 +2,7 @@ import mqtt from "mqtt";
 
 const state = {
     client: {}, //mqtt客户端
-    //mqtt_server: 'mqtt://172.18.11.20:21884',//f075 mqtt服务器ip
-    //mqtt_server: 'mqtt://172.18.3.20:21884',//re02 mqtt服务器ip
-    mqtt_server: 'mqtt://172.19.6.20:21884',//f070 mqtt服务器ip
+    mqtt_server: 'mqtt://172.19.3.20:21884',//当前mqtt服务器ip
     train_number: 'null',//列车号
     temperature: 'null',//温度
     speed: 'null',//速度
