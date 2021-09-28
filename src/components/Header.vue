@@ -3,16 +3,18 @@
     <div class="header-container">
       <div class="train-information">
         <div class="header-content">
-          <h2
-            class="tc"
-            v-if="getCurrentNumber == 1"
-          >Welcome to train &nbsp;{{getTrainNum}}. Enjoy your trip.</h2>
-          <h2
-            class="tc"
-            v-else-if="getCurrentNumber == 2"
-          >Temperature&nbsp;{{getTemperature}} Speed&nbsp;{{getSpeed}}Km/h</h2>
-          <h2 class="tc" v-else-if="getCurrentNumber == 3">Next Station&nbsp;{{getNextStation}}</h2>
-          <h2 class="tc" v-else>Final Destination&nbsp;{{getFinalDestination}}</h2>
+          <h2 class="tc" v-if="getCurrentNumber == 1">
+            Welcome to train &nbsp;{{ getTrainNum }}. Enjoy your trip.
+          </h2>
+          <h2 class="tc" v-else-if="getCurrentNumber == 2">
+            Temperature&nbsp;{{getTemperature}}&#8451;&nbsp;&nbsp;&nbsp;&nbsp;Speed&nbsp;{{ getSpeed }}Km/h
+          </h2>
+          <h2 class="tc" v-else-if="getCurrentNumber == 3">
+            Next Station&nbsp;{{ getNextStation }}
+          </h2>
+          <h2 class="tc" v-else>
+            Final Destination&nbsp;{{ getFinalDestination }}
+          </h2>
         </div>
       </div>
     </div>
@@ -135,25 +137,25 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 320px) {
   h2 {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 }
 
 @media (min-width: 321px) and (max-width: 360px) {
   h2 {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 }
 
 @media (min-width: 361px) and (max-width: 420px) {
   h2 {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 }
 
 @media (min-width: 421px) and (max-width: 520px) {
   h2 {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }
 
