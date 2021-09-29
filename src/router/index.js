@@ -68,9 +68,13 @@ const router = new VueRouter({
     },{
         path:'/technical',
         component:technical
+    },{
+        path:'*',
+        redirect: '/home'
     }]
 });
 
+//没匹配到会进入*，重定向到home
 router.push('/languageSetting');
 //router.push('/home');
 
