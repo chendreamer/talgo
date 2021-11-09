@@ -64,7 +64,6 @@ export default {
       cancel("取消查询列表");
     },
     getList: function (type) {
-      //console.log(type);
       let that = this;
       that.loadingState = true;
       that.listArray.length = 0;
@@ -92,8 +91,8 @@ export default {
         .then(function (response) {
           //console.log(response);
           //console.log(that.requestArray);
-          var last = that.requestArray.pop();
-          console.log(last);
+          //var last = that.requestArray.pop();
+          //console.log(last);
           that.loadingState = false;
           that.totalPage = Math.ceil(
             parseInt(response["data"]["count_data"]) / that.perPage

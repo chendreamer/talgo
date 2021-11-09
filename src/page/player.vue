@@ -4,11 +4,38 @@
       <el-header>
         <Header></Header>
       </el-header>
-      <video id="myVideo" class="video-js" width="1000" height="800" data-setup="{}">
+      <video
+        id="myVideo"
+        class="video-js"
+        width="1000"
+        height="800"
+        data-setup="{}"
+      >
         <source :src="videoPath" type="video/mp4" />
-        <track id="trackEn" :src="subtitleEnPath" srclang="en"  label="en" kind="subtitles" :default="setDefault('en')" />
-        <track id="trackEs" :src="subtitleEsPath" srclang="es"  label="es" kind="subtitles" :default="setDefault('es')"/>
-        <track id="trackFr" :src="subtitleFrPath" srclang="fr"  label="fr" kind="subtitles" :default="setDefault('fr')"/>
+        <track
+          id="trackEn"
+          :src="subtitleEnPath"
+          srclang="ru"
+          label="ru"
+          kind="subtitles"
+          :default="setDefault('en')"
+        />
+        <track
+          id="trackEs"
+          :src="subtitleEsPath"
+          srclang="es"
+          label="es"
+          kind="subtitles"
+          :default="setDefault('es')"
+        />
+        <track
+          id="trackFr"
+          :src="subtitleFrPath"
+          srclang="uz"
+          label="uz"
+          kind="subtitles"
+          :default="setDefault('fr')"
+        />
       </video>
     </el-container>
   </div>
@@ -23,32 +50,37 @@ import i18n from "@/i18n";
 import Header from "@/components/Header.vue";
 
 export default {
-  name: "play",
+  name: "player",
   props: ["summaryID"],
   components: { Header },
   data: function () {
     return {
       videoPath: "",
       //subtitlePath: "",
-      subtitleEnPath:"",
-      subtitleEsPath:"",
-      subtitleFrPath:""
+      subtitleEnPath: "",
+      subtitleEsPath: "",
+      subtitleFrPath: "",
     };
   },
   mounted: function () {
-        let that = this;
-  //console.log(that.$store.state.music.player.paused);
-  if (typeof(that.$store.state.music.player.paused) != 'undefined'  && !that.$store.state.music.player.paused) {
-          that.$store.dispatch("music/stopMusic");
-          //that.$store.state.music.playingStatus = false;
-        }
-    console.log(this.summaryID);
-    this.getData();
+    let that = this;
+    if (typeof that.summaryID !== "undefined") {
+      //console.log(that.$store.state.music.player.paused);
+      if (
+        typeof that.$store.state.music.player.paused != "undefined" &&
+        !that.$store.state.music.player.paused
+      ) {
+        that.$store.dispatch("music/stopMusic");
+        //that.$store.state.music.playingStatus = false;
+      }
+
+      console.log("player的summaryID:" + this.summaryID);
+      that.getData();
+    }
   },
-  computed:{
- }, 
+  computed: {},
   methods: {
-    setDefault:function(lang){
+    setDefault: function (lang) {
       return lang == i18n.locale;
     },
     getData: function () {
@@ -68,26 +100,26 @@ export default {
             response["data"]["data"][0]["filepath"];
           console.log(i18n.locale);
           //if (i18n.locale == "en") {
-            that.subtitleEnPath =
-              that.$store.state.media_server +
-              response["data"]["data"][0]["subtitlepath_en"].replace(
-                ".srt",
-                ".vtt"
-              );
+          that.subtitleEnPath =
+            that.$store.state.media_server +
+            response["data"]["data"][0]["subtitlepath_en"].replace(
+              ".srt",
+              ".vtt"
+            );
           //} else if (i18n.locale == "es") {
-            that.subtitleEsPath =
-              that.$store.state.media_server +
-              response["data"]["data"][0]["subtitlepath_es"].replace(
-                ".srt",
-                ".vtt"
-              );
+          that.subtitleEsPath =
+            that.$store.state.media_server +
+            response["data"]["data"][0]["subtitlepath_es"].replace(
+              ".srt",
+              ".vtt"
+            );
           //} else {
-            that.subtitleFrPath =
-              that.$store.state.media_server +
-              response["data"]["data"][0]["subtitlepath_fr"].replace(
-                ".srt",
-                ".vtt"
-              );
+          that.subtitleFrPath =
+            that.$store.state.media_server +
+            response["data"]["data"][0]["subtitlepath_fr"].replace(
+              ".srt",
+              ".vtt"
+            );
           //}
 
           that.$nextTick(function () {

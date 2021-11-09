@@ -18,19 +18,12 @@ import MultimediaLogo from "@/components/MultimediaLogo.vue";
 import MultimediaSwiper from "@/components/MultimediaSwiper.vue";
 
 export default {
-  components: { Header,MultimediaLogo,MultimediaSwiper },
-  data: function() {
-    return {
-      
-    };
+  components: { Header, MultimediaLogo, MultimediaSwiper },
+  data: function () {
+    return {};
   },
-  mounted: function() {
-
-  }
 };
 </script>
 
 <style lang="scss" scoped>
-
-
 </style>

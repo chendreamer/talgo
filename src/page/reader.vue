@@ -70,7 +70,7 @@ import Header from "@/components/Header.vue";
 import _ from "lodash";
 export default {
   components: { Header },
-  name: "read",
+  name: "reader",
   props: ["summaryID"],
   data: function () {
     return {
@@ -92,20 +92,24 @@ export default {
   },
   mounted: function () {
     let that = this;
-    //window.addEventListener("resize", that.resizefun(),false);
-    window.onresize = function () {
-      //console.log(document.documentElement.clientWidth);
-      var _type = that.getType(document.documentElement.clientWidth);
-      if (_type !== that.screen_type) {
-        that.screen_type = _type;
-        console.log(that.screen_type);
-        that.loadingState = true;
-        // that.init_startIndex =
-        //   that.contentHeightArray[that.currentPageContentArray[0]["index"]];
-        that.produceContentArray();
-      }
-    };
-    this.getBookList();
+    if (typeof that.summaryID !== "undefined") {
+      //window.addEventListener("resize", that.resizefun(),false);
+      window.onresize = function () {
+        //console.log(document.documentElement.clientWidth);
+        var _type = that.getType(document.documentElement.clientWidth);
+        if (_type !== that.screen_type) {
+          that.screen_type = _type;
+          console.log(that.screen_type);
+          that.loadingState = true;
+          // that.init_startIndex =
+          //   that.contentHeightArray[that.currentPageContentArray[0]["index"]];
+          that.produceContentArray();
+        }
+      };
+
+      console.log("reader的summaryID:" + this.summaryID);
+      this.getBookList();
+    }
   },
   methods: {
     getBookList: function () {
@@ -299,7 +303,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 #textContent p {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;

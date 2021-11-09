@@ -13,67 +13,85 @@
         </div>
         <div class="summary-detail">
           <div class="summary-header">
-            <h2 class="summary-title ellipsis">{{summary_title}}</h2>
+            <h2 class="summary-title ellipsis">{{ summary_title }}</h2>
             <div class="summary-operation-image">
-              <router-link :to="videoHref" v-if="summaryType == 'video'">
+              <router-link
+                :to="{ name: 'player', params: { summaryID: summaryID } }"
+                replace
+                v-if="summaryType == 'video'"
+              >
+                <img src="../assets/images/Play.png" />
+              </router-link>
+              <router-link
+                :to="{ name: 'reader', params: { summaryID: summaryID } }"
+                replace
+                v-else
+              >
+                <img src="../assets/images/Read.png" />
+              </router-link>
+              <!-- <router-link :to="videoHref" v-if="summaryType == 'video'">
                 <img src="../assets/images/Play.png" />
               </router-link>
               <router-link :to="bookHref" v-else>
                 <img src="../assets/images/Read.png" />
-              </router-link>
+              </router-link> -->
             </div>
           </div>
 
           <div class="summary-list" v-if="summaryType == 'video'">
             <div class="flex-first">
               <p class>
-                <em>{{$t("message.summary_director")}}:</em>
-                {{summary_director}}
+                <em>{{ $t("message.summary_director") }}:</em>
+                {{ summary_director }}
               </p>
               <p class>
-                <em>{{$t("message.summary_region")}}:</em>
-                {{summary_region}}
+                <em>{{ $t("message.summary_region") }}:</em>
+                {{ summary_region }}
               </p>
               <p class>
-                <em>{{$t("message.summary_length")}}:</em>
-                {{summary_length}}
+                <em>{{ $t("message.summary_length") }}:</em>
+                {{ summary_length }}
               </p>
             </div>
             <div class="flex-all">
               <p class>
-                <em>{{$t("message.summary_main_actor")}}:</em>
-                {{summary_mainActor}}
+                <em>{{ $t("message.summary_main_actor") }}:</em>
+                {{ summary_mainActor }}
               </p>
               <p class>
-                <em>{{$t("message.summary_type")}}:</em>
-                {{summary_type}}
+                <em>{{ $t("message.summary_type") }}:</em>
+                {{ summary_type }}
               </p>
               <p class>
-                <em>{{$t("message.summary_release_time")}}:</em>
-                {{summary_releaseTime}}
+                <em>{{ $t("message.summary_release_time") }}:</em>
+                {{ summary_releaseTime }}
               </p>
             </div>
           </div>
           <div class="summary-list" v-else>
             <div class="flex-all">
               <p class>
-                <em>{{$t("message.summary_author")}}:</em>
-                {{summary_author}}
+                <em>{{ $t("message.summary_author") }}:</em>
+                {{ summary_author }}
               </p>
               <p class>
-                <em>{{$t("message.summary_publishing_house")}}:</em>
-                {{summary_publishingHouse}}
+                <em>{{ $t("message.summary_publishing_house") }}:</em>
+                {{ summary_publishingHouse }}
               </p>
               <p class>
-                <em>{{$t("message.summary_publication_time")}}:</em>
-                {{summary_publicationTime}}
+                <em>{{ $t("message.summary_publication_time") }}:</em>
+                {{ summary_publicationTime }}
               </p>
             </div>
           </div>
 
-          <p class="review-title" v-if="summaryType == 'video'">{{$t("message.summary_movie_review")}} ></p>
-          <p class="review-title" v-else>{{$t("message.summary_novel_review")}} ></p>
-          <p class="review-content">{{summary_review}}</p>
+          <p class="review-title" v-if="summaryType == 'video'">
+            {{ $t("message.summary_movie_review") }} >
+          </p>
+          <p class="review-title" v-else>
+            {{ $t("message.summary_novel_review") }} >
+          </p>
+          <p class="review-content">{{ summary_review }}</p>
         </div>
       </div>
     </el-container>
@@ -89,12 +107,14 @@ import MultimediaLogo from "@/components/MultimediaLogo.vue";
 export default {
   name: "Summary",
   components: { Header, MultimediaLogo },
-  props: ["summaryID", "summaryType"],
+  props: ["summaryType", "summaryID"],
   data: function () {
     return {
       url: "",
-      videoHref: "/play/" + this.summaryID,
-      bookHref: "/read/" + this.summaryID,
+      // summaryID : 1,
+      // summaryType : 'video',
+      // videoHref: "/play/" + this.summaryID,
+      // bookHref: "/read/" + this.summaryID,
       summary_posterURL: "",
       summary_title: "",
       summary_director: "",
@@ -119,7 +139,9 @@ export default {
   },
   mounted: function () {
     let that = this;
-    that.getData();
+    if (typeof that.summaryID !== "undefined") {
+      that.getData();
+    }
   },
   methods: {
     getData: function () {
@@ -133,6 +155,7 @@ export default {
           },
         })
         .then(function (response) {
+          console.log("summary response:");
           console.log(response);
           that.summary_posterURL =
             that.$store.state.media_server +
@@ -145,7 +168,8 @@ export default {
             that.summary_length = response["data"]["data"][0]["mins"];
             that.summary_mainActor = response["data"]["data"][0]["performer"];
             that.summary_type = response["data"]["data"][0]["navigation"];
-            that.summary_releaseTime = response["data"]["data"][0]["release_time"];
+            that.summary_releaseTime =
+              response["data"]["data"][0]["release_time"];
           } else {
             that.summary_title = response["data"]["data"][0]["title"];
             that.summary_author = response["data"]["data"][0]["author"];
@@ -302,7 +326,7 @@ export default {
       }
     }
   }
-    .summary-title {
+  .summary-title {
     color: #f8ab08;
     font-size: 1.4rem;
     font-weight: 300;

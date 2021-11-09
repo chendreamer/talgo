@@ -27,6 +27,16 @@ export default {
   props: {
     msg: String,
   },
+  beforeRouteLeave(to, from, next) {
+    //特定页面无法返回
+    if (to.path == "/player" || to.path == "/reader" || to.path == "/summary") {
+      next(false);//重置路由起点
+      //console.log('home停止跳转');
+    } else {
+      //console.log('home继续跳转');
+      next();
+    }
+  },
 };
 </script>
 

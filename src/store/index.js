@@ -7,8 +7,9 @@ import trainInformation from './modules/trainInformation'
 // import getters from './store/getters.js'
 Vue.use(Vuex);
 
-//media_server: 'http://172.19.3.20' //re02媒体服务器ip
 //media_server: 'http://172.19.6.20',//f070媒体服务器ip
+//media_server: 'http://172.19.3.20' //re02媒体服务器ip
+//media_server: 'http://172.18.11.20',//f075媒体服务器ip
 //media_server: 'http://office.theonecraft.com:22280',//公网媒体服务器ip
 
 
