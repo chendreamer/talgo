@@ -13,14 +13,28 @@
         </div>
         <div class="summary-detail">
           <div class="summary-header">
-            <h2 class="summary-title ellipsis">{{summary_title}}</h2>
+            <h2 class="summary-title ellipsis">{{ summary_title }}</h2>
             <div class="summary-operation-image">
-              <router-link :to="videoHref" v-if="summaryType == 'video'">
+              <router-link
+                :to="{ name: 'player', params: { summaryID: summaryID } }"
+                replace
+                v-if="summaryType == 'video'"
+              >
+                <img src="../assets/images/Play.png" />
+              </router-link>
+              <router-link
+                :to="{ name: 'reader', params: { summaryID: summaryID } }"
+                replace
+                v-else
+              >
+                <img src="../assets/images/Read.png" />
+              </router-link>
+              <!-- <router-link :to="videoHref" v-if="summaryType == 'video'">
                 <img src="../assets/images/Play.png" />
               </router-link>
               <router-link :to="bookHref" v-else>
                 <img src="../assets/images/Read.png" />
-              </router-link>
+              </router-link> -->
             </div>
           </div>
 
@@ -28,29 +42,29 @@
             <div class="flex-first">
               <p class>
                 <em>Director:</em>
-                {{summary_director}}
+                {{ summary_director }}
               </p>
               <p class>
                 <em>Region:</em>
-                {{summary_region}}
+                {{ summary_region }}
               </p>
               <p class>
                 <em>Length:</em>
-                {{summary_length}}
+                {{ summary_length }}
               </p>
             </div>
             <div class="flex-all">
               <p class>
                 <em>Main Actor:</em>
-                {{summary_mainActor}}
+                {{ summary_mainActor }}
               </p>
               <p class>
                 <em>Type:</em>
-                {{summary_type}}
+                {{ summary_type }}
               </p>
               <p class>
                 <em>Release Time:</em>
-                {{summary_releaseTime}}
+                {{ summary_releaseTime }}
               </p>
             </div>
           </div>
@@ -58,22 +72,24 @@
             <div class="flex-all">
               <p class>
                 <em>Author:</em>
-                {{summary_author}}
+                {{ summary_author }}
               </p>
               <p class>
                 <em>Publishing House:</em>
-                {{summary_publishingHouse}}
+                {{ summary_publishingHouse }}
               </p>
               <p class>
                 <em>Publication Time:</em>
-                {{summary_publicationTime}}
+                {{ summary_publicationTime }}
               </p>
             </div>
           </div>
 
-          <p class="review-title" v-if="summaryType == 'video'">Movie Review ></p>
+          <p class="review-title" v-if="summaryType == 'video'">
+            Movie Review >
+          </p>
           <p class="review-title" v-else>Novel Review ></p>
-          <p class="review-content">{{summary_review}}</p>
+          <p class="review-content">{{ summary_review }}</p>
         </div>
       </div>
     </el-container>
@@ -89,12 +105,14 @@ import MultimediaLogo from "@/components/MultimediaLogo.vue";
 export default {
   name: "Summary",
   components: { Header, MultimediaLogo },
-  props: ["summaryID", "summaryType"],
+  props: ["summaryType", "summaryID"],
   data: function () {
     return {
       url: "",
-      videoHref: "/play/" + this.summaryID,
-      bookHref: "/read/" + this.summaryID,
+      // summaryID : 1,
+      // summaryType : 'video',
+      // videoHref: "/play/" + this.summaryID,
+      // bookHref: "/read/" + this.summaryID,
       summary_posterURL: "",
       summary_title: "",
       summary_director: "",
@@ -119,7 +137,9 @@ export default {
   },
   mounted: function () {
     let that = this;
-    that.getData();
+    if (typeof(that.summaryID) !== 'undefined') {
+        that.getData();
+    }
   },
   methods: {
     getData: function () {
@@ -133,6 +153,7 @@ export default {
           },
         })
         .then(function (response) {
+          console.log('summary response:');
           console.log(response);
           that.summary_posterURL =
             that.$store.state.media_server +
@@ -145,7 +166,8 @@ export default {
             that.summary_length = response["data"]["data"][0]["mins"];
             that.summary_mainActor = response["data"]["data"][0]["performer"];
             that.summary_type = response["data"]["data"][0]["navigation"];
-            that.summary_releaseTime = response["data"]["data"][0]["release_time"];
+            that.summary_releaseTime =
+              response["data"]["data"][0]["release_time"];
           } else {
             that.summary_title = response["data"]["data"][0]["title"];
             that.summary_author = response["data"]["data"][0]["author"];
@@ -167,6 +189,7 @@ export default {
         });
     },
   },
+
 };
 </script>
 
@@ -302,7 +325,7 @@ export default {
       }
     }
   }
-    .summary-title {
+  .summary-title {
     color: #f8ab08;
     font-size: 1.4rem;
     font-weight: 300;

@@ -8,7 +8,7 @@ const state = {
   musicArray: [], //普通音乐列表
   singerOrAlubmArray: [], //歌手专辑列表
   navigationName: "All",
-  media_server: 'http://172.19.3.20',//当前媒体服务器ip
+  media_server: 'http://172.19.6.20',//当前媒体服务器ip
   musicDuration: 0,  //音乐总时长
   musicCurrentTime: 0,  //音乐当前时间
   seeking: false,

@@ -78,7 +78,7 @@ export default {
         limit: (that.currentPageNum - 1) * that.perPage + "," + that.perPage,
       };
 
-      console.log(_params);
+      //console.log(_params);
 
       that.requestArray.push(_params);
       axios
@@ -89,10 +89,10 @@ export default {
           }),
         })
         .then(function (response) {
-          console.log(response);
-          console.log(that.requestArray);
-          var last = that.requestArray.pop();
-          console.log(last);
+          //console.log(response);
+          //console.log(that.requestArray);
+          //var last = that.requestArray.pop();
+          //console.log(last);
           that.loadingState = false;
           that.totalPage = Math.ceil(
             parseInt(response["data"]["count_data"]) / that.perPage
@@ -124,7 +124,7 @@ export default {
       var myInterceptor1 = axios.interceptors.request.use(
         function (config) {
           // 在发送请求之前做些什么
-          console.log("发送请求");
+          //console.log("发送请求");
           axios.interceptors.request.eject(myInterceptor1);
           return config;
         },
@@ -138,8 +138,8 @@ export default {
       var myInterceptor2 = axios.interceptors.response.use(
         function (response) {
           // 对响应数据做点什么
-          console.log("接受数据");
-          console.log(response);
+          //console.log("接受数据");
+          //console.log(response);
           axios.interceptors.response.eject(myInterceptor2);
           return response;
         },

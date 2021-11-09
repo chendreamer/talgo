@@ -13,7 +13,7 @@ Vue.use(Vuex);
 
 
 const state = {
-    media_server: 'http://172.19.3.20',//当前媒体服务器ip
+    media_server: 'http://172.19.6.20',//当前媒体服务器ip
     // time_define:1200
 }
 
