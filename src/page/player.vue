@@ -13,6 +13,17 @@
       >
         <source :src="videoPath" type="video/mp4" />
         <track
+          id="videoTrack"
+          :src="subtitlePath"
+          :srclang="getCurrentLang"
+          :label="getCurrentLang"
+          kind="subtitles"
+          default="true"
+        />
+
+
+
+        <!-- <track
           id="trackEn"
           :src="subtitleEnPath"
           srclang="en"
@@ -35,7 +46,7 @@
           label="fr"
           kind="subtitles"
           :default="setDefault('fr')"
-        />
+        /> -->
       </video>
     </el-container>
   </div>
@@ -56,10 +67,10 @@ export default {
   data: function () {
     return {
       videoPath: "",
-      //subtitlePath: "",
-      subtitleEnPath: "",
-      subtitleEsPath: "",
-      subtitleFrPath: "",
+      subtitlePath: "",
+      // subtitleEnPath: "",
+      // subtitleEsPath: "",
+      // subtitleFrPath: "",
     };
   },
   mounted: function () {
@@ -78,11 +89,15 @@ export default {
       that.getData();
     }
   },
-  computed: {},
-  methods: {
-    setDefault: function (lang) {
-      return lang == i18n.locale;
+  computed: {
+    getCurrentLang : function () {
+      return i18n.locale;
     },
+  },
+  methods: {
+    // setDefault: function (lang) {
+    //   return lang == i18n.locale;
+    // },
     getData: function () {
       let that = this;
 
@@ -98,29 +113,48 @@ export default {
           that.videoPath =
             that.$store.state.media_server +
             response["data"]["data"][0]["filepath"];
+          
+          //切换语言写法
+          // that.subtitleEnPath =
+          //   that.$store.state.media_server +
+          //   response["data"]["data"][0]["subtitlepath_en"].replace(
+          //     ".srt",
+          //     ".vtt"
+          //   );
+          // that.subtitleEsPath =
+          //   that.$store.state.media_server +
+          //   response["data"]["data"][0]["subtitlepath_es"].replace(
+          //     ".srt",
+          //     ".vtt"
+          //   );
+          // that.subtitleFrPath =
+          //   that.$store.state.media_server +
+          //   response["data"]["data"][0]["subtitlepath_fr"].replace(
+          //     ".srt",
+          //     ".vtt"
+          //   );
+          
           console.log(i18n.locale);
-          //if (i18n.locale == "en") {
-          that.subtitleEnPath =
-            that.$store.state.media_server +
-            response["data"]["data"][0]["subtitlepath_en"].replace(
+          var _subtitlepath = '';
+          switch (i18n.locale) {
+            case "en":
+              _subtitlepath = response["data"]["data"][0]["subtitlepath_en"];
+              break;
+            case "es":
+              _subtitlepath = response["data"]["data"][0]["subtitlepath_es"];
+              break;
+            case "fr":
+              _subtitlepath = response["data"]["data"][0]["subtitlepath_fr"];
+              break;
+          
+            default:
+              break;
+          }
+
+          that.subtitlePath = _subtitlepath.replace(
               ".srt",
               ".vtt"
             );
-          //} else if (i18n.locale == "es") {
-          that.subtitleEsPath =
-            that.$store.state.media_server +
-            response["data"]["data"][0]["subtitlepath_es"].replace(
-              ".srt",
-              ".vtt"
-            );
-          //} else {
-          that.subtitleFrPath =
-            that.$store.state.media_server +
-            response["data"]["data"][0]["subtitlepath_fr"].replace(
-              ".srt",
-              ".vtt"
-            );
-          //}
 
           that.$nextTick(function () {
             that.playInit();

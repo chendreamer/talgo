@@ -2,7 +2,6 @@ import mqtt from "mqtt";
 
 const state = {
     client: {}, //mqtt客户端
-    mqtt_server: 'mqtt://172.19.6.20:21884',//当前mqtt服务器ip
     train_number: 'null',//列车号
     temperature: 'null',//温度
     speed: 'null',//速度
@@ -38,8 +37,8 @@ const actions = {
         if (state.client.connected) {
             return;
         }
-
-        state.client = mqtt.connect(state.mqtt_server);
+        console.log(this);
+        state.client = mqtt.connect(this.state.mqtt_server);
 
         state.client.on("connect", function () {
             console.log("mqtt connected!");

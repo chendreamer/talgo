@@ -5,9 +5,9 @@
       :key="index"
       class="filter-item hover"
       :class="{ checked: ifCheck(index) }"
-      @click="trigger(item.navigation_bar, index)"
+      @click="trigger(item.origin, index)"
     >
-      {{ item.navigation_bar }}
+      {{ item.real }}
     </div>
   </div>
 </template>
@@ -39,9 +39,11 @@ export default {
         params: that.filterParam,
       })
       .then(function (response) {
-        console.log(response);
         response["data"]["data"].forEach((element) => {
-          that.filterData.push(element);
+           
+          var a = i18n.tc("message.filter_" + element.navigation_bar);
+          //展示real ，查询用origin
+          that.filterData.push({ origin: element.navigation_bar, real: a });
         });
       })
       .catch(function (error) {
@@ -277,5 +279,11 @@ export default {
 .checked {
   background-color: #fff;
   color: #820063;
+}
+
+.filter-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
