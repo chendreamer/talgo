@@ -136,7 +136,7 @@ const messages = {
       filter_Classical : 'Clásico',
       filter_POP : 'POP',
       filter_Rock : 'Roca',
-      filter_Folk : 'Gente',
+      filter_Folk : 'Balada',
       filter_Singer : 'Cantante',
       filter_Album : 'Álbum',
       filter_Poetry : 'Poesía',

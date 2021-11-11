@@ -8,21 +8,19 @@ const state = {
   musicArray: [], //普通音乐列表
   singerOrAlubmArray: [], //歌手专辑列表
   navigationName: "All",
-  media_server: 'http://172.18.11.20',//f075媒体服务器ip
   musicDuration: 0,  //音乐总时长
   musicCurrentTime: 0,  //音乐当前时间
   seeking: false,
   timesplit: 0
 }
 
-// getters
+// getters (里面获取不到this)
 const getters = {
-  getMusicURL: function (state) {
+  getMusicURL: function (state,that) {
     var _musicURL = '';
-    console.log(state);
     for (let i = 0; i < state.playList.length; i++) {
       if (state.playList[i]["id"] == state.currentPlayingID) {
-        _musicURL = state.media_server + state.playList[i]["filepath"];
+        _musicURL = that.state.media_server + state.playList[i]["filepath"];
         break;
       }
     }
@@ -77,7 +75,7 @@ const actions = {
     //console.log(state.player);
     //console.log(playPause);
     state.timesplit = 0;
-    state.player.setAttribute('src', getters.getMusicURL(state));
+    state.player.setAttribute('src', getters.getMusicURL(state,this));
     //连续播放的两首歌内容相同，则重新播放，无需执行player.onloadedmetadata
     if (state.player.readyState) {
       state.player.currentTime = 0;
