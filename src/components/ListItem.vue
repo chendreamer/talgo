@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import urlEncode from '@/util/util';
+
 export default {
   name: "ListItem",
   props: ["cover_path", "item_txt", "item_id", "module_name"],
@@ -32,7 +34,7 @@ export default {
       //hrefPath: "/summary/" + this.module_name + "/" + this.item_id,
       summaryType: this.module_name,
       summaryID: this.item_id,
-      path: "url(" + this.$store.state.media_server + this.cover_path + ")",
+      path: "url(" + this.$store.state.media_server + urlEncode(this.cover_path) + ")",
     };
   },
 };
